@@ -4,6 +4,7 @@
             logo
             trigger
         .navigation
+            span navigation
 </template>
 
 <script>
@@ -31,8 +32,18 @@
 
     .header {
         padding-top: 40px;
-        padding-bottom: 10px;
+        padding-bottom: 20px;
         border-bottom: 1px #e3e3e3 solid;
         @include trans-prop(padding-top, padding-bottom)
+
+        .slim {
+            padding-top: 20px;
+        }
+    }
+
+    .navigation {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: center;
     }
 </style>
