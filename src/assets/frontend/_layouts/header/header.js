@@ -4,6 +4,6 @@ window.$ = require('jquery')
 import Entry from './entry.vue'
 
 new Vue({
-    el : '.wrapper-footer',
+    el : '.wrapper-header',
     render : h => h(Entry)
 })
