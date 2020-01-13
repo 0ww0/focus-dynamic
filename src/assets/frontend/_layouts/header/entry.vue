@@ -15,6 +15,25 @@
         components : {
             logo,
             trigger
+        },
+
+        methods: {
+            handleScroll : function () {
+                let $header = $('.header'),
+                    $window = $(window)
+                if($window.scrollTop() > 250) {
+                    $header.addClass('slim')
+                } else {
+                    $header.removeClass('slim')
+                }
+            }
+        },
+
+        created () {
+            window.addEventListener('scroll', this.handleScroll);
+        },
+        destroyed () {
+            window.removeEventListener('scroll', this.handleScroll);
         }
     }
 </script>
@@ -36,8 +55,9 @@
         border-bottom: 1px #e3e3e3 solid;
         @include trans-prop(padding-top, padding-bottom)
 
-        .slim {
+        &.slim {
             padding-top: 20px;
+            @include trans-prop(padding-top)
         }
     }
 
