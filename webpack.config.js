@@ -7,7 +7,6 @@ module.exports = {
     mode: 'development',
     entry: {
         'frontend/layout/header' : './src/assets/frontend/_layouts/header/header.js',
-        'frontend/layout/navigation' : './src/assets/frontend/_layouts/navigation/navigation.js',
         'frontend/layout/footer' : './src/assets/frontend/_layouts/footer/footer.js',
     },
     output: {
