@@ -1,0 +1,99 @@
+//- Base Color
+
+$white: #ffffff;
+$black: #000000;
+$grey: #f5f5f5;
+$grey-50 : #dadada;
+
+//- Flat Ui Color
+
+$lightPink: #ff9ff3;
+$pink: #f368e0;
+$yellow: #feca57;
+$orange: #ff9f43;
+$coral: #ff6b6b;
+$red: #ee5353;
+$teal: #4ddbfb;
+$blue: #569fff;
+$green: #1cd1a1;
+$darkGreen: #10ac84;
+$aqua: #00d2d3;
+$forest: #00a3a4;
+$lightBlue: #54a0ff;
+$darkBlue: #2e86de;
+$purple: #5f27cd;
+$darkPurple: #341e97;
+$lightGrey: #c8d6e5;
+$mediumGrey: #8395a7;
+$darkGrey: #576574;
+$dark: #212f3e;
+
+//- Material Ui color Level 300
+
+$mu-red: #E57373;
+$mu-pink: #F06292;
+$mu-purple: #BA68C8;
+$mu-deep-purple: #9575CD;
+$mu-indigo: #7986CB;
+$mu-blue: #64B5F6;
+$mu-light-blue: #4FC3F7;
+$mu-cyan: #4DD0E1;
+$mu-teal: #4DB6AC;
+$mu-green: #81C784;
+$mu-light-green: #AED581;
+$mu-lime: #DCE775;
+$mu-yellow: #FFF176;
+$mu-amber: #FFD54F;
+$mu-orange: #FFB74D;
+$mu-deep-orange: #FF8A65;
+$mu-brown: #A1887F;
+$mu-grey: #E0E0E0;
+$mu-blue-grey: #90A4AE;
+
+
+//- Theme Color
+$primary: #FFCC00;
+$primary-50: #ffdb4d;
+$primary-25: #ffeb99;
+
+$dark: $darkGrey;
+$light: $lightGrey;
+$link: $black;
+$danger: $red;
+$info: $lightBlue;
+$success: $green;
+$warning: $yellow;
+
+
+//- Media Query
+
+$min: min-width;
+$max: max-width;
+
+//- Media Breakdown
+
+$xs: 480px;
+$sm: 640px;
+$md: 800px;
+$dp: 1024px;
+$hd: 1440px;
+
+//- Weight
+
+$w300: 300;
+$w400: 400;
+$w500: 500;
+$w600: 600;
+$w700: 700;
+$w800: 800;
+$w900: 900;
+
+$wlight: 300;
+$wmedium: 500;
+$wbold: 700;
+
+//- fonts
+$sans-serif: sans-serif;
+$roboto : 'Roboto' ,$sans-serif;
+
+$font: $roboto;

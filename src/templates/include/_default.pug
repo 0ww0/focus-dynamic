@@ -1,0 +1,21 @@
+doctype html
+html(lang='en')
+    head
+        block modules
+            include _modules/_meta
+            
+        include _config
+        block config
+        
+        block modules
+            include _modules/_favicon
+        
+        title #{title} | Focus Dynamics
+        
+        block modules
+            include _modules/_stylesheet
+    
+    body
+        block modules
+            include _modules/_layout
+            include _modules/_javascript

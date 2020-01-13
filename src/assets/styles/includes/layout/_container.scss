@@ -1,0 +1,29 @@
+.container {
+    width: 100%;
+    max-width: 1200px;
+    padding-left: em(14);
+    padding-right: em(14);
+    margin-left: auto;
+    margin-right: auto;
+
+    @include media(xs-up){
+        width: 100%;
+        padding-left: em(20);
+        padding-right: em(20);
+    }
+
+    @include media(sm-up){
+        padding-left: em(25);
+        padding-right: em(25);
+    }
+
+    &-fluid{
+        width: 100%;
+        padding-left: em(15);
+        padding-right: em(15);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    @include clearfix;
+}

@@ -1,0 +1,11 @@
+extends include/_default
+
+block config
+    - rootBase = ''
+    - frontPath = rootBase + 'assets/frontend/'
+    - title = 'Home'
+
+block stylesheet
+
+block javascript
+    script(src= frontPath + 'pages/index.js' + '?v' + version)
