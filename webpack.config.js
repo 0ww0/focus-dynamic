@@ -8,6 +8,7 @@ module.exports = {
     entry: {
         'frontend/layout/header' : './src/assets/frontend/_layouts/header/header.js',
         'frontend/layout/footer' : './src/assets/frontend/_layouts/footer/footer.js',
+        'frontend/page/index' : './src/assets/frontend/_pages/index/index.js',
     },
     output: {
         path: path.resolve(__dirname),

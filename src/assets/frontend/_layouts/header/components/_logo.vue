@@ -1,8 +1,7 @@
 <template lang="pug">
-    .logo-holder(:class = "{ 'mobile' : !is641 }")
+    .logo-holder(:class="{ 'desktop' : is641 }")
         a(:href='logo.link')
-            img(:src="logo.imageDesktop", v-if = "is641")
-            img(:src="logo.imageMobile", v-else)
+            img(:src="'../assets/images/logo/logo-' + logoSize + '.png'")
 </template>
 
 <script>
@@ -15,9 +14,15 @@
             return {
                 logo : {
                     link : '../index.html',
-                    imageDesktop : '../assets/images/logo/logo-black.png',
-                    imageMobile : '../assets/images/logo/logo-fa-black.png'
+                    imageDesktop : 'black',
+                    imageMobile : 'fa-black'
                 }
+            }
+        },
+
+        computed : {
+            logoSize() {
+                return this.is641 === true ? this.logo.imageDesktop : this.logo.imageMobile
             }
         }
     }
@@ -28,13 +33,12 @@
 
     .logo-holder{
         width: 100%;
-        max-width: 300px;
+        max-width: 55px;
+        margin-left: 25px;
         user-select: none;
-        margin: 0 auto;
-
-        &.mobile {
-            max-width: 55px;
-            margin-left: 25px;
+        &.desktop {
+            max-width: 300px;
+            margin: 0 auto;
         }
     }
 </style>
