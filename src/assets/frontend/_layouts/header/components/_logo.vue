@@ -1,30 +1,19 @@
 <template lang="pug">
-    .logo-holder(:class="{ 'desktop' : is641 }")
+    .logo-holder
         a(:href='logo.link')
-            img(:src="'../assets/images/logo/logo-' + logoSize + '.png'")
+            img(:src="logo.image")
 </template>
 
 <script>
-    import Media from './../../../_shares/media.js'
-
     export default {
-        extends: Media,
-
         data() {
             return {
                 logo : {
                     link : '../index.html',
-                    imageDesktop : 'black',
-                    imageMobile : 'fa-black'
+                    image : '../assets/images/logo/logo-black.png',
                 }
             }
         },
-
-        computed : {
-            logoSize() {
-                return this.is641 === true ? this.logo.imageDesktop : this.logo.imageMobile
-            }
-        }
     }
 </script>
 
@@ -33,12 +22,13 @@
 
     .logo-holder{
         width: 100%;
-        max-width: 55px;
-        margin-left: 25px;
-        user-select: none;
-        &.desktop {
+        max-width: 250px;
+        padding: 0 20px;
+
+        @include media(xs-up) {
             max-width: 300px;
-            margin: 0 auto;
         }
+
+        @include trans-prop(max-width)
     }
 </style>

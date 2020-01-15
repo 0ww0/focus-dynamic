@@ -19,18 +19,20 @@
 
         methods : {
             loader() {
-                window.onload = function() {
-		            this.loading = true
-	            };
+                this.loading = true
 
                 setTimeout(() => {
                     this.loading = false
-                }, 3000)
+                }, 2000)
             }
         },
 
-        mounted() {
-            this.loader()
+        created() {
+            window.addEventListener('load', this.loader)
+        },
+
+        beforeDestroy() {
+            window.removeEventListener('load', this.loader)
         }
     }
 </script>
