@@ -26,12 +26,23 @@
             },
 
             removeHamburger () {
-                if(this.is1025 === true){
+                if(this.is641 === true){
                     this.$store.dispatch('updateState', {
                         key : 'isHamburger',
                         value : false
                     });
                 }
+            },
+
+            locationHamburger () {
+                if(this.is641 === false){
+                    this.$store.dispatch('updateState', {
+                        key : 'isHamburger',
+                        value : false
+                    });
+                }
+
+                this.isHamburger === false ? document.body.classList.remove('no-scroll') : document.body.classList.add('no-scroll')
             },
         },
 
@@ -46,6 +57,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @import '../../../style/config.scss';
+    
     .trigger-holder {
         cursor: pointer;
         margin-left: auto;

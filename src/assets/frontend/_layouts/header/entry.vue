@@ -88,10 +88,4 @@
             @include trans-prop(padding-top)
         }
     }
-
-    .navigation {
-        padding-top: 12px;
-        padding-bottom: 12px;
-        text-align: center;
-    }
 </style>
