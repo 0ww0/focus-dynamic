@@ -1,39 +1,15 @@
 <template lang="pug">
     .wrapper-content
-        loading(v-if='loading')
+        carousel
 </template>
 
 <script>
-    import loading from '../../_components/loader/_spin.vue'
+    import carousel from './components/_carousel.vue'
 
     export default {
         components: {
-            loading
+            carousel
         },
-
-        data() {
-            return {
-                loading : false,
-            }
-        },
-
-        methods : {
-            loader() {
-                this.loading = true
-
-                setTimeout(() => {
-                    this.loading = false
-                }, 2000)
-            }
-        },
-
-        created() {
-            window.addEventListener('load', this.loader)
-        },
-
-        beforeDestroy() {
-            window.removeEventListener('load', this.loader)
-        }
     }
 </script>
 

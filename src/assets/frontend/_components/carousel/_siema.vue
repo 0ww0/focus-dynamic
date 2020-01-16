@@ -1,17 +1,37 @@
 <template lang="pug">
-    .siema-holder.banner
-        siema.siema(ref="siema", :current.sync="curSlide", :options="options", auto-play, @init='init', @change='change', :ready='false')
+    .siema-holder(:class="carousel")
+        siema.siema(:ref="refer", :current.sync="curSlide", :options="options", auto-play, @init='init', @change='change', :ready='false')
             slot
-        .siema-group
+        .siema-group(v-if='arrow')
             button.siema-button.prev(@click="prev", v-if='slider > 1')
                 i.fas.fa-chevron-left.fa-2x.co-white
             button.siema-button.next(@click="next", v-if='slider > 1')
                 i.fas.fa-chevron-right.fa-2x.co-white
-        .siema-dot
+        .siema-dot(v-if='dot')
 </template>
 
 <script>
     export default {
+
+        props : {
+            carousel : {
+                type : String
+            },
+
+            refer : {
+                type : String,
+            },
+
+            arrow : {
+                type : Boolean,
+                default : false
+            },
+
+            dot : {
+                type : Boolean,
+                default : false
+            }
+        },
 
         data() {
             return {
@@ -43,11 +63,11 @@
             },
 
             prev : function() {
-                return this.$refs.siema.prev()
+                return this.$refs[this.refer].prev()
             },
 
             next : function() {
-                return this.$refs.siema.next()
+                return this.$refs[this.refer].next()
             },
 
             pagination : function() {
@@ -64,7 +84,7 @@
                 for (let i = 0; i < this.slide; i++){
                     const btn = document.createElement('i');
                     btn.className = 'fas fa-circle'
-                    btn.addEventListener('click', () => this.$refs.siema.goTo(i));
+                    btn.addEventListener('click', () => this.$refs[this.refer].goTo(i));
                     dot.appendChild(btn)
                 }
             },
@@ -82,7 +102,7 @@
             let slide = document.getElementsByClassName('siema-wrapper')
             this.slide = slide.length
             if(this.slide > 1){
-                this.$refs.siema.init()
+                this.$refs[this.refer].init()
             }
             this.pagination()
         },
@@ -94,16 +114,8 @@
 
     .banner{
         width: 100%;
-        max-width: 1440px;
-        padding-left: 0;
-        padding-right: 0;
         margin-left: auto;
         margin-right: auto;
-
-        @include media(hd-up){
-            padding-left: em(25);
-            padding-right: em(25);
-        }
     }
 
     .siema-holder {
@@ -134,10 +146,6 @@
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
 
-            @include media(hd-up) {
-                left: em(25);
-            }
-
             i{
                 margin-right: 5px;
             }
@@ -147,10 +155,6 @@
             right: 0;
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
-
-            @include media(hd-up) {
-                right: em(25);
-            }
 
             i{
                 margin-left: 5px;
