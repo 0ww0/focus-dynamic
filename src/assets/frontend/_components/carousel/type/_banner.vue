@@ -49,10 +49,10 @@
     .image{
         overflow: hidden;
         width: 100%;
-        height: 100%;
+        height: 540px;
         img{
             width: 100%;
-            height: 540px;
+            height: 100%;
             pointer-events: none;
             object-fit: cover;
         }

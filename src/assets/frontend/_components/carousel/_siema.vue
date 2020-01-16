@@ -3,9 +3,9 @@
         siema.siema(:ref="refer", :current.sync="curSlide", :options="options", auto-play, @init='init', @change='change', :ready='false')
             slot
         .siema-group(v-if='arrow')
-            button.siema-button.prev(@click="prev", v-if='slider > 1')
+            button.siema-button.prev(@click="prev", v-if='slider > page')
                 i.fas.fa-chevron-left.fa-2x.co-white
-            button.siema-button.next(@click="next", v-if='slider > 1')
+            button.siema-button.next(@click="next", v-if='slider > page')
                 i.fas.fa-chevron-right.fa-2x.co-white
         .siema-dot(v-if='dot')
 </template>
@@ -20,6 +20,11 @@
 
             refer : {
                 type : String,
+            },
+
+            page : {
+                type : Number,
+                default: 1,
             },
 
             arrow : {
@@ -41,6 +46,7 @@
                     draggable: true,
                     multipleDrag: true,
                     threshold: 200,
+                    perPage: this.page,
                 },
                 curSlide: 0,
                 slide: 0,
@@ -76,21 +82,23 @@
                     return
                 }
 
-                let dotholder = document.getElementsByClassName('siema-dot')
-                const dot = document.createElement('div');
-                dot.className = 'dot'
-                dotholder[0].appendChild(dot);
+                if(this.dot) {
+                    let dotholder = $('.' + this.carousel + ' ' + '.siema-dot')
+                    const dot = document.createElement('div');
+                    dot.className = 'dot'
+                    dotholder[0].appendChild(dot);
 
-                for (let i = 0; i < this.slide; i++){
-                    const btn = document.createElement('i');
-                    btn.className = 'fas fa-circle'
-                    btn.addEventListener('click', () => this.$refs[this.refer].goTo(i));
-                    dot.appendChild(btn)
+                    for (let i = 0; i < this.slide; i++){
+                        const btn = document.createElement('i');
+                        btn.className = 'fas fa-circle'
+                        btn.addEventListener('click', () => this.$refs[this.refer].goTo(i));
+                        dot.appendChild(btn)
+                    }
                 }
             },
 
             updatePagination : function() {
-                let btn = document.querySelectorAll('.siema-dot i')
+                let btn = $('.' + this.carousel + ' ' + '.siema-dot i')
                 for(let i = 0; i < btn.length; i++) {
                     const addOrRemove = this.curSlide === i ? 'add' : 'remove';
                     btn[i].classList[addOrRemove]('active');
@@ -99,7 +107,7 @@
         },
 
         mounted () {
-            let slide = document.getElementsByClassName('siema-wrapper')
+            let slide =$('.' + this.carousel + ' ' +'.siema-wrapper')
             this.slide = slide.length
             if(this.slide > 1){
                 this.$refs[this.refer].init()
@@ -111,12 +119,6 @@
 
 <style lang='scss' scoped>
     @import '../../style/config.scss';
-
-    .banner{
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-    }
 
     .siema-holder {
         position: relative;
