@@ -1,10 +1,8 @@
 <template lang="pug">
     .card-component
-        a(:href = 'link', v-if = 'link')
-            img(:src = "imgUrl + imgDesktop", :alt = 'text')
-            p {{ text }}
-        span(v-else)
-            img(:src = "imgUrl + imgDesktop", :alt = 'text')
+        .image
+            img(:src = "imgUrl + img", :alt = 'text')
+        .text
             p {{ text }}
 </template>
 
@@ -17,17 +15,12 @@ export default {
 
         imgUrl : {
             type : String,
-            default : '../../../assets/images/banner/'
+            default : '../../../assets/images/card/'
         },
 
-        imgDesktop : {
+        img : {
             type : String,
-            default : 'default-desktop.png'
-        },
-
-        imgMobile : {
-            type : String,
-            default : 'default-mobile.png'
+            default : 'default-card.png'
         },
 
         text : {
@@ -44,12 +37,27 @@ export default {
     .card-component{
         overflow: hidden;
         width: 100%;
-        height: 280px;
-        img{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        flex-flow: column nowrap;
+        align-items: stretch;
+
+        .image {
             width: 100%;
             height: 100%;
-            pointer-events: none;
-            object-fit: cover;
+            img{
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .text {
+            align-self: flex-end;
+            @include fs(16)
+            text-align: center;
+            padding: 10px;
         }
     }
 </style>

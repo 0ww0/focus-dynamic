@@ -1,5 +1,5 @@
 <template lang="pug">
-    siema(refer = 'mainBanner', carousel='banner', arrow, dot)
+    siema(refer = 'mainBanner', carousel='banner', :page='page' arrow, dot, loop)
         siemaWrapper
             banner
         siemaWrapper
@@ -17,6 +17,14 @@
             siemaWrapper,
             banner
         },
+
+        data() {
+            return {
+                page : {
+                    1200: 1,
+                }
+            }
+        }
     }
 </script>
 

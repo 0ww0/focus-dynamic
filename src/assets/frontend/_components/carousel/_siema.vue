@@ -3,9 +3,9 @@
         siema.siema(:ref="refer", :current.sync="curSlide", :options="options", auto-play, @init='init', @change='change', :ready='false')
             slot
         .siema-group(v-if='arrow')
-            button.siema-button.prev(@click="prev", v-if='slider > page')
+            button.siema-button.prev(@click="prev", v-if='slider > 1')
                 i.fas.fa-chevron-left.fa-2x.co-white
-            button.siema-button.next(@click="next", v-if='slider > page')
+            button.siema-button.next(@click="next", v-if='slider > 1')
                 i.fas.fa-chevron-right.fa-2x.co-white
         .siema-dot(v-if='dot')
 </template>
@@ -23,8 +23,12 @@
             },
 
             page : {
-                type : Number,
-                default: 1,
+                type : [Boolean, Object]
+            },
+
+            loop : {
+                type : Boolean,
+                default: false
             },
 
             arrow : {
@@ -41,7 +45,7 @@
         data() {
             return {
                 options: {
-                    loop: true,
+                    loop: this.loop,
                     duration: 250,
                     draggable: true,
                     multipleDrag: true,
