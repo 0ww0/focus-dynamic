@@ -23,16 +23,16 @@
         data() {
             return {
                 head : {
-                    text : '',
-                    linkText: '',
+                    text : 'Eat & Drink',
+                    linkText: 'See all',
                     lintUrl: '',
                 },
 
                 page : {
-                    640: 2,
-                    800: 3,
-                    1024: 4,
-                    1200: 5,
+                    480: 2,
+                    640: 3,
+                    800: 4,
+                    1024: 5,
                 }
             }
         }
@@ -41,8 +41,8 @@
 
 <style lang="scss" scoped>
     .card-carousel {
-        padding-top: 40px;
-        padding-bottom: 40px;
+        padding-top: 25px;
+        padding-bottom: 25px;
     }
 
     .card {
