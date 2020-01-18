@@ -12,7 +12,7 @@
             },
             query : {
                 type : String,
-                default : 'md',
+                default : 'sm',
                 validator : function(value) {
                     return ['xs', 'sm', 'md', 'dp'].indexOf(value) !== -1
                 }
