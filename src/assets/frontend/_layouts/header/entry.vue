@@ -80,7 +80,8 @@
 
         padding-top: 40px;
         padding-bottom: 20px;
-        border-bottom: 1px #e3e3e3 solid;
+        border-bottom: 1px solid;
+        @include border(#e3e3e3)
         @include trans-prop(padding-top, padding-bottom)
 
         &.slim {
