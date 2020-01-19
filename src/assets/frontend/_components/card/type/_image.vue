@@ -20,7 +20,7 @@ export default {
 
         img : {
             type : String,
-            default : 'default-card.png'
+            default : 'default-square.png'
         },
 
         text : {

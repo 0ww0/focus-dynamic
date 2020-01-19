@@ -1,8 +1,8 @@
 <template lang="pug">
-    .heading-component
+    .heading-component(:class="{ 'subheader' : subheader }")
         .title
             p {{ text.text }}
-        .link
+        .link(v-if='!subheader')
             a(:href="'text.linkUrl'")
                 span {{ text.linkText }}
                 i.fas.fa-angle-double-right
@@ -11,7 +11,8 @@
 <script>
     export default {
         props : {
-            text : Object
+            text : Object,
+            subheader : Boolean,
         }
     }
 </script>
@@ -25,6 +26,14 @@
         flex-flow: row nowrap;
         align-items: center;
         padding: 25px 0;
+
+        &.subheader {
+            padding-bottom: 15px;
+            .title {
+                @include  fs(20);
+            }
+        }
+
         .title {
             @include color(#d4af37)
             flex: 1;

@@ -3,21 +3,21 @@
         heading(:text='head')
         card(stretch)
             cardWrapper(card = 'one-third', v-for = 'data in events', :key = 'data.id')
-                hoverCard
+                imageCard
 </template>
 
 <script>
     import heading from '../../../_components/text/_heading.vue'
     import card from '../../../_components/card/_card'
     import cardWrapper from '../../../_components/card/_wrapper'
-    import hoverCard from './../../../_components/card/type/_hover.vue'
+    import imageCard from './../../../_components/card/type/_image.vue'
 
     export default {
         components: {
             heading,
             card,
             cardWrapper,
-            hoverCard
+            imageCard
         },
 
         data() {
