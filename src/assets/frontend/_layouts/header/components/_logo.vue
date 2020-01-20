@@ -9,7 +9,7 @@
         data() {
             return {
                 logo : {
-                    link : '../index.html',
+                    link : '../',
                     image : '../assets/images/logo/logo-black.png',
                 }
             }
