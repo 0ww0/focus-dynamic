@@ -3,23 +3,26 @@
         heading(:text='heading')
         .event-holder
             heading(:text='eventTitle', subheader)
-            card(stretch)
-                cardWrapper(card = 'one-quarter', v-for = 'data in events', :key = 'data.id')
+            card(stretch, :xmedia = 'false')
+                cardWrapper(:card = 'isResponsive', v-for = 'data in events', :key = 'data.id')
                     happeningCard(:happening = 'data')
         .promo-holder
             heading(:text='promoTitle', subheader)
-            card(stretch)
-                cardWrapper(card = 'one-quarter', v-for = 'data in promos', :key = 'data.id')
+            card(stretch, :xmedia = 'false')
+                cardWrapper(:card = 'isResponsive', v-for = 'data in promos', :key = 'data.id')
                     happeningCard(:happening = 'data')
 </template>
 
 <script>
+    import Media from '../../../_shares/media.js'
     import heading from '../../../_components/text/_heading.vue'
     import card from '../../../_components/card/_card'
     import cardWrapper from '../../../_components/card/_wrapper'
     import happeningCard from './../../../_components/card/type/_happening.vue'
 
     export default {
+        extends : Media,
+
         components: {
             heading,
             card,
@@ -126,6 +129,18 @@
                         align : 'left',
                     },
                 ]
+            }
+        },
+
+        computed : {
+            isResponsive () {
+                if(this.is801) {
+                    return 'one-quarter'
+                } else if (this.is481) {
+                    return 'half'
+                } else {
+                    return 'full'
+                }
             }
         }
     }

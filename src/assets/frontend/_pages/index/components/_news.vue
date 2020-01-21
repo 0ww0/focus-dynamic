@@ -2,22 +2,25 @@
     .events-holder
         heading(:text='head')
         card(stretch)
-            cardWrapper(card = 'one-third', v-for = 'data in events', :key = 'data.id')
-                imageCard
+            cardWrapper(card = 'one-third', v-for = 'data in news', :key = 'data.id')
+                newsCard(:new = 'data')
 </template>
 
 <script>
+    import Media from '../../../_shares/media.js'
     import heading from '../../../_components/text/_heading.vue'
     import card from '../../../_components/card/_card'
     import cardWrapper from '../../../_components/card/_wrapper'
-    import imageCard from './../../../_components/card/type/_image.vue'
+    import newsCard from './../../../_components/card/type/_news.vue'
 
     export default {
+        extends : Media,
+        
         components: {
             heading,
             card,
             cardWrapper,
-            imageCard
+            newsCard
         },
 
         data() {
@@ -28,7 +31,7 @@
                     lintUrl: '',
                 },
 
-                events : [
+                news : [
                     {
                         id: 1,
                     },

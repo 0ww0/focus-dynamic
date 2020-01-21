@@ -1,16 +1,18 @@
 <template lang="pug">
     .card-component
         .image
-            img(:src = "imgUrl + img", :alt = 'text')
+            img(:src = "imageFull", :alt = 'hover.text')
             .hover-text
                 p Visit Website
-        .text(:class="align")
-            p {{ text }}
+        .text(:class="hover.align")
+            p {{ hover.text }}
 </template>
 
 <script>
 export default {
     props : {
+        hover : Object,
+
         link : {
             type : [Boolean, String]
         },
@@ -19,20 +21,15 @@ export default {
             type : String,
             default : '../../../assets/images/card/'
         },
+    },
 
-        img : {
-            type : String,
-            default : 'default-square.png'
-        },
-
-        text : {
-            type : String,
-            default : 'Card'
-        },
-
-        align : {
-            type : String,
-            default : 'center'
+    computed : {
+        imageFull() {
+            if(this.hover.imgPath === '') {
+                return this.imgUrl + this.hover.imgName
+            } else {
+                return this.hover.imgPath + this.hover.imgName
+            }
         }
     }
 }

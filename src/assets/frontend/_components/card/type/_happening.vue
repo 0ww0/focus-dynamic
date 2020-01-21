@@ -85,6 +85,11 @@ export default {
                 @include fs(14)
                 letter-spacing: .1em;
                 font-weight: 500;
+                max-width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                word-wrap: normal;
             }
 
             .info {

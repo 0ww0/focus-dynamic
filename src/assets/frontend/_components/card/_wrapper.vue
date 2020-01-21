@@ -28,6 +28,38 @@
         padding: em(12);
     }
 
+    .is {
+        &-full {
+            flex: none;
+            width: calc((100% * (1)));
+        }
+
+        &-third-quarter {
+            flex: none;
+            width: calc((100% * (3/4)));
+        }
+
+        &-two-third {
+            flex: none;
+            width: calc((100% * (2/3)));
+        }
+
+        &-half {
+            flex: none;
+            width: calc((100% * (1/2)));
+        }
+
+        &-one-third {
+            flex: none;
+            width: calc((100% * (1/3)));
+        }
+
+        &-one-quarter {
+            flex: none;
+            width: calc((100% * (1/4)));
+        }
+    }
+
     .is-responsive {
         .is {
             &-full {
