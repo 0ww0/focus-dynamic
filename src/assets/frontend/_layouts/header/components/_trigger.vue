@@ -1,5 +1,5 @@
 <template lang="pug">
-    .trigger-holder(v-if = '!is641', @click = 'checkHamburger')
+    .trigger-holder(:class = 'isResponsive', @click = 'checkHamburger')
         i.fas(:class="[ isHamburger ? 'fa-times' : 'fa-bars']")
 </template>
 
@@ -13,6 +13,10 @@
             isHamburger () {
                 return this.$store.getters.isHamburger;
             },
+
+            isResponsive () {
+                return this.is641 === false ? 'active' : ''
+            }
         },
 
         methods : {
@@ -58,10 +62,19 @@
 
 <style lang="scss" scoped>
     @import '../../../style/config.scss';
-    
+
     .trigger-holder {
-        cursor: pointer;
-        margin-left: auto;
-        margin-right: 20px;
+        i{
+            font-size: 0;
+        }
+
+        &.active {
+            cursor: pointer;
+            margin-left: auto;
+            margin-right: 20px;
+            i {
+                font-size: 16px;
+            }
+        }
     }
 </style>

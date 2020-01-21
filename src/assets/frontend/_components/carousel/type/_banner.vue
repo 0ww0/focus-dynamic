@@ -1,12 +1,7 @@
 <template lang="pug">
-    .banner-component.image.desktop(v-if='is641')
-        a(:href = 'link', v-if = 'link')
-            img(:src = "imgUrl + imgDesktop", :alt = 'altText')
-        img(:src = "imgUrl + imgDesktop", :alt = 'altText', v-else)
-    .banner-component.image.mobile(v-else)
-        a(:href = 'link', v-if = 'link')
-            img(:src = "imgUrl + imgMobile", :alt = 'altText')
-        img(:src = "imgUrl + imgMobile", :alt = 'altText', v-else)
+    .banner-component.image(:class='isResponsive')
+        a(:href = 'link')
+            img(:src = "imgUrl + isBanner", :alt = 'banner.altText')
 </template>
 
 <script>
@@ -16,6 +11,8 @@
         extends : Media,
 
         props : {
+            banner : Object,
+
             link : {
                 type : [Boolean, String]
             },
@@ -24,21 +21,16 @@
                 type : String,
                 default : '../../../assets/images/banner/'
             },
+        },
 
-            imgDesktop : {
-                type : String,
-                default : 'default-desktop.png'
+        computed : {
+            isResponsive() {
+                return this.is641 ? 'desktop' : 'mobile'
             },
 
-            imgMobile : {
-                type : String,
-                default : 'default-mobile.png'
+            isBanner() {
+                return this.is641 ? this.banner.imgDesktop : this.banner.imgMobile
             },
-
-            altText : {
-                type : String,
-                default : 'Banner'
-            }
         }
     }
 </script>

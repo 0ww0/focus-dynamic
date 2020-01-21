@@ -28,6 +28,7 @@
         padding: 25px 0;
 
         &.subheader {
+            padding-top: 15px;
             padding-bottom: 15px;
             .title {
                 @include  fs(20);
@@ -39,6 +40,7 @@
             flex: 1;
             @include fs(24)
             font-weight: 500;
+            letter-spacing: .1em;
         }
 
         .link {

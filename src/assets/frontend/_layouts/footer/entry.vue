@@ -4,7 +4,7 @@
             info
             .sitemap-holder
                 sitemap(:sitemap = 'explore')
-                sitemap(:sitemap = 'explore')
+                sitemap(:sitemap = 'corporate')
 </template>
 
 <script>
@@ -51,12 +51,35 @@
                             name: 'News',
                             link: ''
                         },
+                    ]
+                },
+
+                corporate : {
+                    title : 'Corporate',
+                    list: [
+                        {
+                            id: 1,
+                            name: 'About',
+                            link: ''
+                        },
 
                         {
-                            id: 6,
-                            name: 'Corporate',
+                            id: 2,
+                            name: 'Careers',
                             link: ''
-                        }
+                        },
+
+                        {
+                            id: 3,
+                            name: 'Contact Us',
+                            link: ''
+                        },
+
+                        {
+                            id: 4,
+                            name: 'Company Profile',
+                            link: ''
+                        },
                     ]
                 }
             }

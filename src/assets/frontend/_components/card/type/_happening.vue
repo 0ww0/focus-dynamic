@@ -1,15 +1,17 @@
 <template lang="pug">
     .card-component
         .image
-            img(:src = "imageFull", :alt = "image.text")
-        .text(:class="image.align")
-            p {{ image.text }}
+            img(:src = "happeningFull", :alt = "happening.text")
+        .text(:class="happening.align")
+            p.label {{ happening.label }}
+            p.title {{ happening.title }}
+            p.info {{ happening.info }}
 </template>
 
 <script>
 export default {
     props : {
-        image : Object,
+        happening : Object,
 
         link : {
             type : [Boolean, String]
@@ -22,11 +24,11 @@ export default {
     },
 
     computed : {
-        imageFull() {
-            if(this.image.imgPath === '') {
-                return this.imgUrl + this.image.imgName
+        happeningFull() {
+            if(this.happening.imgPath === '') {
+                return this.imgUrl + this.happening.imgName
             } else {
-                return this.image.imgPath + this.image.imgName
+                return this.happening.imgPath + this.happening.imgName
             }
         }
     }
@@ -46,7 +48,7 @@ export default {
 
         .image {
             width: 100%;
-            height: calc(100% - 44px);
+            height: calc(100% - 105px);
             flex: 1;
             img{
                 object-fit: cover;
@@ -60,8 +62,6 @@ export default {
             align-self: flex-end;
             padding-top: 10px;
             padding-bottom: 10px;
-            letter-spacing: .1em;
-            @include fs(14)
 
             &.left {
                 text-align: left;
@@ -73,6 +73,26 @@ export default {
 
             &.right {
                 text-align: right;
+            }
+
+            .label {
+                @include fs(12)
+                @include color($black, .8)
+                font-weight: 300;
+            }
+
+            .title {
+                @include fs(14)
+                letter-spacing: .1em;
+                font-weight: 500;
+            }
+
+            .info {
+                @include fs(14)
+                font-weight: 400;
+                line-height: 1.5em;
+                height: 3em;
+                overflow: hidden;
             }
         }
     }

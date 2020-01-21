@@ -1,9 +1,7 @@
 <template lang="pug">
     siema(refer = 'mainBanner', carousel='banner', :page='page' arrow, dot, loop)
-        siemaWrapper
-            banner
-        siemaWrapper
-            banner
+        siemaWrapper(v-for = "data in banner", :key = 'banner.id')
+            banner(:banner = 'data')
 </template>
 
 <script>
@@ -22,7 +20,23 @@
             return {
                 page : {
                     1200: 1,
-                }
+                },
+
+                banner : [
+                    {
+                        id : 1,
+                        imgDesktop : 'default-desktop.png',
+                        imgMobile : 'default-mobile.png',
+                        altText : 'Main Banner 1'
+                    },
+
+                    {
+                        id : 2,
+                        imgDesktop : 'default-desktop.png',
+                        imgMobile : 'default-mobile.png',
+                        altText : 'Main Banner 2'
+                    },
+                ]
             }
         }
     }
