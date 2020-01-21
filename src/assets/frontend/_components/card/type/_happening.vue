@@ -1,7 +1,7 @@
 <template lang="pug">
     .card-component
         .image
-            img(:src = "happeningFull", :alt = "happening.text")
+            img(:src = "imageFull", :alt = "happening.text")
         .text(:class="happening.align")
             p.label {{ happening.label }}
             p.title {{ happening.title }}
@@ -24,7 +24,7 @@ export default {
     },
 
     computed : {
-        happeningFull() {
+        imageFull() {
             if(this.happening.imgPath === '') {
                 return this.imgUrl + this.happening.imgName
             } else {

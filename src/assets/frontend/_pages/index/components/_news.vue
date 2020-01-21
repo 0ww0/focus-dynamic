@@ -1,9 +1,9 @@
 <template lang="pug">
     .events-holder
         heading(:text='head')
-        card(stretch)
-            cardWrapper(card = 'one-third', v-for = 'data in news', :key = 'data.id')
-                newsCard(:new = 'data')
+        card(stretch, :xmedia = 'false')
+            cardWrapper(:card = 'isResponsive(data)', v-for = 'data in news')
+                newsCard(:news = 'data')
 </template>
 
 <script>
@@ -15,7 +15,7 @@
 
     export default {
         extends : Media,
-        
+
         components: {
             heading,
             card,
@@ -34,16 +34,56 @@
                 news : [
                     {
                         id: 1,
+                        title : 'News Title Lorem Ipsum 1',
+                        imgPath : '',
+                        imgName : 'default-square.png',
+                        align : 'left',
+                        feature: true,
                     },
 
                     {
                         id: 2,
+                        title : 'News Title Lorem Ipsum 2',
+                        imgPath : '',
+                        imgName : 'default-square.png',
+                        align : 'left',
+                        feature: false,
                     },
 
                     {
                         id: 3,
+                        title : 'News Title Lorem Ipsum 3',
+                        imgPath : '',
+                        imgName : 'default-square.png',
+                        align : 'left',
+                        feature: false,
+                    },
+
+                    {
+                        id: 4,
+                        title : 'News Title Lorem Ipsum 3',
+                        imgPath : '',
+                        imgName : 'default-square.png',
+                        align : 'left',
+                        feature: false,
                     }
                 ]
+            }
+        },
+
+        methods : {
+            isResponsive (data) {
+                if(data.feature === true) {
+                    return 'full'
+                } else {
+                    if(this.is801) {
+                        return 'one-third'
+                    } else if (this.is481) {
+                        return 'half'
+                    } else {
+                        return 'full'
+                    }
+                }
             }
         }
     }
