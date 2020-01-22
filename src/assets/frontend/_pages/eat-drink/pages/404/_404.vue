@@ -1,6 +1,5 @@
 <template lang="pug">
-    .wrapper-content
-        span lorem ipsum test
+    span 404
 </template>
 
 <script>

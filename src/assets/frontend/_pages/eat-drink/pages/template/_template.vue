@@ -1,5 +1,5 @@
 <template lang="pug">
-    span lorem ipsum
+    span lorem ipsum test
 </template>
 
 <script>
