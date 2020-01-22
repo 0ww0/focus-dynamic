@@ -3,7 +3,9 @@
         .image
             img(:src = "imageFull", :alt = "news.text")
         .text(:class="news.align")
+            p.date {{ news.date }}
             p.title {{ news.title }}
+            p.info {{ news.info }}
 </template>
 
 <script>
@@ -43,7 +45,7 @@ export default {
     .card-component{
         overflow: hidden;
         width: calc(100%);
-        height: 350px;
+        height: calc(100%);
         display: flex;
         flex-direction: column;
         flex-flow: column nowrap;
@@ -63,7 +65,7 @@ export default {
 
                 .image {
                     width: 50%;
-                    height: 100%;
+                    height: 300px;
                 }
 
                 .text {
@@ -76,7 +78,7 @@ export default {
 
         .image {
             width: 100%;
-            height: calc(100% - 44px);
+            height: calc(250px);
             flex: 1;
             img{
                 object-fit: cover;
@@ -90,8 +92,6 @@ export default {
             align-self: flex-end;
             padding-top: 10px;
             padding-bottom: 10px;
-            letter-spacing: .1em;
-            @include fs(14)
 
             &.left {
                 text-align: left;
@@ -103,6 +103,31 @@ export default {
 
             &.right {
                 text-align: right;
+            }
+
+            .date {
+                @include fs(12)
+                @include color($black, .8)
+                font-weight: 300;
+            }
+
+            .title {
+                @include fs(14)
+                letter-spacing: .1em;
+                font-weight: 500;
+                max-width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                word-wrap: normal;
+            }
+
+            .info {
+                @include fs(14)
+                font-weight: 400;
+                line-height: 1.5em;
+                max-height: 3em;
+                overflow: hidden;
             }
         }
     }

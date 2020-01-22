@@ -2,7 +2,7 @@
     .events-holder
         heading(:text='head')
         card(stretch, :xmedia = 'false')
-            cardWrapper(:card = 'isResponsive(data)', v-for = 'data in news')
+            cardWrapper(:card = 'isResponsive(data)', v-for = 'data in reverseItem', :key='data.id')
                 newsCard(:news = 'data')
 </template>
 
@@ -35,17 +35,21 @@
                     {
                         id: 1,
                         title : 'News Title Lorem Ipsum 1',
+                        info : 'Info for News Lorem Ipsum Dolar Sect Amet',
                         imgPath : '',
-                        imgName : 'default-square.png',
+                        imgName : 'default-short.png',
+                        date : 'Sat, 20 Dec 2019',
                         align : 'left',
-                        feature: true,
+                        feature: false,
                     },
 
                     {
                         id: 2,
                         title : 'News Title Lorem Ipsum 2',
+                        info : 'Info for News Lorem Ipsum Dolar Sect Amet',
                         imgPath : '',
-                        imgName : 'default-square.png',
+                        imgName : 'default-short.png',
+                        date : 'Sat, 20 Dec 2019',
                         align : 'left',
                         feature: false,
                     },
@@ -53,21 +57,31 @@
                     {
                         id: 3,
                         title : 'News Title Lorem Ipsum 3',
+                        info : 'Info for News Lorem Ipsum Dolar Sect Amet',
                         imgPath : '',
-                        imgName : 'default-square.png',
+                        imgName : 'default-short.png',
+                        date : 'Sat, 20 Dec 2019',
                         align : 'left',
                         feature: false,
                     },
 
                     {
                         id: 4,
-                        title : 'News Title Lorem Ipsum 3',
+                        title : 'News Title Lorem Ipsum 4',
+                        info : 'Info for News Lorem Ipsum Dolar Sect Amet',
                         imgPath : '',
-                        imgName : 'default-square.png',
+                        imgName : 'default-short.png',
+                        date : 'Sat, 20 Dec 2019',
                         align : 'left',
-                        feature: false,
+                        feature: true,
                     }
                 ]
+            }
+        },
+
+        computed : {
+            reverseItem() {
+                return this.news.slice().reverse()
             }
         },
 

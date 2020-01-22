@@ -65,19 +65,19 @@
 
                         {
                             id: 2,
-                            name: 'Careers',
-                            link: ''
-                        },
-
-                        {
-                            id: 3,
                             name: 'Contact Us',
                             link: ''
                         },
 
                         {
-                            id: 4,
+                            id: 3,
                             name: 'Company Profile',
+                            link: ''
+                        },
+
+                        {
+                            id: 4,
+                            name: 'Sitemap',
                             link: ''
                         },
                     ]
