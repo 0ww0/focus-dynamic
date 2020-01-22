@@ -1,13 +1,13 @@
-extends include/_default
+extends ../include/_default
 
 block config
-    - rootBase = '/'
+    - rootBase = '../'
     - frontPath = rootBase + 'assets/frontend/'
-    - title = 'Home'
+    - title = 'Eat & Drink'
     - imgPath = rootBase + 'assets/images/'
     - cssPath = rootBase + 'assets/styles/'
 
 block stylesheet
 
 block javascript
-    script(src= frontPath + 'page/index.js' + '?v' + version)
+    script(src= frontPath + 'page/eat-drink.js' + '?v' + version)

@@ -1,15 +1,7 @@
 <template lang="pug">
     ul.navi(:class="{ active : isHamburger }")
-        li.navi-list
-            a.navi-link(:href="'#/'") Eat &amp; Drink
-        li.navi-list
-            a.navi-link(:href="'#/'") Celebrate
-        li.navi-list
-            a.navi-link(:href="'#/'") Shop
-        li.navi-list
-            a.navi-link(:href="'#/'") News
-        li.navi-list
-            a.navi-link(:href="'#/'") Corporate
+        li.navi-list(v-for = 'data in navi', :key = 'data.id')
+            a.navi-link(:href="data.link") {{ data.title }}
 </template>
 
 <script>
@@ -17,6 +9,41 @@
 
     export default {
         extends: Media,
+
+        data() {
+            return {
+                navi : [
+                    {
+                        id : 1,
+                        title : 'Eat & Drink',
+                        link : '../eat-drink/'
+                    },
+
+                    {
+                        id : 2,
+                        title : 'Celebrate',
+                        link : '../celebrate/'
+                    },
+
+                    {
+                        id : 3,
+                        title : 'Shop',
+                        link : '../shop/'
+                    },
+
+                    {
+                        id : 4,
+                        title : 'News',
+                        link : '../news/'
+                    },
+                    {
+                        id : 5,
+                        title : 'Corporate',
+                        link : '../corporate/'
+                    },
+                ]
+            }
+        },
 
         computed : {
             isHamburger () {

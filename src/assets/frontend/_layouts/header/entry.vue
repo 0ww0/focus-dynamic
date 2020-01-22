@@ -41,9 +41,11 @@
 
             loader() {
                 this.loading = true
+                $('body').addClass('no-scroll')
 
                 setTimeout(() => {
                     this.loading = false
+                    $('body').removeClass('no-scroll')
                 }, 3000)
             }
         },

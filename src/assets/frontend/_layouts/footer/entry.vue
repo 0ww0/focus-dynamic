@@ -25,7 +25,7 @@
                         {
                             id: 1,
                             name: 'Eat & Drink',
-                            link: ''
+                            link: '../eat-drink/'
                         },
 
                         {
