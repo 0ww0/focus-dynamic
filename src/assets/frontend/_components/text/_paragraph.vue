@@ -2,8 +2,8 @@
     .paragraph-component(:class = "paragraph.align")
         .title(v-if="paragraph.title !== ''")
             p {{ paragraph.title }}
-        .text
-            p {{ paragraph.text }}
+        .text(v-for = 'data in paragraph.text')
+            p {{ data }}
 </template>
 
 <script>
@@ -37,12 +37,16 @@
         .title {
             @include fs(18)
             font-weight: 500;
-            padding-bottom: 10px;
+            padding-bottom: 20px;
         }
 
         .text {
             @include fs(14)
             font-weight: 300;
+
+            &:not(:last-child) {
+                padding-bottom: 10px;
+            }
         }
     }
 </style>

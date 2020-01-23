@@ -26,7 +26,7 @@
         data() {
             return {
                 head : {
-                    text : 'News',
+                    title : 'News',
                     linkText: 'See all',
                     lintUrl: '',
                 },

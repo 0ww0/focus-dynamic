@@ -26,7 +26,7 @@
         data() {
             return {
                 head : {
-                    text : 'Celebrate',
+                    title : 'Celebrate',
                     linkText: 'See all',
                     lintUrl: '',
                 },

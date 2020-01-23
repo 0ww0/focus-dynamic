@@ -1,7 +1,7 @@
 <template lang="pug">
     .heading-component(:class="{ 'subheader' : subheader }")
-        .title
-            p {{ text.text }}
+        .title(:class = 'text.align')
+            p {{ text.title }}
         .link(v-if='!subheader')
             a(:href="'text.linkUrl'")
                 span {{ text.linkText }}
@@ -41,6 +41,18 @@
             @include fs(24)
             font-weight: 500;
             letter-spacing: .1em;
+
+            &.left {
+                text-align: left;
+            }
+
+            &.center {
+                text-align: center;
+            }
+
+            &.right {
+                text-align: right;
+            }
         }
 
         .link {

@@ -27,7 +27,7 @@
         data() {
             return {
                 head : {
-                    text : 'Eat & Drink',
+                    title : 'Eat & Drink',
                 },
 
                 store : [

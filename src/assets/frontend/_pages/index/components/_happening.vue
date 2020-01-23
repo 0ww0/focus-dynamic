@@ -33,7 +33,7 @@
         data() {
             return {
                 heading : {
-                    text : 'What\'s On',
+                    title : 'What\'s On',
                     linkText: 'See all',
                     lintUrl: '',
                 },

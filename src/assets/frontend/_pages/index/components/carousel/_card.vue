@@ -23,7 +23,7 @@
         data() {
             return {
                 head : {
-                    text : 'Eat & Drink',
+                    title : 'Eat & Drink',
                     linkText: 'See all',
                     lintUrl: '',
                 },
