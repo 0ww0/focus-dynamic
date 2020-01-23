@@ -1,6 +1,6 @@
 <template lang="pug">
     .wrapper-header
-        loading(v-if='loading')
+        loading(ref='loading')
         .header
             logo
             trigger
@@ -22,12 +22,6 @@
             loading
         },
 
-        data() {
-            return {
-                loading : false,
-            }
-        },
-
         methods: {
             handleScroll : function () {
                 let $header = $('.header'),
@@ -40,12 +34,10 @@
             },
 
             loader() {
-                this.loading = true
-                $('body').addClass('no-scroll')
+                this.$refs['loading'].open()
 
                 setTimeout(() => {
-                    this.loading = false
-                    $('body').removeClass('no-scroll')
+                    this.$refs['loading'].close()
                 }, 3000)
             }
         },

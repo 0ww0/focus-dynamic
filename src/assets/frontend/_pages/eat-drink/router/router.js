@@ -10,6 +10,7 @@ import templatePage from '../pages/template/_template.vue'
 let router = new Router({
     //mode: 'history',
     base: '/eat-drink/',
+    root: '/eat-drink/',
     routes : [
         {
             path: '*',
@@ -19,7 +20,8 @@ let router = new Router({
         {
             path : '/',
             name : 'index',
-            component : indexPage
+            component : indexPage,
+
         },
 
         {

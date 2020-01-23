@@ -1,5 +1,5 @@
 <template lang="pug">
-    .card-component
+    a.card-component(:href="image.link")
         .image
             img(:src = "imageFull", :alt = "image.text")
         .text(:class="image.align")

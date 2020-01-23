@@ -2,7 +2,7 @@
     .card-carousel
         heading(:text = 'head')
         siema(refer = 'card', :page = 'page' carousel='card', loop)
-            siemaWrapper(v-for = "data in place", :key = 'place.id')
+            siemaWrapper(v-for = "data in store", :key = 'store.id')
                 imageCard(:image = 'data')
 </template>
 
@@ -35,7 +35,7 @@
                     1024: 5,
                 },
 
-                place : [
+                store : [
                     {
                         id : 1,
                         text : 'Place Name 1',

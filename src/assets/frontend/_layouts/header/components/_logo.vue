@@ -29,6 +29,10 @@
             max-width: 300px;
         }
 
+        @include media(sm-up) {
+            margin: 0 auto;
+        }
+
         @include trans-prop(max-width)
     }
 </style>

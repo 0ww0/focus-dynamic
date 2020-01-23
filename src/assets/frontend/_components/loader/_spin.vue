@@ -1,6 +1,6 @@
 <template lang="pug">
     transition(name = 'loader-fade')
-        .loader-component(:class='background')
+        .loader-component(:class='background', v-show = 'isOpen')
             .loader(:class = 'load.type')
                 span(v-for = 'n, index in load.loop')
 </template>
@@ -20,8 +20,40 @@
                     type : 'spin',
                     loop : 1
                 },
+                isOpen : false,
+                body : {
+                    height : null,
+                    overflow : null
+                }
             }
         },
+
+        methods: {
+            open() {
+                this.isOpen = true
+                this._lockBody()
+                this.$emit('open')
+            },
+
+            close() {
+                this.isOpen = false
+                this._unlockBody()
+                this.$emit('close')
+            },
+
+            _lockBody() {
+                this.body.height = document.body.style.height
+				this.body.overflow = document.body.style.overflow
+
+				document.body.style.height = '100%'
+				document.body.style.overflow = 'hidden'
+            },
+
+            _unlockBody() {
+				document.body.style.height = this.body.height
+				document.body.style.overflow = this.body.overflow
+			},
+        }
     }
 </script>
 
