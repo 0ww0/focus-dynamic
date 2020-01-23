@@ -27,7 +27,10 @@ let router = new Router({
         {
             path : '/template',
             name : 'template',
-            component : templatePage
+            component : templatePage,
+            meta : {
+                title : 'Templete Page | Focus Dynamics'
+            }
         }
     ]
 })
