@@ -39,11 +39,11 @@
                 },
 
                 eventTitle : {
-                    text : 'Events'
+                    title : 'Events'
                 },
 
                 promoTitle : {
-                    text : 'Promo'
+                    title : 'Promo'
                 },
 
                 events : [
