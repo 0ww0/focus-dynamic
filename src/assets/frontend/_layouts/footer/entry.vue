@@ -41,12 +41,6 @@
                         },
 
                         {
-                            id: 4,
-                            name: 'Shop',
-                            link: ''
-                        },
-
-                        {
                             id: 5,
                             name: 'News',
                             link: ''

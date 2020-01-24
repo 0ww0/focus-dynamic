@@ -26,12 +26,6 @@
                     },
 
                     {
-                        id : 3,
-                        title : 'Shop',
-                        link : '../shop/'
-                    },
-
-                    {
                         id : 4,
                         title : 'News',
                         link : '../news/'

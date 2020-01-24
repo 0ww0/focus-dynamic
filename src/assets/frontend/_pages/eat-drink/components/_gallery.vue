@@ -33,7 +33,7 @@
 
                 page : {
                     480: 2,
-                    // 640: 3,
+                    640: 3,
                     // 800: 4,
                     // 1024: 5,
                 },
@@ -47,14 +47,14 @@
         padding-top: 35px;
         padding-bottom: 35px;
     }
-    
-    .card{
+
+    .gallery{
         position: relative;
-        width: 100%;
+        width: calc(100%);
         height: 400px;
     }
 
-    /deep/ .card-component {
+    /deep/ .banner-component {
         width: calc(100% - 20px);
         height: 400px;
         margin-left: 10px;
