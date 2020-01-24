@@ -10,7 +10,10 @@ module.exports = {
         'frontend/layout/footer' : './src/assets/frontend/_layouts/footer/footer.js',
         'frontend/page/index' : './src/assets/frontend/_pages/index/index.js',
         'frontend/page/eat-drink' : './src/assets/frontend/_pages/eat-drink/eat-drink.js',
-        'frontend/page/celebrate' : './src/assets/frontend/_pages/celebrate/celebrate.js'
+        'frontend/page/celebrate' : './src/assets/frontend/_pages/celebrate/celebrate.js',
+        'frontend/page/corporate' : './src/assets/frontend/_pages/corporate/corporate.js',
+        'frontend/page/happening' : './src/assets/frontend/_pages/happening/happening.js',
+        'frontend/page/news' : './src/assets/frontend/_pages/news/news.js',
     },
     output: {
         path: path.resolve(__dirname),
