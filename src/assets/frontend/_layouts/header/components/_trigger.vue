@@ -52,6 +52,7 @@
 
         created(){
             window.addEventListener('resize', this.removeHamburger)
+            this.checkMobile()
         },
 
         beforeDestroy(){
