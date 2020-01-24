@@ -69,6 +69,10 @@
                     return 'full'
                 }
             }
+        },
+
+        created() {
+            this.checkMobile()
         }
     }
 </script>

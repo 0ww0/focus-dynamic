@@ -31,6 +31,10 @@
             isBanner() {
                 return this.is641 ? this.banner.imgDesktop : this.banner.imgMobile
             },
+        },
+
+        created() {
+            this.checkMobile()
         }
     }
 </script>

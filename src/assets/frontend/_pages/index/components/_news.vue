@@ -99,6 +99,10 @@
                     }
                 }
             }
+        },
+
+        created() {
+            this.checkMobile()
         }
     }
 </script>
