@@ -25,7 +25,7 @@
                 head : {
                     title : 'Eat & Drink',
                     linkText: 'See all',
-                    lintUrl: '',
+                    linkUrl: '/eat-drink/',
                 },
 
                 page : {
@@ -41,6 +41,7 @@
                         text : 'Place Name 1',
                         imgPath : '',
                         imgName : 'default-tall.png',
+                        link : '../eat-drink/template',
                         align : 'left',
                     },
 
@@ -49,6 +50,7 @@
                         text : 'Place Name 2',
                         imgPath : '',
                         imgName : 'default-tall.png',
+                        link : '../eat-drink/template',
                         align : 'left',
                     },
 
@@ -57,6 +59,7 @@
                         text : 'Place Name 3',
                         imgPath : '',
                         imgName : 'default-tall.png',
+                        link : '../eat-drink/template',
                         align : 'left',
                     },
 
@@ -65,6 +68,7 @@
                         text : 'Place Name 4',
                         imgPath : '',
                         imgName : 'default-tall.png',
+                        link : '../eat-drink/template',
                         align : 'left',
                     },
 
@@ -73,6 +77,7 @@
                         text : 'Place Name 5',
                         imgPath : '',
                         imgName : 'default-tall.png',
+                        link : '../eat-drink/template',
                         align : 'left',
                     },
 
@@ -81,6 +86,7 @@
                         text : 'Place Name 6',
                         imgPath : '',
                         imgName : 'default-tall.png',
+                        link : '../eat-drink/template',
                         align : 'left',
                     }
                 ]

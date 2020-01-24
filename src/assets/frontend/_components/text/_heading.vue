@@ -3,7 +3,7 @@
         .title(:class = 'text.align')
             p {{ text.title }}
         .link(v-if='!subheader')
-            a(:href="'text.linkUrl'")
+            a(:href="text.linkUrl")
                 span {{ text.linkText }}
                 i.fas.fa-angle-double-right
 </template>

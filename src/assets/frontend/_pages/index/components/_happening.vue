@@ -35,7 +35,7 @@
                 heading : {
                     title : 'What\'s On',
                     linkText: 'See all',
-                    lintUrl: '',
+                    linkUrl: '../happening/',
                 },
 
                 eventTitle : {

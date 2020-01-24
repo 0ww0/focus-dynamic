@@ -28,7 +28,7 @@
                 head : {
                     title : 'Celebrate',
                     linkText: 'See all',
-                    lintUrl: '',
+                    linkUrl: '../celebrate/',
                 },
 
                 celebrate : [

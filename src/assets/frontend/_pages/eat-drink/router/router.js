@@ -8,7 +8,7 @@ import indexPage from '../pages/index/_index.vue'
 import templatePage from '../pages/template/_template.vue'
 
 let router = new Router({
-    //mode: 'history',
+    mode: 'history',
     base: '/eat-drink/',
     root: '/eat-drink/',
     routes : [

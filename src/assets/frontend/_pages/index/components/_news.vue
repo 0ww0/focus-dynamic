@@ -28,7 +28,7 @@
                 head : {
                     title : 'News',
                     linkText: 'See all',
-                    lintUrl: '',
+                    linkUrl: '../news/',
                 },
 
                 news : [

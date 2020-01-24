@@ -9,7 +9,8 @@ module.exports = {
         'frontend/layout/header' : './src/assets/frontend/_layouts/header/header.js',
         'frontend/layout/footer' : './src/assets/frontend/_layouts/footer/footer.js',
         'frontend/page/index' : './src/assets/frontend/_pages/index/index.js',
-        'frontend/page/eat-drink' : './src/assets/frontend/_pages/eat-drink/eat-drink.js'
+        'frontend/page/eat-drink' : './src/assets/frontend/_pages/eat-drink/eat-drink.js',
+        'frontend/page/celebrate' : './src/assets/frontend/_pages/celebrate/celebrate.js'
     },
     output: {
         path: path.resolve(__dirname),

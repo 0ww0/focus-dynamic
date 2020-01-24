@@ -31,19 +31,19 @@
                         {
                             id: 2,
                             name: 'Celebrate',
-                            link: ''
+                            link: '../celebrate/'
                         },
 
                         {
                             id: 3,
                             name: 'What\'s On',
-                            link: ''
+                            link: '../happening/'
                         },
 
                         {
                             id: 5,
                             name: 'News',
-                            link: ''
+                            link: '../news/'
                         },
                     ]
                 },
@@ -54,25 +54,25 @@
                         {
                             id: 1,
                             name: 'About',
-                            link: ''
+                            link: '../about/'
                         },
 
                         {
                             id: 2,
                             name: 'Contact Us',
-                            link: ''
+                            link: '../contact-us/'
                         },
 
                         {
                             id: 3,
                             name: 'Company Profile',
-                            link: ''
+                            link: '../corporate/'
                         },
 
                         {
                             id: 4,
                             name: 'Sitemap',
-                            link: ''
+                            link: '../sitemap/'
                         },
                     ]
                 }
