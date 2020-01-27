@@ -4,7 +4,7 @@
             heading(:text='head', subheader)
             card(stretch, :xmedia = 'false')
                 cardWrapper(:card = 'isResponsive(data)', v-for = 'data in reverseItem', :key='data.id')
-                    newsCard(:news = 'data')
+                    newsCard(:news = 'data', :feature = 'featured(data.id)')
 </template>
 
 <script>
@@ -38,7 +38,6 @@
                         imgName : 'default-short.png',
                         date : 'Sat, 20 Dec 2019',
                         align : 'left',
-                        feature: false,
                     },
 
                     {
@@ -49,7 +48,6 @@
                         imgName : 'default-short.png',
                         date : 'Sat, 20 Dec 2019',
                         align : 'left',
-                        feature: false,
                     },
 
                     {
@@ -60,7 +58,6 @@
                         imgName : 'default-short.png',
                         date : 'Sat, 20 Dec 2019',
                         align : 'left',
-                        feature: false,
                     },
 
                     {
@@ -71,7 +68,6 @@
                         imgName : 'default-short.png',
                         date : 'Sat, 20 Dec 2019',
                         align : 'left',
-                        feature: true,
                     }
                 ]
             }
@@ -80,12 +76,12 @@
         computed : {
             reverseItem() {
                 return this.news.slice().reverse()
-            }
+            },
         },
 
         methods : {
             isResponsive (data) {
-                if(data.feature === true) {
+                if(this.featured(data.id) === true) {
                     return 'full'
                 } else {
                     if(this.is801) {
@@ -96,6 +92,10 @@
                         return 'full'
                     }
                 }
+            },
+
+            featured(data) {
+                return this.reverseItem.length === data ? true : false
             }
         },
 

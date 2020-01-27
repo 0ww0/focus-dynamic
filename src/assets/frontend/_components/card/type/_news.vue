@@ -21,6 +21,8 @@ export default {
             type : String,
             default : '../../../assets/images/card/'
         },
+
+        feature: Boolean,
     },
 
     computed : {
@@ -33,7 +35,7 @@ export default {
         },
 
         isFeature() {
-            return this.news.feature === true ? 'feature' : ''
+            return this.feature === true ? 'feature' : ''
         }
     }
 }

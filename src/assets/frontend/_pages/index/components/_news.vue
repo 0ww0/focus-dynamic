@@ -3,7 +3,7 @@
         heading(:text='head')
         card(stretch, :xmedia = 'false')
             cardWrapper(:card = 'isResponsive(data)', v-for = 'data in reverseItem', :key='data.id')
-                newsCard(:news = 'data')
+                newsCard(:news = 'data', :feature = 'featured(data.id)')
 </template>
 
 <script>
@@ -98,6 +98,10 @@
                         return 'full'
                     }
                 }
+            },
+
+            featured(data) {
+                return this.reverseItem.length === data ? true : false
             }
         },
 
