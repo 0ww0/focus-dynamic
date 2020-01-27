@@ -82,8 +82,10 @@
                 @include fs(14)
                 font-weight: 400;
                 line-height: 1.5em;
-                max-height: 315px;
-                overflow-y: auto;
+                @include media(md-up) {
+                    max-height: 315px;
+                    overflow-y: auto;
+                }
             }
 
             .date {
