@@ -26,10 +26,18 @@
                     },
 
                     {
+                        id : 3,
+                        title : 'What\'s On',
+                        link : '../happening/'
+                    },
+
+
+                    {
                         id : 4,
                         title : 'News',
                         link : '../news/'
                     },
+
                     {
                         id : 5,
                         title : 'Corporate',
