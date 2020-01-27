@@ -53,8 +53,8 @@
                     list: [
                         {
                             id: 1,
-                            name: 'About',
-                            link: '../about/'
+                            name: 'Company Profile',
+                            link: '../corporate/'
                         },
 
                         {
@@ -65,12 +65,6 @@
 
                         {
                             id: 3,
-                            name: 'Company Profile',
-                            link: '../corporate/'
-                        },
-
-                        {
-                            id: 4,
                             name: 'Sitemap',
                             link: '../sitemap/'
                         },
