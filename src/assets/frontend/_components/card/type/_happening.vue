@@ -1,38 +1,55 @@
 <template lang="pug">
-    .card-component
+.happening-component
+    .card-component(@click.prevent = "showModal('happening')")
         .image
             img(:src = "imageFull", :alt = "happening.text")
         .text(:class="happening.align")
             p.label {{ happening.label }}
             p.title {{ happening.title }}
-            p.info {{ happening.info }}
+            p.date {{ happening.date }}
+    modal(ref='happening', overlayTheme = 'dark')
+        happening(:modal = 'happening')
 </template>
 
 <script>
-export default {
-    props : {
-        happening : Object,
+    import modal from './../../modal/_modal.vue'
+    import happening from './../../modal/type/_happening.vue'
 
-        link : {
-            type : [Boolean, String]
+    export default {
+        props : {
+            happening : Object,
+
+            imgUrl : {
+                type : String,
+                default : '../../../assets/images/card/'
+            },
         },
 
-        imgUrl : {
-            type : String,
-            default : '../../../assets/images/card/'
+        components : {
+            modal,
+            happening
         },
-    },
 
-    computed : {
-        imageFull() {
-            if(this.happening.imgPath === '') {
-                return this.imgUrl + this.happening.imgName
-            } else {
-                return this.happening.imgPath + this.happening.imgName
+        computed : {
+            imageFull() {
+                if(this.happening.imgPath === '') {
+                    return this.imgUrl + this.happening.imgName
+                } else {
+                    return this.happening.imgPath + this.happening.imgName
+                }
             }
-        }
+        },
+
+        methods : {
+            showModal(ref) {
+                if (this.$refs[ref]) {
+                    this.$refs[ref].open()
+                } else {
+                    throw new Error('Ref not defined: ' + ref)
+                }
+            }
+        },
     }
-}
 </script>
 
 <style lang="scss" scoped>
@@ -48,7 +65,7 @@ export default {
 
         .image {
             width: 100%;
-            height: calc(100% - 105px);
+            height: calc(100% - 80px);
             flex: 1;
             img{
                 object-fit: cover;
@@ -92,12 +109,9 @@ export default {
                 word-wrap: normal;
             }
 
-            .info {
-                @include fs(14)
-                font-weight: 400;
-                line-height: 1.5em;
-                height: 3em;
-                overflow: hidden;
+            .date {
+                @include fs(12)
+                font-weight: 300;
             }
         }
     }
