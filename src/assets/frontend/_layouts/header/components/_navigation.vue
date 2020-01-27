@@ -141,6 +141,8 @@
         &-list {
             display: block;
             vertical-align: middle;
+            padding-top: 10px;
+            padding-bottom: 10px;
             padding-left: 20px;
             padding-right: 20px;
             letter-spacing: .2em;
@@ -149,6 +151,8 @@
 
             @include media(sm-up){
                 display: inline-block;
+                padding-top: 0;
+                padding-bottom: 0;
                 &:first-child{
                     padding-left: 0;
                 }
