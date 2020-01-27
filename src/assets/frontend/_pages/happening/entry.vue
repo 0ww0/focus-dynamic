@@ -166,6 +166,7 @@
 
     /deep/ .modal {
         max-width: 480px;
+        
         @include media(md-up) {
             max-width: 900px;
         }

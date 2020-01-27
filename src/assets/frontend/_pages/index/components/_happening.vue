@@ -50,7 +50,8 @@
                     {
                         id : 1,
                         title : 'Event Name 1',
-                        info : 'Event Promotion Info Lorem Ipsum Dolar Sect',
+                        desc : 'Event Promotion Info Lorem Ipsum Dolar Sect',
+                        date: '20 Jan 2020 - 25 Jan 2020',
                         label : 'Label Of Place Promo/Event',
                         imgPath : '',
                         imgName : 'default-square.png',
@@ -60,7 +61,8 @@
                     {
                         id : 2,
                         title : 'Event Name 2',
-                        info : 'Event Promotion Info Lorem Ipsum Dolar Sect',
+                        desc : 'Event Promotion Info Lorem Ipsum Dolar Sect',
+                        date: '20 Jan 2020 - 25 Jan 2020',
                         label : 'Label Of Place Promo/Event',
                         imgPath : '',
                         imgName : 'default-square.png',
@@ -70,7 +72,8 @@
                     {
                         id : 3,
                         title : 'Event Name 3',
-                        info : 'Event Promotion Info Lorem Ipsum Dolar Sect',
+                        desc : 'Event Promotion Info Lorem Ipsum Dolar Sect',
+                        date: '20 Jan 2020 - 25 Jan 2020',
                         label : 'Label Of Place Promo/Event',
                         imgPath : '',
                         imgName : 'default-square.png',
@@ -80,7 +83,8 @@
                     {
                         id : 4,
                         title : 'Event Name 4',
-                        info : 'Event Promotion Info Lorem Ipsum Dolar Sect',
+                        desc : 'Event Promotion Info Lorem Ipsum Dolar Sect',
+                        date: '20 Jan 2020 - 25 Jan 2020',
                         label : 'Label Of Place Promo/Event',
                         imgPath : '',
                         imgName : 'default-square.png',
@@ -92,7 +96,8 @@
                     {
                         id : 1,
                         title : 'Promo Name 1',
-                        info : 'Event Promotion Info Lorem Ipsum Dolar Sect',
+                        desc : 'Event Promotion Info Lorem Ipsum Dolar Sect',
+                        date: '20 Jan 2020 - 25 Jan 2020',
                         label : 'Label Of Place Promo/Event',
                         imgPath : '',
                         imgName : 'default-square.png',
@@ -102,7 +107,8 @@
                     {
                         id : 2,
                         title : 'Promo Name 2',
-                        info : 'Event Promotion Info Lorem Ipsum Dolar Sect',
+                        desc : 'Event Promotion Info Lorem Ipsum Dolar Sect',
+                        date: '20 Jan 2020 - 25 Jan 2020',
                         label : 'Label Of Place Promo/Event',
                         imgPath : '',
                         imgName : 'default-square.png',
@@ -112,7 +118,8 @@
                     {
                         id : 3,
                         title : 'Promo Name 3',
-                        info : 'Event Promotion Info Lorem Ipsum Dolar Sect',
+                        desc : 'Event Promotion Info Lorem Ipsum Dolar Sect',
+                        date: '20 Jan 2020 - 25 Jan 2020',
                         label : 'Label Of Place Promo/Event',
                         imgPath : '',
                         imgName : 'default-square.png',
@@ -122,7 +129,8 @@
                     {
                         id : 4,
                         title : 'Promo Name 4',
-                        info : 'Event Promotion Info Lorem Ipsum Dolar Sect',
+                        desc : 'Event Promotion Info Lorem Ipsum Dolar Sect',
+                        date: '20 Jan 2020 - 25 Jan 2020',
                         label : 'Label Of Place Promo/Event',
                         imgPath : '',
                         imgName : 'default-square.png',
@@ -151,8 +159,18 @@
 </script>
 
 <style lang="scss" scoped>
+    @import '../../../style/config.scss';
+
     .happening-holder{
         padding-top: 25px;
         padding-bottom: 25px;
+    }
+
+    /deep/ .modal {
+        max-width: 480px;
+
+        @include media(md-up) {
+            max-width: 900px;
+        }
     }
 </style>
