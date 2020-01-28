@@ -72,6 +72,10 @@ export const webpackStream = () => gulp.src( paths.scripts.src )
     .pipe(webpack( require('./webpack.config.js') ))
     .pipe(gulp.dest( paths.scripts.dest ))
 
+export const webpackProd = () => gulp.src( paths.scripts.src )
+.pipe(webpack( require('./webpack.prod.js') ))
+.pipe(gulp.dest( paths.scripts.dest ))
+
 
 export const templates = () => gulp.src([paths.templates.src, paths.templates.exSrc])
     .pipe(pug({
@@ -144,6 +148,7 @@ export const devwatch = () => {
 
 exports.clean           = clean;
 exports.webpackStream   = webpackStream;
+exports.webpackProd     = webpackProd;
 exports.templates       = templates;
 exports.browser         = browser;
 exports.favicons        = favicons;
@@ -155,3 +160,5 @@ exports.devwatch        = devwatch;
 const build = gulp.series(clean, templates, styles, favicons, fonts, images, webpackStream, gulp.parallel( devwatch, browser ));
 
 export default build;
+
+export const prod = gulp.series(clean, templates, styles, favicons, fonts, images, webpackProd);
