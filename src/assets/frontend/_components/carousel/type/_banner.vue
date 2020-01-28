@@ -1,7 +1,7 @@
 <template lang="pug">
     .banner-component.image(:class='isResponsive')
         a(:href = 'link')
-            img(:src = "imgUrl + isBanner", :alt = 'banner.altText')
+            img(:src = "isBanner", :alt = 'banner.description')
 </template>
 
 <script>
@@ -16,11 +16,6 @@
             link : {
                 type : [Boolean, String]
             },
-
-            imgUrl : {
-                type : String,
-                default : '../../../assets/images/banner/'
-            },
         },
 
         computed : {
@@ -29,13 +24,15 @@
             },
 
             isBanner() {
-                return this.is641 ? this.banner.imgDesktop : this.banner.imgMobile
+                return this.is641 ? this.banner.imageDesktop.url : this.banner.imageMobile.url
             },
         },
 
         created() {
             this.checkMobile()
-        }
+        },
+
+
     }
 </script>
 

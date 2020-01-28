@@ -1,11 +1,11 @@
 <template lang="pug">
     siema(refer = 'mainBanner', carousel='banner', :page='page' arrow, dot, loop)
-        siemaWrapper(v-for = "data in banner", :key = 'banner.id')
+        siemaWrapper(v-for = "data in banner", :key = 'data.id',)
             banner(:banner = 'data')
 </template>
 
 <script>
-    import siema from '../../../../_components/carousel/_siema.vue'
+    import { ENDPOINT, apiClient, All_MAIN_BANNER_QUERY } from '../../../../_shares/graphcms.js'
     import siemaWrapper from '../../../../_components/carousel/_wrapper.vue'
     import banner from '../../../../_components/carousel/type/_banner.vue'
 
@@ -22,23 +22,28 @@
                     1200: 1,
                 },
 
-                banner : [
-                    {
-                        id : 1,
-                        imgDesktop : 'default-desktop.png',
-                        imgMobile : 'default-mobile.png',
-                        altText : 'Main Banner 1'
-                    },
-
-                    {
-                        id : 2,
-                        imgDesktop : 'default-desktop.png',
-                        imgMobile : 'default-mobile.png',
-                        altText : 'Main Banner 2'
-                    },
-                ]
+                banner : [],
             }
+        },
+
+        methods : {
+            fetchBanner() {
+                apiClient.post(ENDPOINT, {
+                    query: All_MAIN_BANNER_QUERY,
+                }).then(resp => {
+                    let banner = resp.data.data;
+                    this.banner = banner.mainBanners;
+
+                }).catch(err => {
+                    console.log(err)
+                })
+            }
+        },
+
+        created() {
+            this.fetchBanner()
         }
+
     }
 </script>
 
@@ -49,5 +54,6 @@
         height: 540px;
         margin-left: auto;
         margin-right: auto;
+        overflow: hidden;
     }
 </style>
