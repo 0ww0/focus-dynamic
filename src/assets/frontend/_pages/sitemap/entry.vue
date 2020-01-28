@@ -1,4 +1,6 @@
 <template lang="pug">
+    .wrapper-content
+        .container
 </template>
 
 <script>
