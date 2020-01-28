@@ -1,5 +1,5 @@
 <template lang="pug">
-    siema(refer = 'mainBanner', carousel='banner', :page='page' arrow, dot, loop)
+    siema(refer = 'mainBanner', carousel='banner', :page='page' arrow, dot, loop, v-if='banner')
         siemaWrapper(v-for = "data in banner", :key = 'data.id',)
             banner(:banner = 'data')
 </template>
@@ -9,12 +9,14 @@
     import siema from '../../../../_components/carousel/_siema.vue'
     import siemaWrapper from '../../../../_components/carousel/_wrapper.vue'
     import banner from '../../../../_components/carousel/type/_banner.vue'
+    import { VueAgile } from 'vue-agile'
 
     export default {
         components : {
             siema,
             siemaWrapper,
-            banner
+            banner,
+            agile: VueAgile
         },
 
         data() {
@@ -23,7 +25,7 @@
                     1200: 1,
                 },
 
-                banner : [],
+                banner : null,
             }
         },
 
@@ -34,14 +36,13 @@
                 }).then(resp => {
                     let banner = resp.data.data;
                     this.banner = banner.mainBanners;
-
                 }).catch(err => {
                     console.log(err)
                 })
             }
         },
 
-        created() {
+        mounted() {
             this.fetchBanner()
         }
 
