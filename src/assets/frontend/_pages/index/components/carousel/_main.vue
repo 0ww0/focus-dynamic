@@ -5,18 +5,16 @@
 </template>
 
 <script>
-    import { ENDPOINT, apiClient, All_MAIN_BANNER_QUERY } from '../../../../_shares/graphcms.js'
+    import { ENDPOINT, API, All_MAIN_BANNER_QUERY } from './../../api/_api.js'
     import siema from '../../../../_components/carousel/_siema.vue'
     import siemaWrapper from '../../../../_components/carousel/_wrapper.vue'
     import banner from '../../../../_components/carousel/type/_banner.vue'
-    import { VueAgile } from 'vue-agile'
 
     export default {
         components : {
             siema,
             siemaWrapper,
             banner,
-            agile: VueAgile
         },
 
         data() {
@@ -31,7 +29,7 @@
 
         methods : {
             fetchBanner() {
-                apiClient.post(ENDPOINT, {
+                API.post(ENDPOINT, {
                     query: All_MAIN_BANNER_QUERY,
                 }).then(resp => {
                     let banner = resp.data.data;
