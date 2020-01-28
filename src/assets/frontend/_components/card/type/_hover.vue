@@ -1,36 +1,17 @@
 <template lang="pug">
-    .card-component
+    a.card-component(:href="hover.link")
         .image
-            img(:src = "imageFull", :alt = 'hover.text')
+            img(:src = "hover.image.url", :alt = 'hover.text')
             .hover-text
                 p Visit Website
-        .text(:class="hover.align")
-            p {{ hover.text }}
+        .text(class="center")
+            p {{ hover.title }}
 </template>
 
 <script>
 export default {
     props : {
         hover : Object,
-
-        link : {
-            type : [Boolean, String]
-        },
-
-        imgUrl : {
-            type : String,
-            default : '../../../assets/images/card/'
-        },
-    },
-
-    computed : {
-        imageFull() {
-            if(this.hover.imgPath === '') {
-                return this.imgUrl + this.hover.imgName
-            } else {
-                return this.hover.imgPath + this.hover.imgName
-            }
-        }
     }
 }
 </script>

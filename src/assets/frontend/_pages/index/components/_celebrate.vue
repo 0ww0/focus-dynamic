@@ -7,6 +7,7 @@
 </template>
 
 <script>
+    import { ENDPOINT, API, Get_Celebrate_Query } from './../api/_api.js'
     import Media from '../../../_shares/media.js'
     import heading from '../../../_components/text/_heading.vue'
     import card from '../../../_components/card/_card'
@@ -31,31 +32,7 @@
                     linkUrl: '../celebrate/',
                 },
 
-                celebrate : [
-                    {
-                        id: 1,
-                        text : 'Celebrate 1',
-                        imgPath : '',
-                        imgName : 'default-square.png',
-                        align : 'center',
-                    },
-
-                    {
-                        id: 2,
-                        text : 'Celebrate 2',
-                        imgPath : '',
-                        imgName : 'default-square.png',
-                        align : 'center',
-                    },
-
-                    {
-                        id: 3,
-                        text : 'Celebrate 3',
-                        imgPath : '',
-                        imgName : 'default-square.png',
-                        align : 'center',
-                    }
-                ]
+                celebrate : null
             }
         },
 
@@ -71,8 +48,22 @@
             }
         },
 
+        methods : {
+            fetchCelebrate() {
+                API.post(ENDPOINT, {
+                    query: Get_Celebrate_Query,
+                }).then(resp => {
+                    let list = resp.data.data;
+                    this.celebrate = list.celebrates;
+                }).catch(err => {
+                    console.log(err)
+                })
+            }
+        },
+
         created() {
             this.checkMobile()
+            this.fetchCelebrate()
         }
     }
 </script>

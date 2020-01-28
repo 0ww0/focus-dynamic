@@ -13,21 +13,36 @@ export const API = axios.create({
   headers
 });
 
-export const All_MAIN_BANNER_QUERY = `
-query mainBanners {
-    mainBanners(orderBy:status_ASC) {
-        id,
-        imageDesktop {
-            url,
-            width,
-            height,
-        },
-        imageMobile {
-            url,
-            width,
-            height,
-        },
-        description
+export const Get_Main_Banner_Query = `
+    query{
+        mainBanners(first: 5, orderBy:id_DESC) {
+            id,
+            imageDesktop {
+                url,
+                width,
+                height,
+            },
+            imageMobile {
+                url,
+                width,
+                height,
+            },
+            description
+        }
     }
-}
+`;
+
+export const Get_Celebrate_Query = `
+    query{
+        celebrates(first: 3, orderBy: id_DESC){
+            id,
+            title,
+            link,
+            image {
+              url,
+              width,
+              height
+            }
+        }
+    }
 `;

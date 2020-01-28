@@ -5,7 +5,7 @@
 </template>
 
 <script>
-    import { ENDPOINT, API, All_MAIN_BANNER_QUERY } from './../../api/_api.js'
+    import { ENDPOINT, API, Get_Main_Banner_Query } from './../../api/_api.js'
     import siema from '../../../../_components/carousel/_siema.vue'
     import siemaWrapper from '../../../../_components/carousel/_wrapper.vue'
     import banner from '../../../../_components/carousel/type/_banner.vue'
@@ -30,7 +30,7 @@
         methods : {
             fetchBanner() {
                 API.post(ENDPOINT, {
-                    query: All_MAIN_BANNER_QUERY,
+                    query: Get_Main_Banner_Query,
                 }).then(resp => {
                     let banner = resp.data.data;
                     this.banner = banner.mainBanners;
@@ -40,7 +40,7 @@
             }
         },
 
-        mounted() {
+        created() {
             this.fetchBanner()
         }
 
