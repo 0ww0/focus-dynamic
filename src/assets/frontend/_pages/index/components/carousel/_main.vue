@@ -6,6 +6,7 @@
 
 <script>
     import { ENDPOINT, apiClient, All_MAIN_BANNER_QUERY } from '../../../../_shares/graphcms.js'
+    import siema from '../../../../_components/carousel/_siema.vue'
     import siemaWrapper from '../../../../_components/carousel/_wrapper.vue'
     import banner from '../../../../_components/carousel/type/_banner.vue'
 
