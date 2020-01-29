@@ -2,6 +2,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
     mode: 'production',
@@ -79,6 +80,7 @@ module.exports = {
         }
     },
     plugins: [
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new Dotenv()
     ]
 }
