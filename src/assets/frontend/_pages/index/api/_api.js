@@ -46,3 +46,45 @@ export const Get_Celebrate_Query = `
         }
     }
 `;
+
+export const Get_Promo_Query = `
+    query{
+        happenings(first: 4, orderBy: id_DESC, where: { type_in : Promo }){
+            id,
+            title,
+            description {
+                html,
+            },
+            image {
+              url,
+              width,
+              height
+            },
+            dateStart,
+            dateEnd,
+            recurringDate,
+            expired,
+        }
+    }
+`;
+
+export const Get_Event_Query = `
+    query{
+        happenings(first: 4, orderBy: id_DESC, where: { type_in : Event }){
+            id,
+            title,
+            description {
+                html,
+            },
+            image {
+              url,
+              width,
+              height
+            },
+            dateStart,
+            dateEnd,
+            recurringDate,
+            expired,
+        }
+    }
+`;

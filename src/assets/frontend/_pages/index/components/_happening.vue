@@ -1,19 +1,20 @@
 <template lang="pug">
     .happening-holder
-        heading(:text='heading')
+        heading(:text='head')
         .event-holder
-            heading(:text='eventTitle', subheader)
+            heading(:text='events', subheader)
             card(stretch, :xmedia = 'false')
-                cardWrapper(:card = 'isResponsive', v-for = 'data in events', :key = 'data.id')
+                cardWrapper(:card = 'isResponsive', v-for = 'data in events.list', :key = 'data.id')
                     happeningCard(:happening = 'data')
         .promo-holder
-            heading(:text='promoTitle', subheader)
+            heading(:text='promos', subheader)
             card(stretch, :xmedia = 'false')
-                cardWrapper(:card = 'isResponsive', v-for = 'data in promos', :key = 'data.id')
+                cardWrapper(:card = 'isResponsive', v-for = 'data in promos.list', :key = 'data.id')
                     happeningCard(:happening = 'data')
 </template>
 
 <script>
+    import { ENDPOINT, API, Get_Promo_Query, Get_Event_Query } from './../api/_api.js'
     import Media from '../../../_shares/media.js'
     import heading from '../../../_components/text/_heading.vue'
     import card from '../../../_components/card/_card'
@@ -32,111 +33,21 @@
 
         data() {
             return {
-                heading : {
+                head : {
                     title : 'What\'s On',
                     linkText: 'See all',
                     linkUrl: '../happening/',
                 },
 
-                eventTitle : {
-                    title : 'Events'
+                events : {
+                    title : 'Event',
+                    list: null
                 },
 
-                promoTitle : {
-                    title : 'Promo'
+                promos : {
+                    title : 'Promo',
+                    list: null
                 },
-
-                events : [
-                    {
-                        id : 1,
-                        title : 'Event Name 1',
-                        desc : 'Event Promotion Info Lorem Ipsum Dolar Sect',
-                        date: '20 Jan 2020 - 25 Jan 2020',
-                        label : 'Label Of Place Promo/Event',
-                        imgPath : '',
-                        imgName : 'default-square.png',
-                        align : 'left',
-                    },
-
-                    {
-                        id : 2,
-                        title : 'Event Name 2',
-                        desc : 'Event Promotion Info Lorem Ipsum Dolar Sect',
-                        date: '20 Jan 2020 - 25 Jan 2020',
-                        label : 'Label Of Place Promo/Event',
-                        imgPath : '',
-                        imgName : 'default-square.png',
-                        align : 'left',
-                    },
-
-                    {
-                        id : 3,
-                        title : 'Event Name 3',
-                        desc : 'Event Promotion Info Lorem Ipsum Dolar Sect',
-                        date: '20 Jan 2020 - 25 Jan 2020',
-                        label : 'Label Of Place Promo/Event',
-                        imgPath : '',
-                        imgName : 'default-square.png',
-                        align : 'left',
-                    },
-
-                    {
-                        id : 4,
-                        title : 'Event Name 4',
-                        desc : 'Event Promotion Info Lorem Ipsum Dolar Sect',
-                        date: '20 Jan 2020 - 25 Jan 2020',
-                        label : 'Label Of Place Promo/Event',
-                        imgPath : '',
-                        imgName : 'default-square.png',
-                        align : 'left',
-                    },
-                ],
-
-                promos : [
-                    {
-                        id : 1,
-                        title : 'Promo Name 1',
-                        desc : 'Event Promotion Info Lorem Ipsum Dolar Sect',
-                        date: '20 Jan 2020 - 25 Jan 2020',
-                        label : 'Label Of Place Promo/Event',
-                        imgPath : '',
-                        imgName : 'default-square.png',
-                        align : 'left',
-                    },
-
-                    {
-                        id : 2,
-                        title : 'Promo Name 2',
-                        desc : 'Event Promotion Info Lorem Ipsum Dolar Sect',
-                        date: '20 Jan 2020 - 25 Jan 2020',
-                        label : 'Label Of Place Promo/Event',
-                        imgPath : '',
-                        imgName : 'default-square.png',
-                        align : 'left',
-                    },
-
-                    {
-                        id : 3,
-                        title : 'Promo Name 3',
-                        desc : 'Event Promotion Info Lorem Ipsum Dolar Sect',
-                        date: '20 Jan 2020 - 25 Jan 2020',
-                        label : 'Label Of Place Promo/Event',
-                        imgPath : '',
-                        imgName : 'default-square.png',
-                        align : 'left',
-                    },
-
-                    {
-                        id : 4,
-                        title : 'Promo Name 4',
-                        desc : 'Event Promotion Info Lorem Ipsum Dolar Sect',
-                        date: '20 Jan 2020 - 25 Jan 2020',
-                        label : 'Label Of Place Promo/Event',
-                        imgPath : '',
-                        imgName : 'default-square.png',
-                        align : 'left',
-                    },
-                ]
             }
         },
 
@@ -152,8 +63,34 @@
             }
         },
 
+        methods : {
+            fetchPromos() {
+                API.post(ENDPOINT, {
+                    query: Get_Promo_Query,
+                }).then(resp => {
+                    let list = resp.data.data;
+                    this.promos.list = list.happenings;
+                }).catch(err => {
+                    console.log(err)
+                })
+            },
+
+            fetchEvents() {
+                API.post(ENDPOINT, {
+                    query: Get_Event_Query,
+                }).then(resp => {
+                    let list = resp.data.data;
+                    this.events.list = list.happenings;
+                }).catch(err => {
+                    console.log(err)
+                })
+            }
+        },
+
         created() {
             this.checkMobile()
+            this.fetchPromos()
+            this.fetchEvents()
         }
     }
 </script>

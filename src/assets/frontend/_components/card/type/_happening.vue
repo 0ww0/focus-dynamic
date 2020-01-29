@@ -2,27 +2,23 @@
 .happening-component
     .card-component(@click.prevent = "showModal('happening')")
         .image
-            img(:src = "imageFull", :alt = "happening.text")
-        .text(:class="happening.align")
+            img(:src = "happening.image.url", :alt = "happening.title")
+        .text
             p.label {{ happening.label }}
             p.title {{ happening.title }}
-            p.date {{ happening.date }}
+            p.date {{ getDate }}
     modal(ref='happening', overlayTheme = 'dark')
         happening(:modal = 'happening')
 </template>
 
 <script>
+    import moment from 'moment'
     import modal from './../../modal/_modal.vue'
     import happening from './../../modal/type/_happening.vue'
 
     export default {
         props : {
-            happening : Object,
-
-            imgUrl : {
-                type : String,
-                default : '../../../assets/images/card/'
-            },
+            happening : Object
         },
 
         components : {
@@ -31,16 +27,20 @@
         },
 
         computed : {
-            imageFull() {
-                if(this.happening.imgPath === '') {
-                    return this.imgUrl + this.happening.imgName
+            getDate() {
+                if((this.happening.dateStart !== null && this.happening.dateEnd !== null) || this.happening.recurringDate === null) {
+                    return this.format_date(this.happening.dateStart) + ' - ' + this.format_date(this.happening.dateEnd)
                 } else {
-                    return this.happening.imgPath + this.happening.imgName
+                    return this.happening.recurringDate
                 }
             }
         },
 
         methods : {
+            format_date(date) {
+                return moment(date).format('DD MMM YYYY');
+            },
+
             showModal(ref) {
                 if (this.$refs[ref]) {
                     this.$refs[ref].open()

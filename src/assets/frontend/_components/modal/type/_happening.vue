@@ -1,34 +1,40 @@
 <template lang="pug">
     .happening-modal
         .image
-            img(:src = "imageFull", :alt = "modal.text")
-        .text(:class="modal.align")
-            p.label {{ modal.label }}
-            p.title {{ modal.title }}
+            img(:src = "modal.image.url", :alt = "modal.title")
+        .text
+            .label
+                p {{ modal.label }}
+            .title
+                p {{ modal.title }}
             .desc
-                p {{ modal.desc }}
-            p.date {{ modal.date }}
+                p(v-html = 'modal.description.html')
+            .date
+                p {{ getDate }}
 </template>
 
 <script>
+    import moment from 'moment'
+
     export default {
         props: {
             modal : Object,
-
-            imgUrl : {
-                type : String,
-                default : '../../../assets/images/card/'
-            },
         },
 
         computed : {
-            imageFull() {
-                if(this.modal.imgPath === '') {
-                    return this.imgUrl + this.modal.imgName
+            getDate() {
+                if((this.modal.dateStart !== null && this.modal.dateEnd !== null) || this.modal.recurringDate === null) {
+                    return this.format_date(this.modal.dateStart) + ' - ' + this.format_date(this.modal.dateEnd)
                 } else {
-                    return this.modal.imgPath + this.modal.imgName
+                    return this.modal.recurringDate
                 }
             }
+        },
+
+        methods : {
+            format_date(date) {
+                return moment(date).format('DD MMM YYYY');
+            },
         },
     }
 </script>
