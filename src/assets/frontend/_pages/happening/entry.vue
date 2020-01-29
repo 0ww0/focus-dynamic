@@ -5,8 +5,12 @@
             .event-holder
                 heading(:text='events', subheader)
                 card(stretch, :xmedia = 'false')
-                    cardWrapper(:card = 'isResponsive', v-for = 'data in events.list', :key = 'data.id')
+                    cardWrapper(:card = 'isResponsive', v-for = 'data in displayEventsPage', :key = 'data.id')
                         happeningCard(:happening = 'data')
+                div
+                    button( v-if="page != 1" @click="page--") <<
+                    button(v-for="pageNumber in events.pages.slice(page-1, page+5)" @click="page = pageNumber") {{ pageNumber}}
+                    button(v-if="page < events.pages.length" @click="page++") >>
             .promo-holder
                 heading(:text='promos', subheader)
                 card(stretch, :xmedia = 'false')
@@ -40,13 +44,18 @@
 
                 events : {
                     title : 'Event',
-                    list: null
+                    list: [],
+                    pages: [],
                 },
 
                 promos : {
                     title : 'Promo',
-                    list: null
+                    list: [],
+                    pages: [],
                 },
+
+                page: 1,
+                perPage: 1,
             }
         },
 
@@ -59,6 +68,14 @@
                 } else {
                     return 'full'
                 }
+            },
+
+            eventsList () {
+                return this.events.list;
+            },
+
+            displayEventsPage () {
+                return this.paginate(this.events.list);
             }
         },
 
@@ -83,6 +100,21 @@
                 }).catch(err => {
                     console.log(err)
                 })
+            },
+
+            setEventsPage() {
+                let numberOfPages = Math.ceil(this.events.list.length / this.perPage);
+                for (let index = 1; index <= numberOfPages; index++) {
+                   this.events.pages.push(index);
+                }
+            },
+
+            paginate (posts) {
+                  let page = this.page;
+                  let perPage = this.perPage;
+                  let from = (page * perPage) - perPage;
+                  let to = (page * perPage);
+                  return  posts.slice(from, to);
             }
         },
 
@@ -90,6 +122,12 @@
             this.checkMobile()
             this.fetchPromos()
             this.fetchEvents()
+        },
+
+        watch: {
+            eventsList() {
+                this.setEventsPage();
+            }
         }
     }
 </script>
