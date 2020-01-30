@@ -7,19 +7,18 @@
                 card(stretch, :xmedia = 'false')
                     cardWrapper(:card = 'isResponsive', v-for = 'data in displayEventsPage', :key = 'data.id')
                         happeningCard(:happening = 'data')
-                div
-                    button( v-if="page != 1" @click="page--") <<
-                    button(v-for="pageNumber in events.pages.slice(page-1, page+5)" @click="page = pageNumber") {{ pageNumber}}
-                    button(v-if="page < events.pages.length" @click="page++") >>
+                paginator(:field = 'events', @pagechanged = 'onEventPage')
             .promo-holder
                 heading(:text='promos', subheader)
                 card(stretch, :xmedia = 'false')
-                    cardWrapper(:card = 'isResponsive', v-for = 'data in promos.list', :key = 'data.id')
+                    cardWrapper(:card = 'isResponsive', v-for = 'data in displayPromosPage', :key = 'data.id')
                         happeningCard(:happening = 'data')
+                paginator(:field = 'promos', @pagechanged = 'onPromoPage')
 </template>
 
 <script>
     import { ENDPOINT, API, All_Promo_Query, All_Event_Query } from './api/_api.js'
+    import paginator from '../../_components/paginate/paginator.vue'
     import Media from './../../_shares/media.js'
     import heading from './../../_components/text/_heading.vue'
     import card from './../../_components/card/_card'
@@ -33,7 +32,8 @@
             heading,
             card,
             cardWrapper,
-            happeningCard
+            happeningCard,
+            paginator
         },
 
         data() {
@@ -46,16 +46,27 @@
                     title : 'Event',
                     list: [],
                     pages: [],
+                    page: 1,
+                    perPage: 8,
                 },
 
                 promos : {
                     title : 'Promo',
                     list: [],
                     pages: [],
+                    page: 1,
+                    perPage: 8,
                 },
+            }
+        },
 
-                page: 1,
-                perPage: 1,
+        watch: {
+            eventsList() {
+                this.setPage(this.events);
+            },
+
+            promosList() {
+                this.setPage(this.promos);
             }
         },
 
@@ -74,23 +85,20 @@
                 return this.events.list;
             },
 
+            promosList () {
+                return this.promos.list;
+            },
+
             displayEventsPage () {
-                return this.paginate(this.events.list);
+                return this.paginate(this.events);
+            },
+
+            displayPromosPage () {
+                return this.paginate(this.promos);
             }
         },
 
         methods : {
-            fetchPromos() {
-                API.post(ENDPOINT, {
-                    query: All_Promo_Query,
-                }).then(resp => {
-                    let list = resp.data.data;
-                    this.promos.list = list.happenings;
-                }).catch(err => {
-                    console.log(err)
-                })
-            },
-
             fetchEvents() {
                 API.post(ENDPOINT, {
                     query: All_Event_Query,
@@ -102,19 +110,38 @@
                 })
             },
 
-            setEventsPage() {
-                let numberOfPages = Math.ceil(this.events.list.length / this.perPage);
+            fetchPromos() {
+                API.post(ENDPOINT, {
+                    query: All_Promo_Query,
+                }).then(resp => {
+                    let list = resp.data.data;
+                    this.promos.list = list.happenings;
+                }).catch(err => {
+                    console.log(err)
+                })
+            },
+
+            setPage(data) {
+                let numberOfPages = Math.ceil(data.list.length / data.perPage);
                 for (let index = 1; index <= numberOfPages; index++) {
-                   this.events.pages.push(index);
+                   data.pages.push(index);
                 }
             },
 
-            paginate (posts) {
-                  let page = this.page;
-                  let perPage = this.perPage;
-                  let from = (page * perPage) - perPage;
-                  let to = (page * perPage);
-                  return  posts.slice(from, to);
+            paginate (data) {
+                let page = data.page;
+                let perPage = data.perPage;
+                let from = (page * perPage) - perPage;
+                let to = (page * perPage);
+                return data.list.slice(from, to);
+            },
+
+            onEventPage(page) {
+                this.events.page = page;
+            },
+
+            onPromoPage(page) {
+                this.promos.page = page;
             }
         },
 
@@ -123,12 +150,6 @@
             this.fetchPromos()
             this.fetchEvents()
         },
-
-        watch: {
-            eventsList() {
-                this.setEventsPage();
-            }
-        }
     }
 </script>
 
