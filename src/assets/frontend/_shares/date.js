@@ -1,9 +1,9 @@
-import moment from 'moment'
+import { format,parseISO } from 'date-fns'
 
-const format = (value, toFormat) => {
-    return moment(value).format(toFormat)
+const formatter = (value, toFormat) => {
+    return format(parseISO(value), toFormat)
 }
 
 export default {
-    format
+    formatter
 }
