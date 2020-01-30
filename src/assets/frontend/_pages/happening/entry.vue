@@ -3,13 +3,13 @@
         .container
             heading(:text='head', subheader)
             .event-holder
-                heading(:text='events', subheader)
+                heading(:text='events.title', subheader)
                 card(stretch, :xmedia = 'false')
                     cardWrapper(:card = 'isResponsive', v-for = 'data in displayEventsPage', :key = 'data.id')
                         happeningCard(:happening = 'data')
                 paginator(:field = 'events', @pagechanged = 'onEventPage')
             .promo-holder
-                heading(:text='promos', subheader)
+                heading(:text='promos.title', subheader)
                 card(stretch, :xmedia = 'false')
                     cardWrapper(:card = 'isResponsive', v-for = 'data in displayPromosPage', :key = 'data.id')
                         happeningCard(:happening = 'data')
@@ -18,12 +18,12 @@
 
 <script>
     import { ENDPOINT, API, All_Promo_Query, All_Event_Query } from './api/_api.js'
-    import paginator from '../../_components/paginate/paginator.vue'
     import Media from './../../_shares/media.js'
     import heading from './../../_components/text/_heading.vue'
     import card from './../../_components/card/_card'
     import cardWrapper from './../../_components/card/_wrapper'
     import happeningCard from './../../_components/card/type/_happening.vue'
+    import paginator from '../../_components/paginate/paginator.vue'
 
     export default {
         extends : Media,

@@ -1,7 +1,8 @@
 <template lang="pug">
     .heading-component(:class="{ 'subheader' : subheader }")
         .title(:class = 'text.align')
-            p {{ text.title }}
+            p(v-if='text.title') {{ text.title }}
+            p(v-else) {{ text }}
         .link(v-if='!subheader')
             a(:href="text.linkUrl")
                 span {{ text.linkText }}
@@ -11,7 +12,7 @@
 <script>
     export default {
         props : {
-            text : Object,
+            text : [Object, String],
             subheader : Boolean,
         }
     }

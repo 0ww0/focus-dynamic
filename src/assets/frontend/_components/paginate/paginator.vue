@@ -1,5 +1,5 @@
 <template lang="pug">
-    .paginator-component(v-if='isTotalField > 1')
+    .paginator-component(v-if='startPage !== endPage')
         button(:disabled = 'isInFirstPage',
             @click = "onClickPreviousPage()") Previous
         button(v-for="page in pages",
