@@ -8,17 +8,17 @@
             p.title {{ happening.title }}
             p.date {{ getDate }}
     modal(ref='happening', overlayTheme = 'dark')
-        happening(:modal = 'happening')
+        happening(:modal = 'happening', :getDate = 'getDate')
 </template>
 
 <script>
-    import moment from 'moment'
+    import dateFormatter from '../../../_shares/date.js'
     import modal from './../../modal/_modal.vue'
     import happening from './../../modal/type/_happening.vue'
 
     export default {
         props : {
-            happening : Object
+            happening : Object,
         },
 
         components : {
@@ -38,7 +38,7 @@
 
         methods : {
             format_date(date) {
-                return moment(date).format('DD MMM YYYY');
+                return dateFormatter.format(date, 'DD MMM YYYY')
             },
 
             showModal(ref) {

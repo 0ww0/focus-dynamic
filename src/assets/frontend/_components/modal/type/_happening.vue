@@ -14,27 +14,10 @@
 </template>
 
 <script>
-    import moment from 'moment'
-
     export default {
         props: {
             modal : Object,
-        },
-
-        computed : {
-            getDate() {
-                if((this.modal.dateStart !== null && this.modal.dateEnd !== null) || this.modal.recurringDate === null) {
-                    return this.format_date(this.modal.dateStart) + ' - ' + this.format_date(this.modal.dateEnd)
-                } else {
-                    return this.modal.recurringDate
-                }
-            }
-        },
-
-        methods : {
-            format_date(date) {
-                return moment(date).format('DD MMM YYYY');
-            },
+            getDate : String,
         },
     }
 </script>
