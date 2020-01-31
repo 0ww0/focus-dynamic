@@ -29,6 +29,10 @@ export const All_Promo_Query = `
             dateStart,
             dateEnd,
             recurringDate,
+            outlet {
+                id,
+                title,
+            }
         }
     }
 `;
@@ -49,6 +53,10 @@ export const All_Event_Query = `
             dateStart,
             dateEnd,
             recurringDate,
+            outlet {
+                id,
+                title,
+            }
         }
     }
 `;
