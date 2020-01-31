@@ -1,35 +1,20 @@
 <template lang="pug">
-    a.card-component(:href="image.link")
+    a.card-component(:href = 'link')
         .image
-            img(:src = "imageFull", :alt = "image.text")
-        .text(:class="image.align")
-            p {{ image.text }}
+            img(:src = "image.imagePreview.url", :alt = "image.title")
+        .text
+            p {{ image.title }}
 </template>
 
 <script>
 export default {
     props : {
         image : Object,
-
         link : {
-            type : [Boolean, String]
-        },
-
-        imgUrl : {
             type : String,
-            default : '../../../assets/images/card/'
-        },
-    },
-
-    computed : {
-        imageFull() {
-            if(this.image.imgPath === '') {
-                return this.imgUrl + this.image.imgName
-            } else {
-                return this.image.imgPath + this.image.imgName
-            }
+            default : '../eat-drink/template'
         }
-    }
+    },
 }
 </script>
 
@@ -62,18 +47,6 @@ export default {
             padding-bottom: 10px;
             letter-spacing: .1em;
             @include fs(14)
-
-            &.left {
-                text-align: left;
-            }
-
-            &.center {
-                text-align: center;
-            }
-
-            &.right {
-                text-align: right;
-            }
         }
     }
 </style>

@@ -15,7 +15,7 @@ export const API = axios.create({
 
 export const Get_Main_Banner_Query = `
     query{
-        mainBanners(first: 5, orderBy:id_DESC) {
+        mainBanners(first: 5, orderBy : id_DESC) {
             id,
             imageDesktop {
                 url,
@@ -28,6 +28,20 @@ export const Get_Main_Banner_Query = `
                 height,
             },
             description
+        }
+    }
+`;
+
+export const Get_Store_Query = `
+    query{
+        outlets(orderBy: id_DESC)  {
+            id,
+            title,
+            imagePreview {
+                url,
+                width,
+                height,
+            }
         }
     }
 `;
@@ -63,6 +77,10 @@ export const Get_Promo_Query = `
             dateStart,
             dateEnd,
             recurringDate,
+            outlet {
+                id,
+                title,
+            }
         }
     }
 `;
@@ -83,6 +101,10 @@ export const Get_Event_Query = `
             dateStart,
             dateEnd,
             recurringDate,
+            outlet {
+                id,
+                title,
+            }
         }
     }
 `;

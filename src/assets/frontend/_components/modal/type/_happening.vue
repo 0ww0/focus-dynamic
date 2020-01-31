@@ -4,7 +4,7 @@
             img(:src = "modal.image.url", :alt = "modal.title")
         .text
             .label
-                p {{ modal.label }}
+                p {{ modal.outlet.title }}
             .title
                 p {{ modal.title }}
             .desc

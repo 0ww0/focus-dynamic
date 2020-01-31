@@ -4,7 +4,7 @@
         .image
             img(:src = "happening.image.url", :alt = "happening.title")
         .text
-            p.label {{ happening.label }}
+            p.label {{ happening.outlet.title }}
             p.title {{ happening.title }}
             p.date {{ getDate }}
     modal(ref='happening', overlayTheme = 'dark')

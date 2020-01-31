@@ -8,6 +8,7 @@
 </template>
 
 <script>
+    import { ENDPOINT, API, All_Store_Query } from '../../api/_api.js'
     import Media from '../../../../_shares/media.js'
     import heading from '../../../../_components/text/_heading.vue'
     import card from '../../../../_components/card/_card.vue'
@@ -30,61 +31,7 @@
                     title : 'Eat & Drink',
                 },
 
-                store : [
-                    {
-                        id : 1,
-                        text : 'Place Name 1',
-                        imgPath : '',
-                        imgName : 'default-tall.png',
-                        link : '../eat-drink/template',
-                        align : 'left',
-                    },
-
-                    {
-                        id : 2,
-                        text : 'Place Name 2',
-                        imgPath : '',
-                        imgName : 'default-tall.png',
-                        link : '../eat-drink/template',
-                        align : 'left',
-                    },
-
-                    {
-                        id : 3,
-                        text : 'Place Name 3',
-                        imgPath : '',
-                        imgName : 'default-tall.png',
-                        link : '../eat-drink/template',
-                        align : 'left',
-                    },
-
-                    {
-                        id : 4,
-                        text : 'Place Name 4',
-                        imgPath : '',
-                        imgName : 'default-tall.png',
-                        link : '../eat-drink/template',
-                        align : 'left',
-                    },
-
-                    {
-                        id : 5,
-                        text : 'Place Name 5',
-                        imgPath : '',
-                        imgName : 'default-tall.png',
-                        link : '../eat-drink/template',
-                        align : 'left',
-                    },
-
-                    {
-                        id : 6,
-                        text : 'Place Name 6',
-                        imgPath : '',
-                        imgName : 'default-tall.png',
-                        link : '../eat-drink/template',
-                        align : 'left',
-                    }
-                ]
+                store : []
             }
         },
 
@@ -100,7 +47,22 @@
             }
         },
 
+        methods : {
+            fetchStore() {
+                API.post(ENDPOINT, {
+                    query: All_Store_Query,
+                }).then(resp => {
+                    let store = resp.data.data;
+                    this.store = store.outlets;
+                    console.log(this.store)
+                }).catch(err => {
+                    console.log(err)
+                })
+            }
+        },
+
         created() {
+            this.fetchStore()
             this.checkMobile()
         }
     }
