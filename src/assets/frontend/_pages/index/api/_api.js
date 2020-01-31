@@ -63,7 +63,6 @@ export const Get_Promo_Query = `
             dateStart,
             dateEnd,
             recurringDate,
-            expired,
         }
     }
 `;
@@ -84,7 +83,6 @@ export const Get_Event_Query = `
             dateStart,
             dateEnd,
             recurringDate,
-            expired,
         }
     }
 `;
