@@ -38,7 +38,7 @@
 
         methods : {
             format_date(date) {
-                return dateFormatter.formatter(date, 'dd MMM yyyy')
+                return dateFormatter.formatter(date, 'eee, dd MMM yyyy')
             },
 
             showModal(ref) {
