@@ -3,7 +3,7 @@
         heading(:text = 'head')
         siema(refer = 'card', :page = 'page' carousel='card', loop, v-if = 'store')
             siemaWrapper(v-for = "data in store", :key = 'store.id')
-                imageCard(:image = 'data')
+                imageCard(:image = 'data', :slug = 'data.slug')
 </template>
 
 <script>

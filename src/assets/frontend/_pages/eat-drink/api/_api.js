@@ -18,6 +18,22 @@ export const All_Store_Query = `
         outlets(orderBy: id_DESC)  {
             id,
             title,
+            slug,
+            imagePreview {
+                url,
+                width,
+                height,
+            }
+        }
+    }
+`;
+
+export const Slug_Store_Query = `
+    query SlugStoreQuery($slug: String!){
+        outlets(orderBy: id_DESC, where : { slug: $slug })  {
+            id,
+            title,
+            slug,
             imagePreview {
                 url,
                 width,

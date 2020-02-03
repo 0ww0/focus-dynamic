@@ -37,6 +37,7 @@ export const Get_Store_Query = `
         outlets(orderBy: id_DESC)  {
             id,
             title,
+            slug,
             imagePreview {
                 url,
                 width,

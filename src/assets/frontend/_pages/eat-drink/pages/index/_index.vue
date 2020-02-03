@@ -4,7 +4,7 @@
             heading(:text='head', subheader)
             card(stretch, :xmedia = 'false')
                 cardWrapper(:card = 'isResponsive', v-for = 'data in store', :key = 'data.id')
-                    imageCard(:image = 'data')
+                    imageCard(:image = 'data', :slug='data.slug')
 </template>
 
 <script>
@@ -54,7 +54,6 @@
                 }).then(resp => {
                     let store = resp.data.data;
                     this.store = store.outlets;
-                    console.log(this.store)
                 }).catch(err => {
                     console.log(err)
                 })

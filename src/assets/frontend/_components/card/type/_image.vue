@@ -1,5 +1,5 @@
 <template lang="pug">
-    a.card-component(:href = 'link')
+    a.card-component(:href = 'link + slug')
         .image
             img(:src = "image.imagePreview.url", :alt = "image.title")
         .text
@@ -10,11 +10,16 @@
 export default {
     props : {
         image : Object,
+        slug: String,
         link : {
             type : String,
-            default : '../eat-drink/template'
-        }
+            default : '../eat-drink/#/'
+        },
     },
+
+    computed: {
+
+    }
 }
 </script>
 
@@ -33,6 +38,7 @@ export default {
             width: 100%;
             height: calc(100% - 44px);
             flex: 1;
+            pointer-events: none;
             img{
                 object-fit: cover;
                 width: 100%;
@@ -46,6 +52,7 @@ export default {
             padding-top: 10px;
             padding-bottom: 10px;
             letter-spacing: .1em;
+            pointer-events: none;
             @include fs(14)
         }
     }
