@@ -1,7 +1,7 @@
 <template lang="pug">
     .banner-component.image(:class='isResponsive')
         a(:href = 'link')
-            img(:src = "isBanner", :alt = 'banner.description')
+            img(:src = "isBanner", :alt = 'banner.title')
 </template>
 
 <script>
@@ -16,6 +16,11 @@
             link : {
                 type : [Boolean, String]
             },
+
+            url : {
+                type : String,
+                default: 'http://backend.waswar.net'
+            }
         },
 
         computed : {
@@ -24,7 +29,7 @@
             },
 
             isBanner() {
-                return this.is641 ? this.banner.imageDesktop.url : this.banner.imageMobile.url
+                return this.is641 ? this.url + this.banner.imageDesktop.path : this.url + this.banner.imageMobile.path
             },
         },
 
