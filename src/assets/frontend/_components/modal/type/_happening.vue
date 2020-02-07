@@ -1,14 +1,13 @@
 <template lang="pug">
     .happening-modal
         .image
-            img(:src = "modal.image.url", :alt = "modal.title")
+            img(:src = "url + modal.image.path", :alt = "modal.title")
         .text
             .label
-                p {{ modal.outlet.title }}
+                p {{ modal.outlets.name }}
             .title
                 p {{ modal.title }}
-            .desc
-                p(v-html = 'modal.description.html')
+            .desc(v-html = 'modal.content')
             .date
                 p {{ getDate }}
 </template>
@@ -18,6 +17,10 @@
         props: {
             modal : Object,
             getDate : String,
+            url : {
+                type: String,
+                default: 'http://backend.waswar.net'
+            }
         },
     }
 </script>
@@ -75,12 +78,26 @@
                     max-height: 315px;
                     overflow-y: auto;
                 }
+                margin-bottom: 10px;
             }
 
             .date {
                 @include fs(12)
-                margin-top: 10px;
                 font-weight: 300;
+            }
+        }
+    }
+</style>
+
+<style lang="scss">
+    @import '../../../style/config.scss';
+
+    .happening-modal{
+        .text {
+            .desc {
+                p:not(:last-child){
+                    margin-bottom: 10px;
+                }
             }
         }
     }

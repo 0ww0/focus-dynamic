@@ -2,9 +2,9 @@
 .happening-component
     .card-component(@click.prevent = "showModal('happening')")
         .image
-            img(:src = "happening.image.url", :alt = "happening.title")
+            img(:src = "url + happening.image.path", :alt = "happening.title")
         .text
-            p.label {{ happening.outlet.title }}
+            p.label {{ happening.outlets.name }}
             p.title {{ happening.title }}
             p.date {{ getDate }}
     modal(ref='happening', overlayTheme = 'dark')
@@ -12,13 +12,16 @@
 </template>
 
 <script>
-    import dateFormatter from '../../../_shares/date.js'
     import modal from './../../modal/_modal.vue'
     import happening from './../../modal/type/_happening.vue'
 
     export default {
         props : {
             happening : Object,
+            url : {
+                type: String,
+                default: 'http://backend.waswar.net'
+            }
         },
 
         components : {
@@ -29,7 +32,7 @@
         computed : {
             getDate() {
                 if((this.happening.dateStart !== null && this.happening.dateEnd !== null) || this.happening.recurringDate === null) {
-                    return this.format_date(this.happening.dateStart) + ' - ' + this.format_date(this.happening.dateEnd)
+                    return this.happening.dateStart + ' - ' + this.happening.dateEnd
                 } else {
                     return this.happening.recurringDate
                 }
@@ -37,10 +40,6 @@
         },
 
         methods : {
-            format_date(date) {
-                return dateFormatter.formatter(date, 'eee, dd MMM yyyy')
-            },
-
             showModal(ref) {
                 if (this.$refs[ref]) {
                     this.$refs[ref].open()

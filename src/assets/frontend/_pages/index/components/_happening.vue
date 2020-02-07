@@ -1,11 +1,11 @@
 <template lang="pug">
     .happening-holder
         heading(:text='head')
-        .event-holder
-            heading(:text='events', subheader)
-            card(stretch, :xmedia = 'false')
-                cardWrapper(:card = 'isResponsive', v-for = 'data in events.list', :key = 'data.id')
-                    happeningCard(:happening = 'data')
+        //- .event-holder
+        //-     heading(:text='events', subheader)
+        //-     card(stretch, :xmedia = 'false')
+        //-         cardWrapper(:card = 'isResponsive', v-for = 'data in events.list', :key = 'data.id')
+        //-             happeningCard(:happening = 'data')
         .promo-holder
             heading(:text='promos', subheader)
             card(stretch, :xmedia = 'false')
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-    import { ENDPOINT, API, Get_Promo_Query, Get_Event_Query } from './../api/_api.js'
+    import { API, EntryAPI, Happenings } from './../api/_api.js'
     import Media from '../../../_shares/media.js'
     import heading from '../../../_components/text/_heading.vue'
     import card from '../../../_components/card/_card'
@@ -65,32 +65,20 @@
 
         methods : {
             fetchPromos() {
-                API.post(ENDPOINT, {
-                    query: Get_Promo_Query,
+                API.post(EntryAPI, {
+                    query: Happenings,
                 }).then(resp => {
                     let list = resp.data.data;
-                    this.promos.list = list.happenings;
+                    this.promos.list = list.happeningsCollection;
                 }).catch(err => {
                     console.log(err)
                 })
             },
-
-            fetchEvents() {
-                API.post(ENDPOINT, {
-                    query: Get_Event_Query,
-                }).then(resp => {
-                    let list = resp.data.data;
-                    this.events.list = list.happenings;
-                }).catch(err => {
-                    console.log(err)
-                })
-            }
         },
 
         created() {
             this.checkMobile()
             this.fetchPromos()
-            this.fetchEvents()
         }
     }
 </script>

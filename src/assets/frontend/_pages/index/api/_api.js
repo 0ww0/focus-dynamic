@@ -56,3 +56,26 @@ query{
     }
 }
 `;
+
+export const Happenings = `
+query{
+    happeningsCollection(filter: { published: true, type: "Promo"}, sort: {_id: -1 }, populate: 1 ) {
+        _id,
+        title,
+        type,
+        image{
+            path
+        },
+        dateStart,
+        dateEnd,
+        recurringDate,
+        content,
+        outlets{
+            name,
+            imagePreview{
+                path
+            },
+        }
+    }
+}
+`;
