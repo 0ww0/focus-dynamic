@@ -14,8 +14,6 @@ export const API = axios.create({
     headers,
 });
 
-export const BannerAPI = "/api/collections/get/banners"
-
 export const EntryAPI = "/api/graphql/query"
 
 export const Banners = `
@@ -27,6 +25,32 @@ query{
             path
         },
         imageMobile{
+            path
+        }
+    }
+}
+`;
+
+export const Outlets = `
+query{
+    outletsCollection(filter: { published: true }, sort: {_id: -1 }) {
+        _id,
+        name,
+        name_slug,
+        imagePreview{
+            path
+        },
+    }
+}
+`;
+
+export const Celebrates = `
+query{
+    celebratesCollection(filter: { published: true}, sort: {_id: -1 }, limit: 3 ) {
+        _id,
+        title,
+        link,
+        image{
             path
         }
     }

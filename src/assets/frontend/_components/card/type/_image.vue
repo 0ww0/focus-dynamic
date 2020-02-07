@@ -1,9 +1,9 @@
 <template lang="pug">
     a.card-component(:href = 'link + slug')
         .image
-            img(:src = "image.imagePreview.url", :alt = "image.title")
+            img(:src = "url + image.imagePreview.path", :alt = "image.name")
         .text
-            p {{ image.title }}
+            p {{ image.name }}
 </template>
 
 <script>
@@ -15,11 +15,11 @@ export default {
             type : String,
             default : '../eat-drink/#/'
         },
+        url : {
+            type : String,
+            default: 'http://backend.waswar.net'
+        }
     },
-
-    computed: {
-
-    }
 }
 </script>
 

@@ -3,11 +3,11 @@
         heading(:text = 'head')
         siema(refer = 'card', :page = 'page' carousel='card', loop, v-if = 'store')
             siemaWrapper(v-for = "data in store", :key = 'store.id')
-                imageCard(:image = 'data', :slug = 'data.slug')
+                imageCard(:image = 'data', :slug = 'data.name_slug')
 </template>
 
 <script>
-    import { ENDPOINT, API, Get_Store_Query } from './../../api/_api.js'
+    import { API, EntryAPI, Outlets } from './../../api/_api.js'
     import siema from '../../../../_components/carousel/_siema.vue'
     import siemaWrapper from '../../../../_components/carousel/_wrapper.vue'
     import imageCard from '../../../../_components/card/type/_image.vue'
@@ -42,11 +42,11 @@
 
         methods : {
             fetchStore() {
-                API.post(ENDPOINT, {
-                    query: Get_Store_Query,
+                API.post(EntryAPI, {
+                    query: Outlets,
                 }).then(resp => {
                     let store = resp.data.data;
-                    this.store = store.outlets;
+                    this.store = store.outletsCollection;
                 }).catch(err => {
                     console.log(err)
                 })

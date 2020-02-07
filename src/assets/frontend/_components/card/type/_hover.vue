@@ -1,7 +1,7 @@
 <template lang="pug">
     a.card-component(:href="hover.link")
         .image
-            img(:src = "hover.image.url", :alt = 'hover.text')
+            img(:src = "url + hover.image.path", :alt = 'hover.title')
             .hover-text
                 p Visit Website
         .text(class="center")
@@ -12,6 +12,10 @@
 export default {
     props : {
         hover : Object,
+        url : {
+            type : String,
+            default: 'http://backend.waswar.net'
+        }
     }
 }
 </script>

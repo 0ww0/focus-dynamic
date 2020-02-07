@@ -7,7 +7,7 @@
 </template>
 
 <script>
-    import { ENDPOINT, API, Get_Celebrate_Query } from './../api/_api.js'
+    import { API, EntryAPI, Celebrates } from './../api/_api.js'
     import Media from '../../../_shares/media.js'
     import heading from '../../../_components/text/_heading.vue'
     import card from '../../../_components/card/_card'
@@ -50,11 +50,11 @@
 
         methods : {
             fetchCelebrate() {
-                API.post(ENDPOINT, {
-                    query: Get_Celebrate_Query,
+                API.post(EntryAPI, {
+                    query: Celebrates,
                 }).then(resp => {
-                    let list = resp.data.data;
-                    this.celebrate = list.celebrates;
+                    let list = resp.data.data
+                    this.celebrate = list.celebratesCollection
                 }).catch(err => {
                     console.log(err)
                 })

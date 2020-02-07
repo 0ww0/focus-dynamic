@@ -32,8 +32,8 @@
                 API.post(EntryAPI, {
                     query : Banners
                 }).then(resp => {
-                    let banner = resp.data.data.bannersCollection
-                    this.banner = banner
+                    let banner = resp.data.data
+                    this.banner = banner.bannersCollection
                 }).catch(err => {
                     console.log(err)
                 })
