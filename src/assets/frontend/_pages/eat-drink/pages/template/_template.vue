@@ -1,6 +1,6 @@
 <template lang="pug">
     .store-holder
-        span {{ slug }}
+        span {{ outlets.name }}
         //- logoBanner(:banner = 'banner')
         //- .container
         //-     paragraphText(:paragraph = 'store')
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-    import { ENDPOINT, API, Slug_Store_Query } from '../../api/_api.js'
+    import { API, EntryAPI, OutletSlugs } from '../../api/_api.js'
     import logoBanner from '../../../../_components/banner/_logo.vue'
     import paragraphText from '../../../../_components/text/_paragraph.vue'
     import gallery from '../../components/_gallery.vue'
@@ -30,21 +30,23 @@
         data() {
             return {
                 slug: '',
-                outlets : [],
+                outlets : {},
             }
         },
 
         methods : {
             fetchSlugStore() {
-                API.post(ENDPOINT, {
-                    query: Slug_Store_Query,
-                    variables: {
-                        slug: this.slug
-                    }
+                API.post(EntryAPI, {
+                    query: OutletSlugs,
+                    variables : {
+                        filter : {
+                            name_slug: this.slug,
+                        },
+                    },
                 }).then(resp => {
                     let store = resp.data.data;
-                    this.outlets = store.outlets;
-                    if(this.outlets.length === 0){
+                    this.outlets = store.outletsCollection[0];
+                    if(store.outletsCollection.length === 0){
                         this.$router.replace({ name : 'index' })
                     }
                 }).catch(err => {

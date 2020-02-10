@@ -1,11 +1,11 @@
 <template lang="pug">
     .happening-holder
         heading(:text='head')
-        //- .event-holder
-        //-     heading(:text='events', subheader)
-        //-     card(stretch, :xmedia = 'false')
-        //-         cardWrapper(:card = 'isResponsive', v-for = 'data in events.list', :key = 'data.id')
-        //-             happeningCard(:happening = 'data')
+        .event-holder
+            heading(:text='events', subheader)
+            card(stretch, :xmedia = 'false')
+                cardWrapper(:card = 'isResponsive', v-for = 'data in events.list', :key = 'data.id')
+                    happeningCard(:happening = 'data')
         .promo-holder
             heading(:text='promos', subheader)
             card(stretch, :xmedia = 'false')
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-    import { API, EntryAPI, Happenings } from './../api/_api.js'
+    import { API, EntryAPI, Events, Promos } from './../api/_api.js'
     import Media from '../../../_shares/media.js'
     import heading from '../../../_components/text/_heading.vue'
     import card from '../../../_components/card/_card'
@@ -64,9 +64,20 @@
         },
 
         methods : {
+            fetchEvents() {
+                API.post(EntryAPI, {
+                    query: Events,
+                }).then(resp => {
+                    let list = resp.data.data;
+                    this.events.list = list.happeningsCollection;
+                }).catch(err => {
+                    console.log(err)
+                })
+            },
+
             fetchPromos() {
                 API.post(EntryAPI, {
-                    query: Happenings,
+                    query: Promos,
                 }).then(resp => {
                     let list = resp.data.data;
                     this.promos.list = list.happeningsCollection;
@@ -78,6 +89,7 @@
 
         created() {
             this.checkMobile()
+            this.fetchEvents()
             this.fetchPromos()
         }
     }

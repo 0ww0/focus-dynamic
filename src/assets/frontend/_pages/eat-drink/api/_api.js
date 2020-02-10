@@ -5,39 +5,40 @@ export const ENDPOINT = process.env.VUE_APP_ENDPOINT;
 const TOKEN = process.env.VUE_APP_TOKEN;
 
 const headers = {
-  "Content-Type": "application/json",
-  Authorization: `Bearer ${TOKEN}`
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${TOKEN}`
 };
 
 export const API = axios.create({
-  headers
+    baseURL: ENDPOINT,
+    headers,
 });
 
-export const All_Store_Query = `
-    query{
-        outlets(orderBy: id_DESC)  {
-            id,
-            title,
-            slug,
-            imagePreview {
-                url,
-                width,
-                height,
-            }
-        }
+export const EntryAPI = "/api/graphql/query"
+
+export const Outlets = `
+query{
+    outletsCollection(filter: { published: true }, sort: {_id: -1 }) {
+        _id,
+        name,
+        name_slug,
+        imagePreview{
+            path
+        },
     }
+}
 `;
 
-export const Slug_Store_Query = `
-    query SlugStoreQuery($slug: String!){
-        outlets(orderBy: id_DESC, where : { slug: $slug })  {
-            id,
-            title,
-            slug,
-            imagePreview {
-                url,
-                width,
-                height,
+export const OutletSlugs = `
+    query OutletSlugs($filter: JsonType){
+        outletsCollection(filter : $filter) {
+            _id,
+            name,
+            name_slug,
+            happenings{
+                _id,
+                title,
+                type,
             }
         }
     }

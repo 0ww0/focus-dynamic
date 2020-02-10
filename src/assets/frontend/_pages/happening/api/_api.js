@@ -5,58 +5,59 @@ export const ENDPOINT = process.env.VUE_APP_ENDPOINT;
 const TOKEN = process.env.VUE_APP_TOKEN;
 
 const headers = {
-  "Content-Type": "application/json",
-  Authorization: `Bearer ${TOKEN}`
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${TOKEN}`
 };
 
 export const API = axios.create({
-  headers
+    baseURL: ENDPOINT,
+    headers,
 });
 
-export const All_Promo_Query = `
-    query{
-        happenings(orderBy: id_DESC, where: { type_in : Promo }){
-            id,
-            title,
-            description {
-                html,
+export const EntryAPI = "/api/graphql/query"
+
+export const Promos = `
+query{
+    happeningsCollection(filter: { published: true, type: "Promo"}, sort: {_id: -1 }, populate: 1 ) {
+        _id,
+        title,
+        type,
+        image{
+            path
+        },
+        dateStart,
+        dateEnd,
+        recurringDate,
+        content,
+        outlets{
+            name,
+            imagePreview{
+                path
             },
-            image {
-              url,
-              width,
-              height
-            },
-            dateStart,
-            dateEnd,
-            recurringDate,
-            outlet {
-                id,
-                title,
-            }
         }
     }
+}
 `;
 
-export const All_Event_Query = `
-    query{
-        happenings(orderBy: id_DESC, where: { type_in : Event }){
-            id,
-            title,
-            description {
-                html,
+export const Events = `
+query{
+    happeningsCollection(filter: { published: true, type: "Event"}, sort: {_id: -1 }, populate: 1 ) {
+        _id,
+        title,
+        type,
+        image{
+            path
+        },
+        dateStart,
+        dateEnd,
+        recurringDate,
+        content,
+        outlets{
+            name,
+            imagePreview{
+                path
             },
-            image {
-              url,
-              width,
-              height
-            },
-            dateStart,
-            dateEnd,
-            recurringDate,
-            outlet {
-                id,
-                title,
-            }
         }
     }
+}
 `;

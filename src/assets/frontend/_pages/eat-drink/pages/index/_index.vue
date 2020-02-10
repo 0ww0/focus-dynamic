@@ -4,11 +4,11 @@
             heading(:text='head', subheader)
             card(stretch, :xmedia = 'false')
                 cardWrapper(:card = 'isResponsive', v-for = 'data in store', :key = 'data.id')
-                    imageCard(:image = 'data', :slug='data.slug')
+                    imageCard(:image = 'data', :slug='data.name_slug')
 </template>
 
 <script>
-    import { ENDPOINT, API, All_Store_Query } from '../../api/_api.js'
+    import { API, EntryAPI, Outlets } from '../../api/_api.js'
     import Media from '../../../../_shares/media.js'
     import heading from '../../../../_components/text/_heading.vue'
     import card from '../../../../_components/card/_card.vue'
@@ -49,11 +49,11 @@
 
         methods : {
             fetchStore() {
-                API.post(ENDPOINT, {
-                    query: All_Store_Query,
+                API.post(EntryAPI, {
+                    query: Outlets,
                 }).then(resp => {
                     let store = resp.data.data;
-                    this.store = store.outlets;
+                    this.store = store.outletsCollection;
                 }).catch(err => {
                     console.log(err)
                 })

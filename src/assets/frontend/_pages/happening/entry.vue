@@ -17,7 +17,7 @@
 </template>
 
 <script>
-    import { ENDPOINT, API, All_Promo_Query, All_Event_Query } from './api/_api.js'
+    import { API, EntryAPI, Events, Promos } from './api/_api.js'
     import Media from './../../_shares/media.js'
     import heading from './../../_components/text/_heading.vue'
     import card from './../../_components/card/_card'
@@ -47,7 +47,7 @@
                     list: [],
                     pages: [],
                     page: 1,
-                    perPage: 8,
+                    perPage: 4,
                 },
 
                 promos : {
@@ -100,22 +100,22 @@
 
         methods : {
             fetchEvents() {
-                API.post(ENDPOINT, {
-                    query: All_Event_Query,
+                API.post(EntryAPI, {
+                    query: Events,
                 }).then(resp => {
                     let list = resp.data.data;
-                    this.events.list = list.happenings;
+                    this.events.list = list.happeningsCollection;
                 }).catch(err => {
                     console.log(err)
                 })
             },
 
             fetchPromos() {
-                API.post(ENDPOINT, {
-                    query: All_Promo_Query,
+                API.post(EntryAPI, {
+                    query: Promos,
                 }).then(resp => {
                     let list = resp.data.data;
-                    this.promos.list = list.happenings;
+                    this.promos.list = list.happeningsCollection;
                 }).catch(err => {
                     console.log(err)
                 })

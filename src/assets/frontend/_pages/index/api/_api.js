@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const ENDPOINT = "http://backend.waswar.net";
+export const ENDPOINT = process.env.VUE_APP_ENDPOINT;
 
-const TOKEN = "051e3542c6eedaa72fcbfd58b1eadc";
+const TOKEN = process.env.VUE_APP_TOKEN;
 
 const headers = {
     "Content-Type": "application/json",
@@ -57,9 +57,32 @@ query{
 }
 `;
 
-export const Happenings = `
+export const Promos = `
 query{
-    happeningsCollection(filter: { published: true, type: "Promo"}, sort: {_id: -1 }, populate: 1 ) {
+    happeningsCollection(filter: { published: true, type: "Promo"}, sort: {_id: -1 }, populate: 1, limit: 4 ) {
+        _id,
+        title,
+        type,
+        image{
+            path
+        },
+        dateStart,
+        dateEnd,
+        recurringDate,
+        content,
+        outlets{
+            name,
+            imagePreview{
+                path
+            },
+        }
+    }
+}
+`;
+
+export const Events = `
+query{
+    happeningsCollection(filter: { published: true, type: "Event"}, sort: {_id: -1 }, populate: 1, limit: 4 ) {
         _id,
         title,
         type,

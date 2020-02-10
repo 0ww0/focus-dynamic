@@ -31,7 +31,7 @@
 
         computed : {
             getDate() {
-                if((this.happening.dateStart !== null && this.happening.dateEnd !== null) || this.happening.recurringDate === null) {
+                if((this.happening.dateStart !== "" && this.happening.dateEnd !== "") || this.happening.recurringDate === "") {
                     return this.happening.dateStart + ' - ' + this.happening.dateEnd
                 } else {
                     return this.happening.recurringDate
@@ -61,6 +61,7 @@
         display: flex;
         flex-direction: column;
         flex-flow: column nowrap;
+        cursor: pointer;
 
         .image {
             width: 100%;
