@@ -30,7 +30,7 @@
         data() {
             return {
                 slug: '',
-                outlets : {},
+                outlets : [],
             }
         },
 

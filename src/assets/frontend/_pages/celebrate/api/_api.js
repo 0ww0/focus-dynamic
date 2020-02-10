@@ -5,25 +5,26 @@ export const ENDPOINT = process.env.VUE_APP_ENDPOINT;
 const TOKEN = process.env.VUE_APP_TOKEN;
 
 const headers = {
-  "Content-Type": "application/json",
-  Authorization: `Bearer ${TOKEN}`
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${TOKEN}`
 };
 
 export const API = axios.create({
-  headers
+    baseURL: ENDPOINT,
+    headers,
 });
 
-export const All_Celebrate_Query = `
-    query{
-        celebrates(orderBy: id_DESC){
-            id,
-            title,
-            link,
-            image {
-              url,
-              width,
-              height
-            }
+export const EntryAPI = "/api/graphql/query"
+
+export const Celebrates = `
+query{
+    celebratesCollection(filter: { published: true}, sort: {_id: -1 }) {
+        _id,
+        title,
+        link,
+        image{
+            path
         }
     }
+}
 `;
