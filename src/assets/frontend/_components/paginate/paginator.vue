@@ -1,12 +1,12 @@
 <template lang="pug">
     .paginator-component(v-if='startPage !== endPage')
-        button(:disabled = 'isInFirstPage',
+        button.prev(:disabled = 'isInFirstPage',
             @click = "onClickPreviousPage()") Previous
-        button(v-for="page in pages",
+        button.list(v-for="page in pages",
             :disabled = "page.isDisabled"
             @click = "onClickPage(page.name)",
             :class = "{ active : isPageActive(page.name) }") {{ page.name }}
-        button(:disabled ='isInLastPage',
+        button.next(:disabled ='isInLastPage',
             @click="onClickNextPage()") Next
 </template>
 
@@ -99,9 +99,36 @@
 </script>
 
 <style lang="scss" scoped>
+    @import '../../style/config.scss';
+
     .paginator-component {
+        @include fs(12)
+        line-height: 1.5;
         user-select: none;
     }
 
+    button {
+        outline: 0;
+        border: 1px solid;
+        padding: 5px;
+        @include background($white)
+        border-radius: 2px;
+        margin: 0 2.5px;
+        &:first-child{
+            margin-left: 0;
+        }
+
+        &:last-child{
+            margin-right: 0;
+        }
+
+        &:not(:disabled) {
+            @include color($black, .8);
+            &:hover{
+                @include color($black)
+                text-decoration: underline;
+            }
+        }
+    }
 
 </style>

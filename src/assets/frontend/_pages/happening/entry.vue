@@ -47,7 +47,7 @@
                     list: [],
                     pages: [],
                     page: 1,
-                    perPage: 4,
+                    perPage: 8,
                 },
 
                 promos : {
