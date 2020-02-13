@@ -5,7 +5,6 @@
             cardCarousel
             cardCelebrate
             cardHappening
-            cardNews
 </template>
 
 <script>
@@ -13,7 +12,6 @@
     import cardCarousel from './components/carousel/_card.vue'
     import cardCelebrate from './components/_celebrate.vue'
     import cardHappening from './components/_happening.vue'
-    import cardNews from './components/_news.vue'
 
     export default {
         components: {
@@ -21,7 +19,6 @@
             cardCarousel,
             cardCelebrate,
             cardHappening,
-            cardNews
         },
     }
 </script>
