@@ -24,7 +24,7 @@
         data() {
             return {
                 head : {
-                    title : 'Eat & Drink',
+                    title : 'Brands',
                     linkText: 'See all',
                     linkUrl: '/eat-drink/',
                 },

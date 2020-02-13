@@ -57,13 +57,14 @@
         }
 
         .link {
+            @include fs(14)
+            @include weight(500)
             a {
                 &:hover {
                     @include color(#d4af37)
                     @include trans-prop(color)
                 }
             }
-            font-weight: 500;
             i {
                 margin-left: 10px;
             }

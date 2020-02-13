@@ -15,32 +15,32 @@
                 navi : [
                     {
                         id : 1,
-                        title : 'Eat & Drink',
+                        title : 'Brands',
                         link : '../eat-drink/'
                     },
 
                     {
                         id : 2,
-                        title : 'Celebrate',
+                        title : 'About Us',
                         link : '../celebrate/'
                     },
 
                     {
                         id : 3,
-                        title : 'What\'s On',
+                        title : 'Investor Relations',
                         link : '../happening/'
                     },
 
 
                     {
                         id : 4,
-                        title : 'News',
+                        title : 'Membership',
                         link : '../news/'
                     },
 
                     {
                         id : 5,
-                        title : 'Corporate',
+                        title : 'Contact Us',
                         link : '../corporate/'
                     },
                 ]

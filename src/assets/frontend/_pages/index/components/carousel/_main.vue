@@ -1,20 +1,23 @@
 <template lang="pug">
     siema(refer = 'mainBanner', carousel='banner', :page='page' arrow, dot, loop, v-if='banner')
         siemaWrapper(v-for = "data in banner", :key = 'data.id',)
-            banner(:banner = 'data')
+            bannerImage(:banner = 'data', v-if='data.category === "Image"')
+            bannerVideo(:banner = 'data', v-else)
 </template>
 
 <script>
     import { API, EntryAPI, Banners } from './../../api/_api.js'
     import siema from '../../../../_components/carousel/_siema.vue'
     import siemaWrapper from '../../../../_components/carousel/_wrapper.vue'
-    import banner from '../../../../_components/carousel/type/_banner.vue'
+    import bannerImage from '../../../../_components/carousel/type/_banner.vue'
+    import bannerVideo from '../../../../_components/carousel/type/_video.vue'
 
     export default {
         components : {
             siema,
             siemaWrapper,
-            banner,
+            bannerImage,
+            bannerVideo
         },
 
         data() {

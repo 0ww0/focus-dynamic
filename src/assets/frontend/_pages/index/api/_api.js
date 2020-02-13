@@ -26,7 +26,11 @@ query{
         },
         imageMobile{
             path
-        }
+        },
+        video{
+            path
+        },
+        category
     }
 }
 `;

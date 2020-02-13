@@ -14,7 +14,6 @@ module.exports = {
         'frontend/page/celebrate' : './src/assets/frontend/_pages/celebrate/celebrate.js',
         'frontend/page/corporate' : './src/assets/frontend/_pages/corporate/corporate.js',
         'frontend/page/happening' : './src/assets/frontend/_pages/happening/happening.js',
-        'frontend/page/news' : './src/assets/frontend/_pages/news/news.js',
         'frontend/page/sitemap' : './src/assets/frontend/_pages/sitemap/sitemap.js',
         'frontend/page/contact-us' : './src/assets/frontend/_pages/contact-us/contact-us.js',
     },
