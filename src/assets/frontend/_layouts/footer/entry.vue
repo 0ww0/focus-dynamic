@@ -5,6 +5,7 @@
             .sitemap-holder
                 sitemap(:sitemap = 'explore')
                 sitemap(:sitemap = 'corporate')
+                sitemap(:sitemap = 'membership')
 </template>
 
 <script>
@@ -20,54 +21,40 @@
         data() {
             return {
                 explore : {
-                    title : 'Explore',
+                    title: 'Explore',
+                    list: []
+                },
+
+                corporate : {
+                    title: 'Corporate',
                     list: [
                         {
                             id: 1,
-                            name: 'Eat & Drink',
-                            link: '../eat-drink/'
+                            name: 'About us',
+                            link: '#/'
                         },
 
                         {
                             id: 2,
-                            name: 'Celebrate',
-                            link: '../celebrate/'
+                            name: 'Investor Relationship',
+                            link: '#/'
                         },
 
                         {
                             id: 3,
-                            name: 'What\'s On',
-                            link: '../happening/'
-                        },
-
-                        {
-                            id: 5,
-                            name: 'News',
-                            link: '../news/'
+                            name: 'Contact Us',
+                            link: '#/'
                         },
                     ]
                 },
 
-                corporate : {
-                    title : 'Corporate',
+                membership : {
+                    title: 'Membership',
                     list: [
                         {
                             id: 1,
-                            name: 'Company Profile',
-                            link: '../corporate/'
-                        },
-
-                        {
-                            id: 2,
-                            name: 'Contact Us',
-                            link: '../contact-us/'
-                        },
-
-                        {
-                            id: 3,
-                            name: 'Sitemap',
-                            link: '../sitemap/'
-                        },
+                            name: 'Join Now'
+                        }
                     ]
                 }
             }

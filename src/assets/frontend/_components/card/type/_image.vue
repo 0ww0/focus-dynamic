@@ -61,7 +61,7 @@ export default {
             position: absolute;
             width: 100%;
             bottom: 0;
-            @include background($black, .4)
+            @include background($white, .4)
 
             display: flex;
             flex-direction: column;

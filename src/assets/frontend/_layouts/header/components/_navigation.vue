@@ -16,32 +16,32 @@
                     {
                         id : 1,
                         title : 'Brands',
-                        link : '../eat-drink/'
+                        link : '../brand/'
                     },
 
                     {
                         id : 2,
                         title : 'About Us',
-                        link : '../celebrate/'
+                        link : '../'
                     },
 
                     {
                         id : 3,
                         title : 'Investor Relations',
-                        link : '../happening/'
+                        link : '../'
                     },
 
 
                     {
                         id : 4,
                         title : 'Membership',
-                        link : '../news/'
+                        link : '../'
                     },
 
                     {
                         id : 5,
                         title : 'Contact Us',
-                        link : '../corporate/'
+                        link : '../'
                     },
                 ]
             }
