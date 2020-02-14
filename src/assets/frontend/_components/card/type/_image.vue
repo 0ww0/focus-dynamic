@@ -1,7 +1,12 @@
 <template lang="pug">
-    a.card-component(:href = 'link + slug')
+    .card-component
         .image
-            img(:src = "url + image.imagePreview.path", :alt = "image.name")
+            img(:src = "url + image.image.path", :alt = "image.name")
+            .hover-action
+                a.button(:href="image.link")
+                    span Website
+                a.button(:href="image.link")
+                    span Gallery
         .text
             p {{ image.name }}
 </template>
@@ -10,11 +15,6 @@
 export default {
     props : {
         image : Object,
-        slug: String,
-        link : {
-            type : String,
-            default : '../eat-drink/#/'
-        },
         url : {
             type : String,
             default: 'http://backend.waswar.net'
@@ -35,15 +35,73 @@ export default {
         flex-flow: column nowrap;
 
         .image {
+            position: relative;
             width: 100%;
             height: calc(100% - 44px);
             flex: 1;
-            pointer-events: none;
             img{
                 object-fit: cover;
                 width: 100%;
                 height: 100%;
             }
+
+            &:hover {
+                cursor: pointer;
+                .hover-action {
+                    opacity: 1;
+                    visibility: visible;
+                    height: 50%;
+                    @include trans-prop(opacity, visibility, height)
+                }
+            }
+
+        }
+
+        .hover-action {
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            @include background($black, .4)
+
+            display: flex;
+            flex-direction: column;
+            flex-flow: column nowrap;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+
+            opacity: 0;
+            visibility: hidden;
+            height: 0;
+            @include trans-prop(opacity, visibility, height)
+
+            a.button {
+                display: block;
+
+                text-align: center;
+                width: 50%;
+                line-height: 1.5;
+                padding: 5px 25px;
+                border: 1px solid;
+                border-radius: 5px;
+
+                @include fs(14)
+                @include color($black, .8)
+                @include border($black, .8)
+
+                &:hover {
+                    @include background(#d4af37)
+                    @include color($white, .9)
+                    @include border(#d4af37)
+                    @include trans-prop(background-color, color, border-color)
+                }
+
+                &:not(:last-child) {
+                    margin-bottom: 10px;
+                }
+            }
+
+
         }
 
         .text {

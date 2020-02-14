@@ -16,15 +16,15 @@ export const API = axios.create({
 
 export const EntryAPI = "/api/graphql/query"
 
-export const Celebrates = `
+export const Brands = `
 query{
-    celebratesCollection(filter: { published: true}, sort: {_id: -1 }) {
+    brandsCollection(filter: { published: true }, sort: {_id: -1 }) {
         _id,
-        title,
-        link,
-        image{
+        name,
+        name_slug,
+        imagePreview{
             path
-        }
+        },
     }
 }
 `;

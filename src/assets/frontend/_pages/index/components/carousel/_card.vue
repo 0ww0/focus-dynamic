@@ -1,13 +1,13 @@
 <template lang="pug">
     .card-carousel
         heading(:text = 'head')
-        siema(refer = 'card', :page = 'page' carousel='card', loop, v-if = 'store')
-            siemaWrapper(v-for = "data in store", :key = 'store.id')
-                imageCard(:image = 'data', :slug = 'data.name_slug')
+        siema(refer = 'card', :page = 'page' carousel='card', loop, v-if = 'brand')
+            siemaWrapper(v-for = "data in brand", :key = 'brand.id')
+                imageCard(:image = 'data')
 </template>
 
 <script>
-    import { API, EntryAPI, Outlets } from './../../api/_api.js'
+    import { API, EntryAPI, Brands } from './../../api/_api.js'
     import siema from '../../../../_components/carousel/_siema.vue'
     import siemaWrapper from '../../../../_components/carousel/_wrapper.vue'
     import imageCard from '../../../../_components/card/type/_image.vue'
@@ -26,7 +26,7 @@
                 head : {
                     title : 'Brands',
                     linkText: 'See all',
-                    linkUrl: '/eat-drink/',
+                    linkUrl: '/brand/',
                 },
 
                 page : {
@@ -36,17 +36,17 @@
                     1024: 5,
                 },
 
-                store : null
+                brand : null
             }
         },
 
         methods : {
             fetchStore() {
                 API.post(EntryAPI, {
-                    query: Outlets,
+                    query: Brands,
                 }).then(resp => {
-                    let store = resp.data.data;
-                    this.store = store.outletsCollection;
+                    let brand = resp.data.data;
+                    this.brand = brand.brandsCollection;
                 }).catch(err => {
                     console.log(err)
                 })

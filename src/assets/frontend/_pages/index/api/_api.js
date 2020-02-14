@@ -35,73 +35,18 @@ query{
 }
 `;
 
-export const Outlets = `
+export const Brands = `
 query{
-    outletsCollection(filter: { published: true }, sort: {_id: -1 }) {
-        _id,
-        name,
-        name_slug,
-        imagePreview{
-            path
-        },
-    }
-}
-`;
-
-export const Celebrates = `
-query{
-    celebratesCollection(filter: { published: true}, sort: {_id: -1 }, limit: 3 ) {
-        _id,
-        title,
-        link,
+    brandsCollection(filter: { published: true }, sort: {_id: -1 }) {
+        _id
+        name
+        name_slug
         image{
             path
         }
-    }
-}
-`;
-
-export const Promos = `
-query{
-    happeningsCollection(filter: { published: true, type: "Promo"}, sort: {_id: -1 }, populate: 1, limit: 4 ) {
-        _id,
-        title,
-        type,
-        image{
+        link
+        gallery{
             path
-        },
-        dateStart,
-        dateEnd,
-        recurringDate,
-        content,
-        outlets{
-            name,
-            imagePreview{
-                path
-            },
-        }
-    }
-}
-`;
-
-export const Events = `
-query{
-    happeningsCollection(filter: { published: true, type: "Event"}, sort: {_id: -1 }, populate: 1, limit: 4 ) {
-        _id,
-        title,
-        type,
-        image{
-            path
-        },
-        dateStart,
-        dateEnd,
-        recurringDate,
-        content,
-        outlets{
-            name,
-            imagePreview{
-                path
-            },
         }
     }
 }
