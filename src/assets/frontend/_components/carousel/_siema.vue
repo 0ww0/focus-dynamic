@@ -46,7 +46,8 @@
             return {
                 options: {
                     loop: this.loop,
-                    duration: 250,
+                    easing: 'cubic-bezier(0.645, 0.045, 0.355, 1)',
+                    duration: 450,
                     draggable: true,
                     multipleDrag: true,
                     threshold: 200,
