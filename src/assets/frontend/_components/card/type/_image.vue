@@ -68,7 +68,6 @@ export default {
             flex-flow: column nowrap;
             justify-content: center;
             align-items: center;
-            z-index: 1;
 
             opacity: 0;
             visibility: hidden;
