@@ -5,7 +5,7 @@
         ul.list
             li(v-for = 'list in sitemap.list')
                 a(:href="list.link")
-                    span {{ list.name }}
+                    span {{ list.title }}
 </template>
 
 <script>
@@ -33,6 +33,9 @@
             list-style: none;
             li {
                 margin: 5px 0;
+                &:hover {
+                    text-decoration: underline;
+                }
             }
         }
     }

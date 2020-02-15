@@ -28,3 +28,30 @@ query{
     }
 }
 `;
+
+export const Explore = `
+query{
+    sitemapCollection(filter: { published: true, category: "explore" }, sort: {_id: 1 }) {
+        title,
+        link,
+    }
+}
+`;
+
+export const Corporate = `
+query{
+    sitemapCollection(filter: { published: true, category: "corporate" }, sort: {_id: 1 }) {
+        title,
+        link,
+    }
+}
+`;
+
+export const Membership = `
+query{
+    sitemapCollection(filter: { published: true, category: "membership" }, sort: {_id: 1 }) {
+        title,
+        link,
+    }
+}
+`;

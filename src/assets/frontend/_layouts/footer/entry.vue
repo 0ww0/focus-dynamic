@@ -9,6 +9,7 @@
 </template>
 
 <script>
+    import { API, EntryAPI, Explore, Corporate, Membership } from './api/_api.js'
     import info from './components/_info.vue'
     import sitemap from './components/_sitemap.vue'
 
@@ -21,43 +22,59 @@
         data() {
             return {
                 explore : {
-                    title: 'Explore',
+                    title: "Explore",
                     list: []
                 },
-
                 corporate : {
-                    title: 'Corporate',
-                    list: [
-                        {
-                            id: 1,
-                            name: 'About us',
-                            link: '#/'
-                        },
-
-                        {
-                            id: 2,
-                            name: 'Investor Relationship',
-                            link: '#/'
-                        },
-
-                        {
-                            id: 3,
-                            name: 'Contact Us',
-                            link: '#/'
-                        },
-                    ]
+                    title: "Corporate",
+                    list: []
                 },
-
                 membership : {
-                    title: 'Membership',
-                    list: [
-                        {
-                            id: 1,
-                            name: 'Join Now'
-                        }
-                    ]
+                    title: "Membership",
+                    list: []
                 }
             }
+        },
+
+        methods : {
+            fetchExplore() {
+                API.post(EntryAPI, {
+                    query: Explore,
+                }).then(resp => {
+                    let explore = resp.data.data;
+                    this.explore.list = explore.sitemapCollection;
+                }).catch(err => {
+                    console.log(err)
+                })
+            },
+
+            fetchCorporate() {
+                API.post(EntryAPI, {
+                    query: Corporate,
+                }).then(resp => {
+                    let corporate = resp.data.data;
+                    this.corporate.list = corporate.sitemapCollection;
+                }).catch(err => {
+                    console.log(err)
+                })
+            },
+
+            fetchMembership() {
+                API.post(EntryAPI, {
+                    query: Membership,
+                }).then(resp => {
+                    let membership = resp.data.data;
+                    this.membership.list = membership.sitemapCollection;
+                }).catch(err => {
+                    console.log(err)
+                })
+            }
+        },
+
+        created() {
+            this.fetchExplore()
+            this.fetchCorporate()
+            this.fetchMembership()
         }
     }
 </script>
