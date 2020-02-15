@@ -5,18 +5,12 @@
 </template>
 
 <script>
-    import { API, EntryAPI, Logo } from '../api/_api.js'
+    import { ENDPOINT, API, EntryAPI, Logo } from '../api/_api.js'
 
     export default {
-        props : {
-            url : {
-                type : String,
-                default: 'http://backend.waswar.net'
-            }
-        },
-
         data() {
             return {
+                url: ENDPOINT,
                 logoObj : {},
                 path: {},
             }

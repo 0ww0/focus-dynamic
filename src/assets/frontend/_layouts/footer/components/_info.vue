@@ -1,25 +1,42 @@
 <template lang="pug">
     .info-holder
         .logo
-            a(:href="logo.link")
-                img(:src="logo.image")
+            a(:href="logoObj.link")
+                img(:src="url + path", :alt = "logoObj.name")
         .title
-            p {{ title }}
+            p {{ logoObj.name }}
         .description
-            p {{ description }}
+            p(v-html="logoObj.description")
 </template>
 
 <script>
+    import { ENDPOINT, API, EntryAPI, Logo } from '../api/_api.js'
+
     export default {
         data() {
             return {
-                logo : {
-                    link : '../',
-                    image : '../assets/images/logo/logo-black.png',
-                },
-                title : 'Focus Dynamics Group',
-                description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco'
+                url: ENDPOINT,
+                logoObj : {},
+                path: {},
             }
+        },
+
+        methods : {
+            fetchLogo() {
+                API.post(EntryAPI, {
+                    query: Logo,
+                }).then(resp => {
+                    let list = resp.data.data;
+                    this.logoObj = list.logoSingleton;
+                    this.path = this.logoObj.logo.path;
+                }).catch(err => {
+                    console.log(err)
+                })
+            }
+        },
+
+        created() {
+            this.fetchLogo()
         }
     }
 </script>
