@@ -2,12 +2,13 @@
     .membership-holder
         heading(:text = 'head', subheader)
         card(stretch, :xmedia = 'false')
-            cardWrapper(card = 'half')
-            cardWrapper(card = 'half')
+            cardWrapper(:card = 'isResponsive', :order= 'isOrder')
                 imageCard(:image = 'membership', :url = 'url')
+            cardWrapper(:card = 'isResponsive')
 </template>
 
 <script>
+    import Media from './../../../_shares/media.js'
     import { ENDPOINT, API, EntryAPI, Membership } from './../api/_api.js'
     import heading from './../../../_components/text/_heading.vue'
     import card from './../../../_components/card/_card.vue'
@@ -15,6 +16,8 @@
     import imageCard from './card/_image.vue'
 
     export default {
+        extends: Media,
+
         components : {
             heading,
             card,
@@ -32,6 +35,20 @@
                     title : '',
                     align: 'left'
                 }
+            }
+        },
+
+        computed : {
+            isResponsive () {
+                if (this.is801) {
+                    return 'half'
+                } else {
+                    return 'full'
+                }
+            },
+
+            isOrder : function() {
+                return this.is801 ? 2 : 0
             }
         },
 

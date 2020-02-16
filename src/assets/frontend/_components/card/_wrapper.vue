@@ -1,17 +1,22 @@
 <template lang="pug">
-    .card-wrapper(:class='cardClass')
+    .card-wrapper(:class='cardClass', :style='cardOrder')
         slot
 </template>
 
 <script>
     export default {
         props : {
-            card : String
+            card : String,
+            order : Number
         },
 
         computed : {
             cardClass : function () {
                 return this.card ? 'is-' + this.card : ''
+            },
+
+            cardOrder : function () {
+                return 'order: ' + this.order
             }
         }
     }
