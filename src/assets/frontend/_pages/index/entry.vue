@@ -4,18 +4,21 @@
         .container
             cardCarousel
             membership
+            contact
 </template>
 
 <script>
     import mainCarousel from './components/carousel/_main.vue'
     import cardCarousel from './components/carousel/_card.vue'
     import membership from './components/_membership.vue'
+    import contact from './components/_contact.vue'
 
     export default {
         components: {
             mainCarousel,
             cardCarousel,
-            membership
+            membership,
+            contact
         },
     }
 </script>

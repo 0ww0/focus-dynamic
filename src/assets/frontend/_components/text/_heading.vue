@@ -31,9 +31,6 @@
         &.subheader {
             padding-top: 15px;
             padding-bottom: 15px;
-            .title {
-                @include  fs(20);
-            }
         }
 
         .title {

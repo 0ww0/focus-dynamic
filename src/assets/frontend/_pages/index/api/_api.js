@@ -52,16 +52,29 @@ query{
 }
 `;
 
-export const Memberships = `
+export const Membership = `
 query{
-    membershipsSingleton{
+    membershipsSingleton(populate: 1){
         title,
         description,
         image{
             path
         },
-        linkLN,
+        linkLM,
         linkJN
+    }
+}
+`;
+
+export const Contact = `
+query{
+    contactsSingleton(populate: 1){
+        title,
+        address,
+        contact,
+        enquiry,
+        career,
+        investor
     }
 }
 `;

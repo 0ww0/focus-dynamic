@@ -1,10 +1,10 @@
 <template lang="pug">
-    .membership-holder
+    .contact-holder
         heading(:text = 'head', subheader)
 </template>
 
 <script>
-    import { ENDPOINT, API, EntryAPI, Membership } from './../api/_api.js'
+    import { API, EntryAPI, Contact } from './../api/_api.js'
     import heading from './../../../_components/text/_heading.vue'
 
     export default {
@@ -12,27 +12,24 @@
             heading
         },
 
-        data() {
+        data(){
             return {
-                membership: {
-                    image: {}
-                },
-                head: {
+                contact: {},
+                head : {
                     title : '',
                     align: 'left'
-                }
+                },
             }
         },
 
         methods: {
-            fetchMembership() {
+            fetchContact() {
                 API.post(EntryAPI, {
-                    query: Membership,
+                    query: Contact,
                 }).then(resp => {
-                    let member = resp.data.data;
-                    this.membership = member.membershipsSingleton;
-                    this.head.title = this.membership.title;
-                    this.membership.image = this.membership.image.path;
+                    let contact = resp.data.data;
+                    this.contact = contact.contactsSingleton;
+                    this.head.title = this.contact.title;
                 }).catch(err => {
                     console.log(err)
                 })
@@ -40,13 +37,13 @@
         },
 
         created(){
-            this.fetchMembership()
+            this.fetchContact()
         }
     }
 </script>
 
 <style lang="scss" scoped>
-    .membership-holder {
+    .contact-holder {
         padding-top: 25px;
         padding-bottom: 25px;
     }
