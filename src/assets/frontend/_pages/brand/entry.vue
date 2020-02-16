@@ -4,7 +4,7 @@
             heading(:text='head', subheader)
             card(stretch, :xmedia = 'false')
                 cardWrapper(:card = 'isResponsive', v-for = 'data in brand', :key = 'data.id')
-                    imageCard(:image = 'data', :url = 'url')
+                    hoverCard(:image = 'data', :url = 'url')
 </template>
 
 <script>
@@ -13,7 +13,7 @@
     import heading from '../../_components/text/_heading.vue'
     import card from '../../_components/card/_card.vue'
     import cardWrapper from '../../_components/card/_wrapper.vue'
-    import imageCard from './components/card/_image.vue'
+    import hoverCard from './components/card/_hover.vue'
 
     export default {
         extends : Media,
@@ -22,7 +22,7 @@
             heading,
             card,
             cardWrapper,
-            imageCard
+            hoverCard
         },
 
         data() {

@@ -8,10 +8,7 @@
     export default {
         props : {
             banner : Object,
-
-            url : {
-                type : String,
-            }
+            url : String
         },
 
         computed : {

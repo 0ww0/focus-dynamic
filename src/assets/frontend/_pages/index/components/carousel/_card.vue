@@ -3,21 +3,21 @@
         heading(:text = 'head')
         siema(refer = 'card', :page = 'page' carousel='card', loop, v-if = 'brand')
             siemaWrapper(v-for = "data in brand", :key = 'brand.id')
-                imageCard(:image = 'data')
+                hoverCard(:image = 'data', :url = 'url')
 </template>
 
 <script>
-    import { API, EntryAPI, Brands } from './../../api/_api.js'
+    import { ENDPOINT, API, EntryAPI, Brands } from './../../api/_api.js'
     import siema from '../../../../_components/carousel/_siema.vue'
     import siemaWrapper from '../../../../_components/carousel/_wrapper.vue'
-    import imageCard from '../card/_image.vue'
+    import hoverCard from '../card/_hover.vue'
     import heading from '../../../../_components/text/_heading.vue'
 
     export default {
         components : {
             siema,
             siemaWrapper,
-            imageCard,
+            hoverCard,
             heading
         },
 
@@ -35,7 +35,7 @@
                     800: 4,
                     1024: 5,
                 },
-
+                url : ENDPOINT,
                 brand : null
             }
         },

@@ -1,8 +1,10 @@
 <template lang="pug">
+    .member-component
 </template>
 
 <script>
-export default {}
+    export default {
+    }
 </script>
 
 <style lang="scss" scoped>

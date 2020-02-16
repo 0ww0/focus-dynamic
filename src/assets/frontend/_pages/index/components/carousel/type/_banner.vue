@@ -12,14 +12,8 @@
 
         props : {
             banner : Object,
-
-            link : {
-                type : [Boolean, String]
-            },
-
-            url : {
-                type : String,
-            }
+            link : [Boolean, String],
+            url : String
         },
 
         computed : {

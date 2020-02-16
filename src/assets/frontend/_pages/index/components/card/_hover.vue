@@ -1,4 +1,4 @@
-<template lang="pug">
+i<template lang="pug">
     .card-component
         .image
             img(:src = "url + image.image.path", :alt = "image.name")
@@ -15,15 +15,13 @@
 export default {
     props : {
         image : Object,
-        url : {
-            type : String,
-        }
+        url : String
     },
 }
 </script>
 
 <style lang="scss" scoped>
-    @import './../../../../style/config.scss';
+    @import '../../../../style/config.scss';
 
     .card-component{
         overflow: hidden;
