@@ -5,7 +5,7 @@
 </template>
 
 <script>
-    import Media from '../../../_shares/media.js'
+    import Media from './../../../../../_shares/media.js'
 
     export default {
         extends : Media,
@@ -19,7 +19,6 @@
 
             url : {
                 type : String,
-                default: 'http://backend.waswar.net'
             }
         },
 
@@ -42,7 +41,7 @@
 </script>
 
 <style lang="scss" scoped>
-    @import '../../../style/config.scss';
+    @import '../../../../../style/config.scss';
 
     .image{
         overflow: hidden;

@@ -1,37 +1,14 @@
 <template lang="pug">
     .logo-holder
-        a(:href='logoObj.link')
-            img(:src="url + path", :alt = 'logoObj.name')
+        a(:href='logo.link')
+            img(:src="url + logo.image", :alt = 'logo.name')
 </template>
 
 <script>
-    import { ENDPOINT, API, EntryAPI, Logo } from '../api/_api.js'
-
     export default {
-        data() {
-            return {
-                url: ENDPOINT,
-                logoObj : {},
-                path: {},
-            }
-        },
-
-        methods : {
-            fetchLogo() {
-                API.post(EntryAPI, {
-                    query: Logo,
-                }).then(resp => {
-                    let list = resp.data.data;
-                    this.logoObj = list.logoSingleton;
-                    this.path = this.logoObj.logo.path;
-                }).catch(err => {
-                    console.log(err)
-                })
-            }
-        },
-
-        created() {
-            this.fetchLogo()
+        props : {
+            logo: Object,
+            url: String,
         }
     }
 </script>

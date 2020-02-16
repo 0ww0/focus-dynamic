@@ -11,7 +11,6 @@
 
             url : {
                 type : String,
-                default: 'http://backend.waswar.net'
             }
         },
 
@@ -25,7 +24,7 @@
 </script>
 
 <style lang="scss" scoped>
-    @import '../../../style/config.scss';
+    @import './../../../../../style/config.scss';
 
     .video{
         overflow: hidden;

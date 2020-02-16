@@ -1,7 +1,7 @@
 <template lang="pug">
     .wrapper-footer
         .footer.container
-            info
+            info(:info = "info", :url = 'url')
             .sitemap-holder
                 sitemap(:sitemap = 'explore')
                 sitemap(:sitemap = 'corporate')
@@ -9,7 +9,7 @@
 </template>
 
 <script>
-    import { API, EntryAPI, Explore, Corporate, Membership } from './api/_api.js'
+    import { ENDPOINT, API, EntryAPI, Logo, Explore, Corporate, Membership } from './../api/_api.js'
     import info from './components/_info.vue'
     import sitemap from './components/_sitemap.vue'
 
@@ -21,6 +21,10 @@
 
         data() {
             return {
+                url: ENDPOINT,
+                info: {
+                    logo:{}
+                },
                 explore : {
                     title: "Explore",
                     list: []
@@ -37,6 +41,18 @@
         },
 
         methods : {
+            fetchLogo() {
+                API.post(EntryAPI, {
+                    query: Logo,
+                }).then(resp => {
+                    let list = resp.data.data;
+                    this.info = list.logoSingleton;
+                    this.info.logo = list.logoSingleton.logo.path;
+                }).catch(err => {
+                    console.log(err)
+                })
+            },
+
             fetchExplore() {
                 API.post(EntryAPI, {
                     query: Explore,
@@ -72,6 +88,7 @@
         },
 
         created() {
+            this.fetchLogo()
             this.fetchExplore()
             this.fetchCorporate()
             this.fetchMembership()

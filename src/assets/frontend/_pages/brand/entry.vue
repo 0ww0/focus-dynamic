@@ -4,16 +4,16 @@
             heading(:text='head', subheader)
             card(stretch, :xmedia = 'false')
                 cardWrapper(:card = 'isResponsive', v-for = 'data in brand', :key = 'data.id')
-                    imageCard(:image = 'data', :slug='data.name_slug')
+                    imageCard(:image = 'data', :url = 'url')
 </template>
 
 <script>
-    import { API, EntryAPI, Brands } from './api/_api.js'
+    import { ENDPOINT, API, EntryAPI, Brands } from './api/_api.js'
     import Media from '../../_shares/media.js'
     import heading from '../../_components/text/_heading.vue'
     import card from '../../_components/card/_card.vue'
     import cardWrapper from '../../_components/card/_wrapper.vue'
-    import imageCard from '../../_components/card/type/_image.vue'
+    import imageCard from './components/card/_image.vue'
 
     export default {
         extends : Media,
@@ -30,7 +30,7 @@
                 head : {
                     title : 'Brands',
                 },
-
+                url: ENDPOINT,
                 brand : []
             }
         },

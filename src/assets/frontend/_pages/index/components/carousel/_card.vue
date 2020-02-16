@@ -10,7 +10,7 @@
     import { API, EntryAPI, Brands } from './../../api/_api.js'
     import siema from '../../../../_components/carousel/_siema.vue'
     import siemaWrapper from '../../../../_components/carousel/_wrapper.vue'
-    import imageCard from '../../../../_components/card/type/_image.vue'
+    import imageCard from '../card/_image.vue'
     import heading from '../../../../_components/text/_heading.vue'
 
     export default {

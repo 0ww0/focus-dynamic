@@ -51,3 +51,17 @@ query{
     }
 }
 `;
+
+export const Memberships = `
+query{
+    membershipsSingleton{
+        title,
+        description,
+        image{
+            path
+        },
+        linkLN,
+        linkJN
+    }
+}
+`;
