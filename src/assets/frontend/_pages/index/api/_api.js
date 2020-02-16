@@ -68,13 +68,9 @@ query{
 
 export const Contact = `
 query{
-    contactsSingleton(populate: 1){
+    contactsCollection(filter: { published: true }){
         title,
-        address,
-        contact,
-        enquiry,
-        career,
-        investor
+        content
     }
 }
 `;
