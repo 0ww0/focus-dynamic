@@ -11,6 +11,7 @@ module.exports = {
         'frontend/layout/footer' : './src/assets/frontend/_layouts/footer/footer.js',
         'frontend/page/index' : './src/assets/frontend/_pages/index/index.js',
         'frontend/page/brand' : './src/assets/frontend/_pages/brand/brand.js',
+        'frontend/page/contact' : './src/assets/frontend/_pages/contact/contact.js',
     },
     output: {
         path: path.resolve(__dirname),

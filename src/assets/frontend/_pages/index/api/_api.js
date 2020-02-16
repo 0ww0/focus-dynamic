@@ -66,9 +66,9 @@ query{
 }
 `;
 
-export const Contact = `
+export const Support = `
 query{
-    contactsCollection(filter: { published: true }){
+    supportsCollection(filter: { published: true }){
         title,
         content
     }

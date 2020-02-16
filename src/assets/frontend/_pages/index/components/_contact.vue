@@ -2,13 +2,13 @@
     .contact-holder
         heading(:text = 'head', subheader)
         card(stretch, :xmedia = 'false')
-            cardWrapper(:card = 'isResponsive', v-for = 'data in contact', :key = 'data.title')
+            cardWrapper(:card = 'isResponsive', v-for = 'data in support', :key = 'data.title')
                 support(:support = 'data')
 </template>
 
 <script>
     import Media from './../../../_shares/media.js'
-    import { API, EntryAPI, Contact } from './../api/_api.js'
+    import { API, EntryAPI, Support } from './../api/_api.js'
     import heading from './../../../_components/text/_heading.vue'
     import card from './../../../_components/card/_card.vue'
     import cardWrapper from './../../../_components/card/_wrapper.vue'
@@ -26,7 +26,7 @@
 
         data(){
             return {
-                contact: [],
+                support: [],
                 head : {
                     title : 'Contact Us',
                     align: 'left'
@@ -47,12 +47,12 @@
         },
 
         methods: {
-            fetchContact() {
+            fetchSupport() {
                 API.post(EntryAPI, {
-                    query: Contact,
+                    query: Support,
                 }).then(resp => {
-                    let contact = resp.data.data;
-                    this.contact = contact.contactsCollection;
+                    let support = resp.data.data;
+                    this.support = support.supportsCollection;
                 }).catch(err => {
                     console.log(err)
                 })
@@ -61,7 +61,7 @@
 
         created(){
             this.checkMobile()
-            this.fetchContact()
+            this.fetchSupport()
         }
     }
 </script>

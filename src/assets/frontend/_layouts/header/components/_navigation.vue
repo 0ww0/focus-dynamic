@@ -41,7 +41,7 @@
                     {
                         id : 5,
                         title : 'Contact Us',
-                        link : '../'
+                        link : '../contact-us/'
                     },
                 ]
             }
