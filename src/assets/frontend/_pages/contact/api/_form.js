@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const ENDPOINT = process.env.VUE_APP_ENDPOINT;
 
-const TOKEN = process.env.VUE_APP_TOKEN;
+const TOKEN = '71c69199e38653eafb5790e4da3270';
 
 const headers = {
     "Content-Type": "application/json",
@@ -14,4 +14,4 @@ export const API = axios.create({
     headers,
 });
 
-export const EntryAPI = "/api/graphql/query"
+export const EntryAPI = "/api/collections/save/contacts"

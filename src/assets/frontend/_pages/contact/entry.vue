@@ -4,8 +4,9 @@
             heading(:text='head', subheader)
             card(stretch, :xmedia = 'false')
                 cardWrapper(:card = 'isResponsive')
+                    formCard
                 cardWrapper(:card = 'isResponsive')
-                    support(v-for='data in support', :key = 'data.title', :support = 'data')
+                    supportCard(v-for='data in support', :key = 'data.title', :support = 'data')
 </template>
 
 <script>
@@ -14,7 +15,8 @@
     import card from '../../_components/card/_card.vue'
     import heading from '../../_components/text/_heading.vue'
     import cardWrapper from '../../_components/card/_wrapper.vue'
-    import support from './components/text/_support.vue'
+    import supportCard from './components/text/_support.vue'
+    import formCard from './components/_form.vue'
 
     export default {
         extends : Media,
@@ -23,7 +25,8 @@
             heading,
             card,
             cardWrapper,
-            support
+            supportCard,
+            formCard
         },
 
         data() {
