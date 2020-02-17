@@ -5,6 +5,7 @@
             cardWrapper(:card = 'isResponsive', :order= 'isOrder')
                 imageCard(:image = 'membership', :url = 'url')
             cardWrapper(:card = 'isResponsive')
+                paragraph(:content = 'membership.description')
 </template>
 
 <script>
@@ -14,6 +15,7 @@
     import card from './../../../_components/card/_card.vue'
     import cardWrapper from './../../../_components/card/_wrapper.vue'
     import imageCard from './card/_image.vue'
+    import paragraph from './text/_paragraph.vue'
 
     export default {
         extends: Media,
@@ -22,7 +24,8 @@
             heading,
             card,
             cardWrapper,
-            imageCard
+            imageCard,
+            paragraph
         },
 
         data() {
