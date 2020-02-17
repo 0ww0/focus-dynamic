@@ -1,9 +1,73 @@
 <template lang="pug">
+    .wrapper-content
+        .container
+            heading(:text='head', subheader)
+            card(stretch, :xmedia = 'false')
+                cardWrapper(:card = 'isResponsive')
+                cardWrapper(:card = 'isResponsive')
+                    support(v-for='data in support', :key = 'data.title', :support = 'data')
 </template>
 
 <script>
-export default {}
+    import { API, EntryAPI, Support }  from './api/_api.js'
+    import Media from '../../_shares/media.js'
+    import card from '../../_components/card/_card.vue'
+    import heading from '../../_components/text/_heading.vue'
+    import cardWrapper from '../../_components/card/_wrapper.vue'
+    import support from './components/text/_support.vue'
+
+    export default {
+        extends : Media,
+
+        components : {
+            heading,
+            card,
+            cardWrapper,
+            support
+        },
+
+        data() {
+            return {
+                head : {
+                    title : 'Contact Us',
+                },
+                support : []
+            }
+        },
+
+        computed : {
+            isResponsive () {
+                if(this.is801) {
+                    return 'half'
+                } else {
+                    return 'full'
+                }
+            }
+        },
+
+        methods : {
+            fetchSupport() {
+                API.post(EntryAPI, {
+                    query: Support,
+                }).then(resp => {
+                    let support = resp.data.data;
+                    this.support = support.supportsCollection;
+                }).catch(err => {
+                    console.log(err)
+                })
+            }
+        },
+
+        created() {
+            this.checkMobile()
+            this.fetchSupport()
+        }
+    }
 </script>
 
 <style lang="scss" scoped>
+    .wrapper-content {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
 </style>

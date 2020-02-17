@@ -15,12 +15,3 @@ export const API = axios.create({
 });
 
 export const EntryAPI = "/api/graphql/query"
-
-export const Support = `
-query{
-    supportsCollection(filter: { published: true }){
-        title,
-        content
-    }
-}
-`;
