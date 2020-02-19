@@ -10,7 +10,7 @@
 
 <script>
     import Media from './../../../_shares/media.js'
-    import { ENDPOINT, API, EntryAPI, Membership } from './../api/_api.js'
+    import { URL, API, EntryAPI, Membership } from './../api/_api.js'
     import heading from './../../../_components/text/_heading.vue'
     import card from './../../../_components/card/_card.vue'
     import cardWrapper from './../../../_components/card/_wrapper.vue'
@@ -33,9 +33,9 @@
                 membership: {
                     image: {}
                 },
-                url: ENDPOINT,
+                url: URL,
                 head: {
-                    title : '',
+                    title : 'Membership',
                     align: 'left'
                 }
             }
@@ -62,7 +62,6 @@
                 }).then(resp => {
                     let member = resp.data.data;
                     this.membership = member.membershipsSingleton;
-                    this.head.title = this.membership.title;
                     this.membership.image = this.membership.image.path;
                 }).catch(err => {
                     console.log(err)

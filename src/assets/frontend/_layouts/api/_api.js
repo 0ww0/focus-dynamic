@@ -1,6 +1,8 @@
 import axios from "axios";
 
-export const ENDPOINT = process.env.VUE_APP_ENDPOINT;
+export const URL = process.env.VUE_APP_URL;
+
+const ENDPOINT = URL + process.env.VUE_APP_ENDPOINT;
 
 const TOKEN = process.env.VUE_APP_TOKEN;
 

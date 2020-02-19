@@ -6,7 +6,7 @@
 </template>
 
 <script>
-    import { ENDPOINT, API, EntryAPI, Banners } from './../../api/_api.js'
+    import { URL, API, EntryAPI, Banners } from './../../api/_api.js'
     import siema from '../../../../_components/carousel/_siema.vue'
     import siemaWrapper from '../../../../_components/carousel/_wrapper.vue'
     import bannerImage from './type/_banner.vue'
@@ -25,7 +25,7 @@
                 page : {
                     1200: 1,
                 },
-                url: ENDPOINT,
+                url: URL,
                 banner : null,
             }
         },

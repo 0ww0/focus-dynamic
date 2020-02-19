@@ -9,7 +9,7 @@
 </template>
 
 <script>
-    import { ENDPOINT, API, EntryAPI, Logo, Explore, Corporate, Membership } from './../api/_api.js'
+    import { URL, API, EntryAPI, Logo, Explore, Corporate, Membership } from './../api/_api.js'
     import info from './components/_info.vue'
     import sitemap from './components/_sitemap.vue'
 
@@ -21,7 +21,7 @@
 
         data() {
             return {
-                url: ENDPOINT,
+                url: URL,
                 info: {
                     logo:{}
                 },

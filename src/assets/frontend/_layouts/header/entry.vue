@@ -9,7 +9,7 @@
 </template>
 
 <script>
-    import { ENDPOINT, API, EntryAPI, Logo } from './../api/_api.js'
+    import { URL, API, EntryAPI, Logo } from './../api/_api.js'
     import logo from './components/_logo.vue'
     import trigger from './components/_trigger.vue'
     import navigation from './components/_navigation.vue'
@@ -25,7 +25,7 @@
 
         data() {
             return {
-                url: ENDPOINT,
+                url: URL,
                 logo: {
                     image:{}
                 },

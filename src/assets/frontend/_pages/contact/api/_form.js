@@ -1,8 +1,10 @@
 import axios from "axios";
 
-export const ENDPOINT = process.env.VUE_APP_ENDPOINT;
+export const URL = process.env.VUE_APP_URL;
 
-const TOKEN = '71c69199e38653eafb5790e4da3270';
+const ENDPOINT = URL + process.env.VUE_APP_ENDPOINT;
+
+const TOKEN = process.env.VUE_CONTACT_TOKEN;
 
 const headers = {
     "Content-Type": "application/json",

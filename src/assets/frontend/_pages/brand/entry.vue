@@ -8,7 +8,7 @@
 </template>
 
 <script>
-    import { ENDPOINT, API, EntryAPI, Brands } from './api/_api.js'
+    import { URL, API, EntryAPI, Brands } from './api/_api.js'
     import Media from '../../_shares/media.js'
     import heading from '../../_components/text/_heading.vue'
     import card from '../../_components/card/_card.vue'
@@ -30,7 +30,7 @@
                 head : {
                     title : 'Brands',
                 },
-                url: ENDPOINT,
+                url: URL,
                 brand : []
             }
         },

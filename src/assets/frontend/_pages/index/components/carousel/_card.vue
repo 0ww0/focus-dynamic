@@ -7,7 +7,7 @@
 </template>
 
 <script>
-    import { ENDPOINT, API, EntryAPI, Brands } from './../../api/_api.js'
+    import { URL, API, EntryAPI, Brands } from './../../api/_api.js'
     import siema from '../../../../_components/carousel/_siema.vue'
     import siemaWrapper from '../../../../_components/carousel/_wrapper.vue'
     import hoverCard from '../card/_hover.vue'
@@ -35,7 +35,7 @@
                     800: 4,
                     1024: 5,
                 },
-                url : ENDPOINT,
+                url : URL,
                 brand : null
             }
         },
