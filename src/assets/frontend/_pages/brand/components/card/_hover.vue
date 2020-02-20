@@ -5,7 +5,7 @@
             .hover-action
                 a.button(:href="image.link")
                     span Website
-                a.button(:href="image.link")
+                a.button(@click = "open")
                     span Gallery
         .text
             p {{ image.name }}
@@ -17,6 +17,12 @@ export default {
         image : Object,
         url : String
     },
+
+    methods : {
+        open() {
+            this.$emit('open')
+        }
+    }
 }
 </script>
 
@@ -47,8 +53,11 @@ export default {
                 .hover-action {
                     opacity: 1;
                     visibility: visible;
-                    height: 50%;
+                    height: 60%;
                     @include trans-prop(opacity, visibility, height)
+                }
+                a.button {
+                    display: block;
                 }
             }
 
@@ -72,7 +81,7 @@ export default {
             @include trans-prop(opacity, visibility, height)
 
             a.button {
-                display: block;
+                display: none;
 
                 text-align: center;
                 width: 50%;

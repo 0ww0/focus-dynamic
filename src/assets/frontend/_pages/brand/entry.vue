@@ -4,7 +4,9 @@
             heading(:text='head', subheader)
             card(stretch, :xmedia = 'false')
                 cardWrapper(:card = 'isResponsive', v-for = 'data in brand', :key = 'data.id')
-                    hoverCard(:image = 'data', :url = 'url')
+                    hoverCard(:image = 'data', :url = 'url', @open = "showModal('gallery', data)")
+            modal(ref='gallery', overlayTheme = 'dark', blocking, @close = 'clearGallery')
+                gallery(:gallery = 'gallery', :url = 'url')
 </template>
 
 <script>
@@ -14,6 +16,8 @@
     import card from '../../_components/card/_card.vue'
     import cardWrapper from '../../_components/card/_wrapper.vue'
     import hoverCard from './components/card/_hover.vue'
+    import modal from './../../_components/modal/_modal.vue'
+    import gallery from './components/carousel/_gallery.vue'
 
     export default {
         extends : Media,
@@ -22,7 +26,9 @@
             heading,
             card,
             cardWrapper,
-            hoverCard
+            hoverCard,
+            modal,
+            gallery
         },
 
         data() {
@@ -31,7 +37,11 @@
                     title : 'Brands',
                 },
                 url: URL,
-                brand : []
+                brand : [],
+                gallery: {
+                    name: '',
+                    list: null
+                }
             }
         },
 
@@ -57,6 +67,22 @@
                 }).catch(err => {
                     console.log(err)
                 })
+            },
+
+            showModal(ref, data) {
+                console.log(ref)
+                if (this.$refs[ref]) {
+                    this.gallery.name = data.name
+                    this.gallery.list = data.gallery
+                    this.$refs[ref].open()
+                } else {
+                    throw new Error('Ref not defined: ' + ref)
+                }
+            },
+
+            clearGallery() {
+                this.gallery.name = '',
+                this.gallery.list = null
             }
         },
 

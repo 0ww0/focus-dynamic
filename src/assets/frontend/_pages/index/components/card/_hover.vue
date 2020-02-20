@@ -1,5 +1,4 @@
-<template lang="pug">
-.hover-component
+<template lang="pug">\
     .card-component
         .image
             img(:src = "url + image.image.path", :alt = "image.name")
@@ -30,11 +29,8 @@
 <style lang="scss" scoped>
     @import '../../../../style/config.scss';
 
-    .hover-component {
-        position: relative;
-    }
-
     .card-component{
+        overflow: hidden;
         width: calc(100%);
         height: 100%;
         display: flex;
