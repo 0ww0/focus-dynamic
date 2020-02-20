@@ -1,11 +1,12 @@
 <template lang="pug">
+.hover-component
     .card-component
         .image
             img(:src = "url + image.image.path", :alt = "image.name")
             .hover-action
                 a.button(:href="image.link")
                     span Website
-                a.button
+                a.button(@click = "open")
                     span Gallery
         .text
             p {{ image.name }}
@@ -17,11 +18,21 @@
             image : Object,
             url : String
         },
+
+        methods : {
+            open() {
+                this.$emit('open')
+            }
+        }
     }
 </script>
 
 <style lang="scss" scoped>
     @import '../../../../style/config.scss';
+
+    .hover-component {
+        position: relative;
+    }
 
     .card-component{
         width: calc(100%);

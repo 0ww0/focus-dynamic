@@ -1,6 +1,10 @@
 <template lang="pug">
-    siema(refer = 'gallery', :page = 'page' carousel='gallery', loop, v-if = 'gallery')
-        siemaWrapper(v-for = "data in gallery", :key = 'data.id',)
+.gallery-holder
+    p {{ gallery.name }}
+    siema(refer = 'gallery', :page = 'page', carousel='gallery', loop, v-if='gallery.list')
+        siemaWrapper(v-for = "data in gallery.list", :key = 'data.id')
+            .gallery-image
+                img(:src='url + data.path')
 </template>
 
 <script>
@@ -9,19 +13,19 @@
 
     export default {
         props: {
-            gallery: Array,
+            gallery: Object,
             url: String
         },
-        
+
         components: {
             siema,
-            siemaWrapper
+            siemaWrapper,
         },
 
         data() {
             return {
                 page : {
-                    1200: 1,
+                    1200 : 1
                 },
             }
         },

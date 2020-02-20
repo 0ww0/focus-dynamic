@@ -2,8 +2,10 @@
     .card-carousel
         heading(:text = 'head')
         siema(refer = 'card', :page = 'page' carousel='card', loop, v-if = 'brand')
-            siemaWrapper(v-for = "data in brand", :key = 'brand.id')
-                hoverCard(:image = 'data', :url = 'url')
+            siemaWrapper(v-for = "data in brand", :key = 'brand._id')
+                hoverCard(:image = 'data', :url = 'url', @open = "showModal('gallery', data)")
+        modal(ref='gallery', overlayTheme = 'dark', blocking, @close = 'clearGallery')
+            gallery(:gallery = 'gallery', :url = 'url')
 </template>
 
 <script>
@@ -13,6 +15,7 @@
     import hoverCard from './card/_hover.vue'
     import heading from '../../../_components/text/_heading.vue'
     import modal from '../../../_components/modal/_modal.vue'
+    import gallery from './carousel/_gallery.vue'
 
     export default {
         components : {
@@ -20,7 +23,8 @@
             siemaWrapper,
             hoverCard,
             heading,
-            modal
+            modal,
+            gallery
         },
 
         data() {
@@ -38,7 +42,11 @@
                     1024: 5,
                 },
                 url : URL,
-                brand : null
+                brand : null,
+                gallery: {
+                    name: '',
+                    list: null
+                }
             }
         },
 
@@ -53,12 +61,21 @@
                     console.log(err)
                 })
             },
-            showModal(ref) {
+
+            showModal(ref, data) {
+                console.log(ref)
                 if (this.$refs[ref]) {
+                    this.gallery.name = data.name
+                    this.gallery.list = data.gallery
                     this.$refs[ref].open()
                 } else {
                     throw new Error('Ref not defined: ' + ref)
                 }
+            },
+
+            clearGallery() {
+                this.gallery.name = '',
+                this.gallery.list = null
             }
         },
 
@@ -78,6 +95,10 @@
         position: relative;
         width: 100%;
         height: 400px;
+    }
+
+    /deep/ .hover-component{
+        position: relative;
     }
 
     /deep/ .card-component {
