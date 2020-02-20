@@ -1,7 +1,7 @@
 <template lang="pug">
     .card-carousel
         heading(:text = 'head')
-        agile(:slides-to-show = '5', :autoplay-speed="5000", :speed="2500", :dots='false',:nav-buttons='false' pause-on-hover, pause-on-dots-hover, autoplay, v-if='brand')
+        agile(:options = 'agile', v-if='brand')
             siemaWrapper(v-for = "data in brand", :key = 'brand._id')
                 hoverCard(:image = 'data', :url = 'url', @open = "showModal('gallery', data)")
         modal(ref='gallery', overlayTheme = 'dark', blocking, @close = 'clearGallery')
@@ -34,18 +34,46 @@
                     linkText: 'See all',
                     linkUrl: '/brand/',
                 },
-
-                page : {
-                    480: 2,
-                    640: 3,
-                    800: 4,
-                    1024: 5,
-                },
                 url : URL,
                 brand : null,
                 gallery: {
                     name: '',
                     list: null
+                },
+                agile: {
+                    autoplay: true,
+                    autoplaySpeed: 5000,
+                    speed: 2500,
+                    dots: false,
+                    navButtons: false,
+                    pauseOnHover: false,
+                    pauseOnDotsHover: false,
+                    responsive : [
+                        {
+                            breakpoint: 480,
+                            settings: {
+                                slidesToShow: 2,
+                            }
+                        },
+                        {
+                            breakpoint: 640,
+                            settings: {
+                                slidesToShow: 3,
+                            }
+                        },
+                        {
+                            breakpoint: 800,
+                            settings: {
+                                slidesToShow: 4,
+                            }
+                        },
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToShow: 5,
+                            }
+                        }
+                    ]
                 }
             }
         },
@@ -106,5 +134,10 @@
         height: 400px;
         margin-left: 10px;
         margin-right: 10px;
+    }
+
+    /deep/ .modal {
+        max-width: 1200px;
+        background-color: transparent;
     }
 </style>

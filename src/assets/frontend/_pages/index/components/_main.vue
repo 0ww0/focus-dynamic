@@ -1,5 +1,5 @@
 <template lang="pug">
-    agile(:autoplay-speed="7500", :speed="2500", fade, pause-on-hover, pause-on-dots-hover, autoplay, v-if='banner')
+    agile(:options = 'agile', v-if='banner')
         siemaWrapper(v-for = "data in banner", :key = 'data.id',)
             bannerImage(:banner = 'data', v-if='data.category === "Image"', :url = "url")
             bannerVideo(:banner = 'data', v-else, :url = "url")
@@ -26,6 +26,14 @@
             return {
                 url: URL,
                 banner : null,
+                agile: {
+                    autoplaySpeed: 7500,
+                    fade: true,
+                    speed: 2500,
+                    pauseOnHover: true,
+                    pauseOnDotsHover: true,
+                    autoplay: true,
+                },
             }
         },
 

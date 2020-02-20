@@ -104,4 +104,9 @@
             height: calc(420px - 44px);
         }
     }
+
+    /deep/ .modal {
+        max-width: 1200px;
+        background-color: transparent;
+    }
 </style>
