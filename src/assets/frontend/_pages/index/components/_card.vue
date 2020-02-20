@@ -1,7 +1,7 @@
 <template lang="pug">
     .card-carousel
         heading(:text = 'head')
-        siema(refer = 'card', :page = 'page' carousel='card', v-if = 'brand')
+        agile(:slides-to-show = '5', :autoplay-speed="5000", :speed="2500", :dots='false',:nav-buttons='false' pause-on-hover, pause-on-dots-hover, autoplay, v-if='brand')
             siemaWrapper(v-for = "data in brand", :key = 'brand._id')
                 hoverCard(:image = 'data', :url = 'url', @open = "showModal('gallery', data)")
         modal(ref='gallery', overlayTheme = 'dark', blocking, @close = 'clearGallery')
