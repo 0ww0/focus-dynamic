@@ -1,7 +1,7 @@
 <template lang="pug">
     .card-carousel
         heading(:text = 'head')
-        siema(refer = 'card', :page = 'page' carousel='card', loop, v-if = 'brand')
+        siema(refer = 'card', :page = 'page' carousel='card', v-if = 'brand')
             siemaWrapper(v-for = "data in brand", :key = 'brand._id')
                 hoverCard(:image = 'data', :url = 'url', @open = "showModal('gallery', data)")
         modal(ref='gallery', overlayTheme = 'dark', blocking, @close = 'clearGallery')

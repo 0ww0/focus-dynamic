@@ -1,6 +1,5 @@
 <template lang="pug">
 .gallery-holder
-    p {{ gallery.name }}
     siema(refer = 'gallery', :page = 'page', carousel='gallery', loop, v-if='gallery.list')
         siemaWrapper(v-for = "data in gallery.list", :key = 'data.id')
             .gallery-image

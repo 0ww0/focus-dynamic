@@ -1,4 +1,4 @@
-<template lang="pug">\
+<template lang="pug">
     .card-component
         .image
             img(:src = "url + image.image.path", :alt = "image.name")
