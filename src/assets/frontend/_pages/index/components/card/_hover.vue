@@ -1,30 +1,29 @@
-i<template lang="pug">
+<template lang="pug">
     .card-component
         .image
             img(:src = "url + image.image.path", :alt = "image.name")
             .hover-action
                 a.button(:href="image.link")
                     span Website
-                a.button(:href="image.link")
+                a.button
                     span Gallery
         .text
             p {{ image.name }}
 </template>
 
 <script>
-export default {
-    props : {
-        image : Object,
-        url : String
-    },
-}
+    export default {
+        props : {
+            image : Object,
+            url : String
+        },
+    }
 </script>
 
 <style lang="scss" scoped>
     @import '../../../../style/config.scss';
 
     .card-component{
-        overflow: hidden;
         width: calc(100%);
         height: 100%;
         display: flex;
@@ -47,8 +46,11 @@ export default {
                 .hover-action {
                     opacity: 1;
                     visibility: visible;
-                    height: 50%;
-                    @include trans-prop(opacity, visibility, height)
+                    height: 60%;
+
+                    a.button {
+                        display: block;
+                    }
                 }
             }
 
@@ -72,7 +74,7 @@ export default {
             @include trans-prop(opacity, visibility, height)
 
             a.button {
-                display: block;
+                display: none;
 
                 text-align: center;
                 width: 50%;
@@ -84,12 +86,12 @@ export default {
                 @include fs(14)
                 @include color($black, .8)
                 @include border($black, .8)
+                @include trans-prop(background-color, color, border-color)
 
                 &:hover {
                     @include background(#d4af37)
                     @include color($white, .9)
                     @include border(#d4af37)
-                    @include trans-prop(background-color, color, border-color)
                 }
 
                 &:not(:last-child) {

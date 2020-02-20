@@ -8,8 +8,8 @@
 </template>
 
 <script>
-    import mainCarousel from './components/carousel/_main.vue'
-    import cardCarousel from './components/carousel/_card.vue'
+    import mainCarousel from './components/_main.vue'
+    import cardCarousel from './components/_card.vue'
     import membership from './components/_membership.vue'
     import contact from './components/_contact.vue'
 

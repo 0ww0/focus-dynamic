@@ -7,18 +7,20 @@
 </template>
 
 <script>
-    import { URL, API, EntryAPI, Brands } from './../../api/_api.js'
-    import siema from '../../../../_components/carousel/_siema.vue'
-    import siemaWrapper from '../../../../_components/carousel/_wrapper.vue'
-    import hoverCard from '../card/_hover.vue'
-    import heading from '../../../../_components/text/_heading.vue'
+    import { URL, API, EntryAPI, Brands } from './../api/_api.js'
+    import siema from '../../../_components/carousel/_siema.vue'
+    import siemaWrapper from '../../../_components/carousel/_wrapper.vue'
+    import hoverCard from './card/_hover.vue'
+    import heading from '../../../_components/text/_heading.vue'
+    import modal from '../../../_components/modal/_modal.vue'
 
     export default {
         components : {
             siema,
             siemaWrapper,
             hoverCard,
-            heading
+            heading,
+            modal
         },
 
         data() {
@@ -50,6 +52,13 @@
                 }).catch(err => {
                     console.log(err)
                 })
+            },
+            showModal(ref) {
+                if (this.$refs[ref]) {
+                    this.$refs[ref].open()
+                } else {
+                    throw new Error('Ref not defined: ' + ref)
+                }
             }
         },
 

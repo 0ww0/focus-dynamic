@@ -6,11 +6,11 @@
 </template>
 
 <script>
-    import { URL, API, EntryAPI, Banners } from './../../api/_api.js'
-    import siema from '../../../../_components/carousel/_siema.vue'
-    import siemaWrapper from '../../../../_components/carousel/_wrapper.vue'
-    import bannerImage from './type/_banner.vue'
-    import bannerVideo from './type/_video.vue'
+    import { URL, API, EntryAPI, Banners } from './../api/_api.js'
+    import siema from '../../../_components/carousel/_siema.vue'
+    import siemaWrapper from '../../../_components/carousel/_wrapper.vue'
+    import bannerImage from './carousel/type/_banner.vue'
+    import bannerVideo from './carousel/type/_video.vue'
 
     export default {
         components : {
