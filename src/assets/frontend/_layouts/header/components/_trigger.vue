@@ -74,7 +74,7 @@
             margin-left: auto;
             margin-right: 20px;
             i {
-                font-size: 16px;
+                @include fs(16)
             }
         }
     }

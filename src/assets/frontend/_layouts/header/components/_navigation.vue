@@ -145,7 +145,6 @@
             padding-bottom: 10px;
             padding-left: 20px;
             padding-right: 20px;
-            letter-spacing: .2em;
 
             @include fs(14)
 
