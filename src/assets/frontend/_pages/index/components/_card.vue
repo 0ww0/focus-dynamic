@@ -10,6 +10,7 @@
 
 <script>
     import { URL, API, EntryAPI, Brands } from './../api/_api.js'
+    import media from '../../../_shares/media.js'
     import siema from '../../../_components/carousel/_siema.vue'
     import siemaWrapper from '../../../_components/carousel/_wrapper.vue'
     import hoverCard from './card/_hover.vue'
@@ -18,6 +19,8 @@
     import gallery from './carousel/_gallery.vue'
 
     export default {
+        extends: media,
+
         components : {
             siema,
             siemaWrapper,
@@ -50,25 +53,25 @@
                     pauseOnDotsHover: false,
                     responsive : [
                         {
-                            breakpoint: 480,
+                            breakpoint: 481,
                             settings: {
                                 slidesToShow: 2,
                             }
                         },
                         {
-                            breakpoint: 640,
+                            breakpoint: 641,
                             settings: {
                                 slidesToShow: 3,
                             }
                         },
                         {
-                            breakpoint: 800,
+                            breakpoint: 801,
                             settings: {
                                 slidesToShow: 4,
                             }
                         },
                         {
-                            breakpoint: 1024,
+                            breakpoint: 1025,
                             settings: {
                                 slidesToShow: 5,
                             }
@@ -108,6 +111,7 @@
         },
 
         created() {
+            this.checkMobile()
             this.fetchStore()
         }
     }

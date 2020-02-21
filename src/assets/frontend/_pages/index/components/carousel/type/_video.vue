@@ -1,6 +1,6 @@
 <template lang="pug">
     .banner-component.video
-        video(preload="none" autoplay, loop, muted)
+        video(preload="none" autoplay, loop, muted, playinline)
             source(:src='isBanner')
 </template>
 
