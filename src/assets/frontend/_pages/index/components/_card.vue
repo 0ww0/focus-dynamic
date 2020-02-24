@@ -21,6 +21,12 @@
     export default {
         extends: media,
 
+        props: {
+            brand : Array,
+            gallery: Object,
+            url : String,
+        },
+
         components : {
             siema,
             siemaWrapper,
@@ -37,12 +43,7 @@
                     linkText: 'See all',
                     linkUrl: '/brand/',
                 },
-                url : URL,
-                brand : null,
-                gallery: {
-                    name: '',
-                    list: null
-                },
+
                 agile: {
                     autoplay: true,
                     autoplaySpeed: 5000,
@@ -82,17 +83,6 @@
         },
 
         methods : {
-            fetchStore() {
-                API.post(EntryAPI, {
-                    query: Brands,
-                }).then(resp => {
-                    let brand = resp.data.data;
-                    this.brand = brand.brandsCollection;
-                }).catch(err => {
-                    console.log(err)
-                })
-            },
-
             showModal(ref, data) {
                 console.log(ref)
                 if (this.$refs[ref]) {
@@ -112,7 +102,6 @@
 
         created() {
             this.checkMobile()
-            this.fetchStore()
         }
     }
 </script>

@@ -8,7 +8,6 @@
 
 <script>
     import Media from './../../../_shares/media.js'
-    import { API, EntryAPI, Support } from './../api/_api.js'
     import heading from './../../../_components/text/_heading.vue'
     import card from './../../../_components/card/_card.vue'
     import cardWrapper from './../../../_components/card/_wrapper.vue'
@@ -16,6 +15,10 @@
 
     export default {
         extends: Media,
+
+        props: {
+            support : Array,
+        },
 
         components : {
             heading,
@@ -26,7 +29,6 @@
 
         data(){
             return {
-                support: [],
                 head : {
                     title : 'Contact Us',
                     align: 'left'
@@ -46,22 +48,8 @@
             }
         },
 
-        methods: {
-            fetchSupport() {
-                API.post(EntryAPI, {
-                    query: Support,
-                }).then(resp => {
-                    let support = resp.data.data;
-                    this.support = support.supportsCollection;
-                }).catch(err => {
-                    console.log(err)
-                })
-            }
-        },
-
         created(){
             this.checkMobile()
-            this.fetchSupport()
         }
     }
 </script>

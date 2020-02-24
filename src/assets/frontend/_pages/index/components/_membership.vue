@@ -10,7 +10,6 @@
 
 <script>
     import Media from './../../../_shares/media.js'
-    import { URL, API, EntryAPI, Membership } from './../api/_api.js'
     import heading from './../../../_components/text/_heading.vue'
     import card from './../../../_components/card/_card.vue'
     import cardWrapper from './../../../_components/card/_wrapper.vue'
@@ -19,6 +18,11 @@
 
     export default {
         extends: Media,
+
+        props : {
+            membership : Object,
+            url : String
+        },
 
         components : {
             heading,
@@ -30,10 +34,6 @@
 
         data() {
             return {
-                membership: {
-                    image: {}
-                },
-                url: URL,
                 head: {
                     title : 'Membership',
                     align: 'left'
@@ -54,24 +54,6 @@
                 return this.is801 ? 2 : 0
             }
         },
-
-        methods: {
-            fetchMembership() {
-                API.post(EntryAPI, {
-                    query: Membership,
-                }).then(resp => {
-                    let member = resp.data.data;
-                    this.membership = member.membershipsSingleton;
-                    this.membership.image = this.membership.image.path;
-                }).catch(err => {
-                    console.log(err)
-                })
-            }
-        },
-
-        created(){
-            this.fetchMembership()
-        }
     }
 </script>
 
