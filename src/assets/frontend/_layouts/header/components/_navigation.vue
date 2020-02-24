@@ -35,7 +35,7 @@
                     {
                         id : 4,
                         title : 'Membership',
-                        link : '../'
+                        link : '../membership/'
                     },
 
                     {

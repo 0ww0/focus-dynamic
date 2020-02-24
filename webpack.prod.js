@@ -12,6 +12,7 @@ module.exports = {
         'frontend/page/index' : './src/assets/frontend/_pages/index/index.js',
         'frontend/page/brand' : './src/assets/frontend/_pages/brand/brand.js',
         'frontend/page/contact' : './src/assets/frontend/_pages/contact/contact.js',
+        'frontend/page/membership' : './src/assets/frontend/_pages/membership/membership.js',
     },
     output: {
         path: path.resolve(__dirname),

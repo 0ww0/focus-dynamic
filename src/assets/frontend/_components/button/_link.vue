@@ -53,7 +53,7 @@
         width: 100%;
         border: em(1) solid;
         text-align: center;
-        padding: em(10) em(50);
+        padding: em(12) em(50);
 
         display: flex;
         flex-direction: row;
