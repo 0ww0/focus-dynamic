@@ -6,7 +6,7 @@
 <script>
     import { URL, API, EntryAPI, Banners, Memberships } from './api/_api.js'
     import axios from 'axios'
-    import banner from '../../_components/banner/_heading.vue'
+    import banner from '../../../_components/banner/_heading.vue'
 
     export default {
         components : {
