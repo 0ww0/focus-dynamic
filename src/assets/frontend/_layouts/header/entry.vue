@@ -1,5 +1,6 @@
 <template lang="pug">
     .wrapper-header
+        loading(ref='loading')
         .header
             logo(:logo = 'logo', :url = 'url')
             trigger
@@ -12,12 +13,14 @@
     import logo from './components/_logo.vue'
     import trigger from './components/_trigger.vue'
     import navigation from './components/_navigation.vue'
+    import loading from '../../_components/loader/_spin.vue'
 
     export default {
         components : {
             logo,
             trigger,
             navigation,
+            loading
         },
 
         data() {
@@ -51,25 +54,17 @@
                     $header.removeClass('slim')
                 }
             },
-
-            // loader() {
-            //     this.$refs['loading'].open()
-            //
-            //     setTimeout(() => {
-            //         this.$refs['loading'].close()
-            //     }, 3000)
-            // }
         },
 
         created () {
             this.fetchLogo()
-            // document.onreadystatechange = () => {
-            //     if (document.readyState == "complete") {
-            //         this.$refs['loading'].close()
-            //     } else {
-            //         this.$refs['loading'].open()
-            //     }
-            // }
+            document.onreadystatechange = () => {
+                if (document.readyState == "complete") {
+                    this.$refs['loading'].close()
+                } else {
+                    this.$refs['loading'].open()
+                }
+            }
             window.addEventListener('scroll', this.handleScroll);
         },
 

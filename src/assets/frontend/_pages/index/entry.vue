@@ -61,6 +61,9 @@
                     let support = SupportResp.data.data;
                     this.support = support.supportsCollection;
                 }))
+                .catch(axios.spread((BannersErr, BrandsErr, MembershipErr, SupportErr ) => {
+                    console.log(BannersErr, BrandsErr, MembershipErr, SupportErr)
+                }))
             },
         },
 

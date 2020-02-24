@@ -10,6 +10,7 @@
 
 <script>
     import { URL, API, EntryAPI, Logo, Explore, Corporate, Membership } from './../api/_api.js'
+    import axios from "axios"
     import info from './components/_info.vue'
     import sitemap from './components/_sitemap.vue'
 
@@ -41,57 +42,35 @@
         },
 
         methods : {
-            fetchLogo() {
-                API.post(EntryAPI, {
-                    query: Logo,
-                }).then(resp => {
-                    let list = resp.data.data;
+            fetchAxios() {
+                axios.all([
+                    API.post(EntryAPI, { query : Logo }),
+                    API.post(EntryAPI, { query : Explore }),
+                    API.post(EntryAPI, { query : Corporate }),
+                    API.post(EntryAPI, { query : Membership })
+                ])
+                .then(axios.spread(( LogoResp, ExploreResp, CorporateResp, MembershipResp ) => {
+                    let list = LogoResp.data.data;
                     this.info = list.logoSingleton;
                     this.info.logo = list.logoSingleton.logo.path;
-                }).catch(err => {
-                    console.log(err)
-                })
-            },
 
-            fetchExplore() {
-                API.post(EntryAPI, {
-                    query: Explore,
-                }).then(resp => {
-                    let explore = resp.data.data;
+                    let explore = ExploreResp.data.data;
                     this.explore.list = explore.sitemapCollection;
-                }).catch(err => {
-                    console.log(err)
-                })
-            },
 
-            fetchCorporate() {
-                API.post(EntryAPI, {
-                    query: Corporate,
-                }).then(resp => {
-                    let corporate = resp.data.data;
+                    let corporate = CorporateResp.data.data;
                     this.corporate.list = corporate.sitemapCollection;
-                }).catch(err => {
-                    console.log(err)
-                })
-            },
 
-            fetchMembership() {
-                API.post(EntryAPI, {
-                    query: Membership,
-                }).then(resp => {
-                    let membership = resp.data.data;
+                    let membership = MembershipResp.data.data;
                     this.membership.list = membership.sitemapCollection;
-                }).catch(err => {
-                    console.log(err)
-                })
-            }
+                }))
+                .catch(axios.spread(( LogoErr, ExploreErr, CorporateErr, MembershipErr ) => {
+                    console.log(LogoErr, ExploreErr, CorporateErr, MembershipErr)
+                }))
+            },
         },
 
         created() {
-            this.fetchLogo()
-            this.fetchExplore()
-            this.fetchCorporate()
-            this.fetchMembership()
+            this.fetchAxios()
         }
     }
 </script>
