@@ -1,16 +1,16 @@
 <template lang="pug">
     .banner-component.text-banner
         .image.background
-            img(:src="banner.background")
+            img(:src="url + banner.image")
         .text.foreground(:class="{ 'no-tagline' : !isTagline }")
-            p.title {{ banner.name }}
-            p.tagline(v-if = 'isTagline') {{ banner.tagline }}
+            p.title {{ banner.title }}
 </template>
 
 <script>
     export default {
         props : {
-            banner : Object
+            banner : Object,
+            url : String
         },
 
         computed : {
@@ -27,7 +27,7 @@
     .banner-component {
         position: relative;
         width: 100%;
-        height: 300px;
+        height: 350px;
         .background {
             width: 100%;
             height: 100%;
@@ -43,20 +43,15 @@
             left: 0;
             right: 0;
             bottom: 50%;
-            margin: -40px auto;
-            width: calc(100% - 160px);
+            margin: -20px auto;
+            width: calc(100% - 40px);
             text-align: center;
-
-            &.no-tagline {
-                margin: -22.5px auto;
-            }
+            text-transform: uppercase;
+            @include color(#d4af37)
 
             .title {
                 @include fs(30)
                 font-weight: 500;
-            }
-            .tagline {
-                @include fs(22)
             }
         }
     }

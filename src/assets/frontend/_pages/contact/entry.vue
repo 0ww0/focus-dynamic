@@ -1,39 +1,42 @@
 <template lang="pug">
     .wrapper-content
+        banner(:banner = 'banner', :url = 'url')
         .container
-            heading(:text='head', subheader)
-            card(stretch, :xmedia = 'false')
-                cardWrapper(:card = 'isResponsive')
-                    formCard
-                cardWrapper(:card = 'isResponsive')
-                    supportCard(v-for='data in support', :key = 'data.title', :support = 'data')
+            .content-holder
+                card(stretch, :xmedia = 'false')
+                    cardWrapper(:card = 'isResponsive')
+                        formCard
+                    cardWrapper(:card = 'isResponsive')
+                        supportCard(v-for='data in support', :key = 'data.title', :support = 'data')
 </template>
 
 <script>
-    import { API, EntryAPI, Support }  from './api/_api.js'
+    import { URL, API, EntryAPI, Supports, Banners }  from './api/_api.js'
+    import axios from 'axios'
     import Media from '../../_shares/media.js'
     import card from '../../_components/card/_card.vue'
-    import heading from '../../_components/text/_heading.vue'
     import cardWrapper from '../../_components/card/_wrapper.vue'
     import supportCard from './components/text/_support.vue'
     import formCard from './components/_form.vue'
+    import banner from '../../_components/banner/_heading.vue'
 
     export default {
         extends : Media,
 
         components : {
-            heading,
             card,
             cardWrapper,
             supportCard,
-            formCard
+            formCard,
+            banner
         },
 
         data() {
             return {
-                head : {
-                    title : 'Contact Us',
+                banner: {
+                    image: {},
                 },
+                url: URL,
                 support : []
             }
         },
@@ -49,27 +52,34 @@
         },
 
         methods : {
-            fetchSupport() {
-                API.post(EntryAPI, {
-                    query: Support,
-                }).then(resp => {
-                    let support = resp.data.data;
+            fetchAxios() {
+                axios.all([
+                    API.post(EntryAPI, { query : Banners }),
+                    API.post(EntryAPI, { query : Supports })
+                ])
+                .then(axios.spread(( BannersResp, SupportsResp ) => {
+                    let banner = BannersResp.data.data
+                    this.banner = banner.contactsSingleton
+                    this.banner.image = this.banner.image.path
+
+                    let support = SupportsResp.data.data;
                     this.support = support.supportsCollection;
-                }).catch(err => {
-                    console.log(err)
-                })
-            }
+                }))
+                .catch(axios.spread(( BannersErr, SupportsErr ) => {
+                    console.log(BannersErr, SupportsErr)
+                }))
+            },
         },
 
         created() {
             this.checkMobile()
-            this.fetchSupport()
+            this.fetchAxios()
         }
     }
 </script>
 
 <style lang="scss" scoped>
-    .wrapper-content {
+    .content-holder {
         padding-top: 25px;
         padding-bottom: 25px;
     }

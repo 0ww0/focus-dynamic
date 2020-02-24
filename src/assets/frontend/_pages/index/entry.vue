@@ -9,7 +9,7 @@
 
 <script>
     import { URL, API, EntryAPI, Banners, Brands, Membership, Support } from './api/_api.js'
-    import axios from "axios"
+    import axios from 'axios'
     import mainCarousel from './components/_main.vue'
     import cardCarousel from './components/_card.vue'
     import membership from './components/_membership.vue'

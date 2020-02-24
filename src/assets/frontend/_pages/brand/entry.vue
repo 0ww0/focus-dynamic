@@ -1,42 +1,44 @@
 <template lang="pug">
     .wrapper-content
+        banner(:banner = 'banner', :url = 'url')
         .container
-            heading(:text='head', subheader)
-            card(stretch, :xmedia = 'false')
-                cardWrapper(:card = 'isResponsive', v-for = 'data in brand', :key = 'data.id')
-                    hoverCard(:image = 'data', :url = 'url', @open = "showModal('gallery', data)")
-            modal(ref='gallery', overlayTheme = 'dark', blocking, @close = 'clearGallery')
-                gallery(:gallery = 'gallery', :url = 'url')
+            .content-holder
+                card(stretch, :xmedia = 'false')
+                    cardWrapper(:card = 'isResponsive', v-for = 'data in brand', :key = 'data.id')
+                        hoverCard(:image = 'data', :url = 'url', @open = "showModal('gallery', data)")
+                modal(ref='gallery', overlayTheme = 'dark', blocking, @close = 'clearGallery')
+                    gallery(:gallery = 'gallery', :url = 'url')
 </template>
 
 <script>
-    import { URL, API, EntryAPI, Brands } from './api/_api.js'
+    import { URL, API, EntryAPI, Brands, Banners } from './api/_api.js'
+    import axios from 'axios'
     import Media from '../../_shares/media.js'
-    import heading from '../../_components/text/_heading.vue'
     import card from '../../_components/card/_card.vue'
     import cardWrapper from '../../_components/card/_wrapper.vue'
     import hoverCard from './components/card/_hover.vue'
     import modal from './../../_components/modal/_modal.vue'
     import gallery from './components/carousel/_gallery.vue'
+    import banner from '../../_components/banner/_heading.vue'
 
     export default {
         extends : Media,
 
         components : {
-            heading,
             card,
             cardWrapper,
             hoverCard,
             modal,
-            gallery
+            gallery,
+            banner
         },
 
         data() {
             return {
-                head : {
-                    title : 'Brands',
-                },
                 url: URL,
+                banner: {
+                    image: {},
+                },
                 brand : [],
                 gallery: {
                     name: '',
@@ -58,15 +60,22 @@
         },
 
         methods : {
-            fetchStore() {
-                API.post(EntryAPI, {
-                    query: Brands,
-                }).then(resp => {
-                    let brand = resp.data.data;
+            fetchAxios() {
+                axios.all([
+                    API.post(EntryAPI, { query : Banners }),
+                    API.post(EntryAPI, { query : Brands })
+                ])
+                .then(axios.spread(( BannersResp, BrandsResp ) => {
+                    let banner = BannersResp.data.data
+                    this.banner = banner.brandsSingleton
+                    this.banner.image = this.banner.image.path
+
+                    let brand = BrandsResp.data.data;
                     this.brand = brand.brandsCollection;
-                }).catch(err => {
-                    console.log(err)
-                })
+                }))
+                .catch(axios.spread(( BannersErr, BrandsErr ) => {
+                    console.log(BannersErr, BrandsErr)
+                }))
             },
 
             showModal(ref, data) {
@@ -86,14 +95,14 @@
         },
 
         created() {
-            this.fetchStore()
             this.checkMobile()
+            this.fetchAxios()
         }
     }
 </script>
 
 <style lang="scss" scoped>
-    .wrapper-content{
+    .content-holder {
         padding-top: 25px;
         padding-bottom: 25px;
     }

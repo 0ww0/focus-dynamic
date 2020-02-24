@@ -18,11 +18,22 @@ export const API = axios.create({
 
 export const EntryAPI = "/api/graphql/query"
 
-export const Support = `
+export const Supports = `
 query{
     supportsCollection(filter: { published: true }){
         title,
         content
+    }
+}
+`;
+
+export const Banners = `
+query{
+    contactsSingleton(populate: 1){
+        title,
+        image{
+            path
+        },
     }
 }
 `;
