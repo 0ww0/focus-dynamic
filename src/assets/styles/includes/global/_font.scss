@@ -1,20 +1,30 @@
 @font-face {
     font-family: 'Gotham';
-    src: url('../fonts/gotham/Gotham-Light.eot');
-    src: url('../fonts/gotham/Gotham-Light.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/gotham/Gotham-Light.woff') format('woff'),
-        url('../fonts/gotham/Gotham-Light.ttf') format('truetype');
+    src: url('../fonts/gotham/Gotham-Thin.eot');
+    src: url('../fonts/gotham/Gotham-Thin.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/gotham/Gotham-Thin.woff') format('woff'),
+        url('../fonts/gotham/Gotham-Thin.ttf') format('truetype');
     font-weight: 200;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Gotham';
-    src: url('../fonts/gotham/Gotham-Thin.eot');
-    src: url('../fonts/gotham/Gotham-Thin.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/gotham/Gotham-Thin.woff') format('woff'),
-        url('../fonts/gotham/Gotham-Thin.ttf') format('truetype');
+    src: url('../fonts/gotham/Gotham-Light.eot');
+    src: url('../fonts/gotham/Gotham-Light.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/gotham/Gotham-Light.woff') format('woff'),
+        url('../fonts/gotham/Gotham-Light.ttf') format('truetype');
     font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('../fonts/gotham/Gotham-Regular.eot');
+    src: url('../fonts/gotham/Gotham-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/gotham/Gotham-Regular.woff') format('woff'),
+        url('../fonts/gotham/Gotham-Regular.ttf') format('truetype');
+    font-weight: normal;
     font-style: normal;
 }
 
@@ -24,6 +34,6 @@
     src: url('../fonts/gotham/Gotham-Medium.eot?#iefix') format('embedded-opentype'),
         url('../fonts/gotham/Gotham-Medium.woff') format('woff'),
         url('../fonts/gotham/Gotham-Medium.ttf') format('truetype');
-    font-weight: normal;
+    font-weight: 500;
     font-style: normal;
 }
