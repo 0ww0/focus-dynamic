@@ -2,7 +2,7 @@
     .card-carousel
         heading(:text = 'head')
         agile(:options = 'agile', v-if='brand')
-            siemaWrapper(v-for = "data in brand", :key = 'brand._id')
+            siemaWrapper(v-for = "(data, index) in brand", :key = 'brand._id')
                 hoverCard(:image = 'data', :url = 'url', @open = "showModal('gallery', data)")
         modal(ref='gallery', overlayTheme = 'dark', blocking, @close = 'clearGallery')
             gallery(:gallery = 'gallery', :url = 'url')
@@ -84,7 +84,6 @@
 
         methods : {
             showModal(ref, data) {
-                console.log(ref)
                 if (this.$refs[ref]) {
                     this.gallery.name = data.name
                     this.gallery.list = data.gallery
@@ -130,6 +129,7 @@
     }
 
     /deep/ .modal {
+        position: unset;
         max-width: 1200px;
         background-color: transparent;
     }

@@ -57,12 +57,12 @@
         &__nav-button {
             background: transparent;
             border: none;
-            color: #fff;
+            color: #000;
             cursor: pointer;
             font-size: 24px;
-            height: 100%;
             position: absolute;
-            top: 0;
+            top: calc(50% - 50px);
+            bottom: calc(50% - 50px);
             transition-duration: .3s;
             width: 80px;
             &:hover {

@@ -6,6 +6,9 @@
                 imageCard(:image = 'membership', :url = 'url')
             cardWrapper(:card = 'isResponsive')
                 paragraph(:content = 'membership.description')
+                    groupButton(position='left')
+                        linkButton(name = 'Learn More', outline, color = 'theme', :link = 'membership.linkLM')
+                        linkButton(name = 'Join Now', outline, color = 'theme', :link = 'membership.linkJN')
 </template>
 
 <script>
@@ -15,6 +18,8 @@
     import cardWrapper from './../../../_components/card/_wrapper.vue'
     import imageCard from './card/_image.vue'
     import paragraph from './text/_paragraph.vue'
+    import groupButton from '../../../_components/button/_group.vue'
+    import linkButton from '../../../_components/button/_link.vue'
 
     export default {
         extends: Media,
@@ -29,7 +34,9 @@
             card,
             cardWrapper,
             imageCard,
-            paragraph
+            paragraph,
+            groupButton,
+            linkButton
         },
 
         data() {
@@ -58,8 +65,15 @@
 </script>
 
 <style lang="scss" scoped>
+    @import '../../../style/config.scss';
+
     .membership-holder {
         padding-top: 25px;
         padding-bottom: 25px;
+    }
+
+    /deep/ .button {
+        @include fs(12)
+        @include weight(500)
     }
 </style>

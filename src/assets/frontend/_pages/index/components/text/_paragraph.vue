@@ -1,6 +1,7 @@
 <template lang="pug">
     .paragraph-component
         .content(v-html = 'content')
+        slot
 </template>
 
 <script>
@@ -36,6 +37,10 @@
                 &:not(:last-child) {
                     margin-bottom: 15px;
                 }
+            }
+
+            &:not(:last-child) {
+                margin-bottom: 15px;
             }
         }
     }

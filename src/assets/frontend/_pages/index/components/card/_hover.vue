@@ -3,19 +3,26 @@
         .image
             img(:src = "url + image.image.path", :alt = "image.name")
             .hover-action
-                a.button(:href="image.link")
-                    span Website
-                a.button(@click = "open")
-                    span Gallery
+                groupButton
+                    linkButton(name = 'Website', :link = 'image.link', color = 'theme')
+                    linkButton(name = 'Gallery', @click.native = 'open', color = 'theme')
         .text
             p {{ image.name }}
 </template>
 
 <script>
+    import groupButton from '../../../../_components/button/_group.vue'
+    import linkButton from '../../../../_components/button/_link.vue'
+
     export default {
         props : {
             image : Object,
             url : String
+        },
+
+        components : {
+            groupButton,
+            linkButton,
         },
 
         methods : {
@@ -55,7 +62,7 @@
                     visibility: visible;
                     height: 60%;
 
-                    a.button {
+                    .button-group-component {
                         display: block;
                     }
                 }
@@ -80,33 +87,9 @@
             height: 0;
             @include trans-prop(opacity, visibility, height)
 
-            a.button {
+            .button-group-component {
                 display: none;
-
-                text-align: center;
-                width: 50%;
-                line-height: 1.5;
-                padding: 5px 25px;
-                border: 1px solid;
-                border-radius: 5px;
-
-                @include fs(14)
-                @include color($black, .8)
-                @include border($black, .8)
-                @include trans-prop(background-color, color, border-color)
-
-                &:hover {
-                    @include background(#d4af37)
-                    @include color($white, .9)
-                    @include border(#d4af37)
-                }
-
-                &:not(:last-child) {
-                    margin-bottom: 10px;
-                }
             }
-
-
         }
 
         .text {
@@ -117,6 +100,11 @@
             letter-spacing: .1em;
             pointer-events: none;
             @include fs(14)
+        }
+
+        /deep/ .button {
+            @include fs(12)
+            @include weight(500)
         }
     }
 </style>

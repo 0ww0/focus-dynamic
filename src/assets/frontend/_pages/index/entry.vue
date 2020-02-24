@@ -33,7 +33,7 @@
                     list: null
                 },
                 membership: {
-                    image: {}
+                    image: {},
                 },
                 support: []
             }

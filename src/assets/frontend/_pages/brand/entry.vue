@@ -70,7 +70,6 @@
             },
 
             showModal(ref, data) {
-                console.log(ref)
                 if (this.$refs[ref]) {
                     this.gallery.name = data.name
                     this.gallery.list = data.gallery
@@ -106,6 +105,7 @@
     }
 
     /deep/ .modal {
+        position: unset;
         max-width: 1200px;
         background-color: transparent;
     }
