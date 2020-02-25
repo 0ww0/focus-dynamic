@@ -57,7 +57,7 @@
         &__nav-button {
             background: transparent;
             border: none;
-            color: #000;
+            color: #fff;
             cursor: pointer;
             font-size: 24px;
             position: absolute;

@@ -129,7 +129,6 @@
     }
 
     /deep/ .modal {
-        position: unset;
         max-width: 1200px;
         background-color: transparent;
     }
