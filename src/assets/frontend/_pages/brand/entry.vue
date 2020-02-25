@@ -49,11 +49,13 @@
 
         computed : {
             isResponsive () {
-                if(this.is801) {
+                if(this.is1025) {
                     return 'one-quarter'
+                } else if (this.is801) {
+                    return 'one-third'
                 } else if (this.is481) {
                     return 'half'
-                } else {
+                }else {
                     return 'full'
                 }
             }
