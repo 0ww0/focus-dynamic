@@ -67,7 +67,7 @@
         border-radius: 5px;
         appearance: none;
         outline: none;
-
+        @include background($white)
         @include border($grey-50)
 
         &:focus, &:active{
@@ -86,6 +86,10 @@
 
                 @include trans-prop(border-color, box-shadow)
             }
+        }
+
+        &::-ms-expand { /* for IE 11 */
+            display: none;
         }
     }
 </style>

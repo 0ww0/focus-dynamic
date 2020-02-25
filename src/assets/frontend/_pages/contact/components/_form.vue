@@ -46,7 +46,7 @@
                     v-model='form.subject',
                     :error = 'validate.subject'
                 )
-                    option(disabled, value = '') Select Subject
+                    option(hidden, value = '', disabled) Select Subject
                     option General
                     option Membership
                 formvalidate(

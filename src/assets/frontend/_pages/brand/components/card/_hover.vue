@@ -5,7 +5,7 @@
             .hover-action
                 groupButton
                     linkButton(name = 'Website', :link = 'image.link', color = 'theme')
-                    linkButton(name = 'Gallery', @click.native = 'open', color = 'theme')
+                    linkButton(name = 'Gallery', @click.native = 'open', color = 'theme', v-if='image.gallery !== null')
         .text
             p {{ image.name }}
 </template>
