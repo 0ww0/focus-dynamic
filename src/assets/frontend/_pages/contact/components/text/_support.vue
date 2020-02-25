@@ -22,7 +22,7 @@
         }
 
         .title {
-            @include fs(16)
+            @include fs(14)
             @include weight(500)
             margin-bottom: 10px;
         }

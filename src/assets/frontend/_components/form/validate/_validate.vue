@@ -1,5 +1,5 @@
 <template lang="pug">
-    .validate(:class='{ "is-center" : center }')
+    .validate(:class='{ "is-center" : center, "is-success" : success}')
         span {{ text }}
 </template>
 
@@ -10,8 +10,8 @@
                 type : String,
                 required : true
             },
-
-            center : Boolean
+            center : Boolean,
+            success : Boolean,
         }
     }
 </script>
@@ -21,8 +21,12 @@
 
     .validate {
         padding: 5px;
+        padding-bottom: 0;
         @include fs(12)
         @include color($danger)
+        &.is-success {
+            @include color($success)
+        }
         &.is-center {
             width: 100%;
             text-align: center;

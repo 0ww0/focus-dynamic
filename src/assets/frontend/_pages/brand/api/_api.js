@@ -31,7 +31,7 @@ query{
 
 export const Brands = `
 query{
-    brandsCollection(filter: { published: true }, sort: {_id: -1 }) {
+    brandsCollection(filter: { published: true }, sort: {_id: 1 }) {
         _id
         name
         name_slug

@@ -1,6 +1,6 @@
 <template lang="pug">
     input.input.input-text(type='text',
-        v-model="vValue"
+        v-model = 'vValue'
         @blur="updateValue()"
         :class = "{ 'input-error' : error }"
     )
@@ -19,6 +19,12 @@
             }
         },
 
+        watch:{
+            value(newValue) {
+                this.vValue = newValue
+            }
+        },
+
         data () {
             return {
                 vValue : this.value
@@ -29,16 +35,20 @@
             updateValue () {
                 this.$emit('input', this.vValue);
             },
+        },
+
+        mounted() {
+            this.updateValue()
         }
     }
 </script>
 
 <style lang='scss' scoped>
     @import '../../../style/config.scss';
-    
+
     .input-text{
         width: 100%;
-        padding: 6px 12px;
+        padding: 5px 12px;
         border: 1px solid;
         border-radius: 5px;
         outline: none;
@@ -46,8 +56,8 @@
         @include border($grey-50)
 
         &:focus, &:active{
-            @include border($primary)
-            box-shadow: 0 0 5px $primary;
+            @include border(#d4af37)
+            box-shadow: 0 0 5px #d4af37;
 
             @include trans-prop(border-color, box-shadow)
         }

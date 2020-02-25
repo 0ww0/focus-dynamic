@@ -46,14 +46,14 @@
 
 <style lang="scss" scoped >
     @import '../../../style/config.scss';
-    
+
     .button {
         position: relative;
         width: 100%;
         border: em(1) solid;
 
         text-align: center;
-        padding: em(8) em(50);
+        padding: em(12) em(50);
 
         display: flex;
         flex-direction: row;
@@ -74,6 +74,11 @@
         @include background($white)
         @include color($black)
         @include border($darkGrey)
+
+        span {
+            display: block;
+            margin-bottom: -2px;
+        }
     }
 
     button.button, input.button {
@@ -145,6 +150,21 @@
             &.outline {
                 @include background($white)
                 @include color($black)
+            }
+        }
+
+        &.theme {
+            @include background(#d4af37);
+            @include color($white)
+            @include border(#d4af37)
+            &.outline {
+                @include background($white)
+                @include color(#d4af37)
+                &:hover {
+                    @include background(#d4af37)
+                    @include color($white)
+                    @include trans-prop(background-color, color)
+                }
             }
         }
 

@@ -42,9 +42,18 @@
         formgroup
             formtextlabel
                 formname(name = 'Subject')
-                formselect(v-model='form.subject')
+                formselect(
+                    v-model='form.subject',
+                    :error = 'validate.subject'
+                )
                     option(disabled, value = '') Select Subject
                     option General
+                    option Membership
+                formvalidate(
+                    v-if = 'validate.subject',
+                    :text = 'validate.text_subject',
+                    :error = 'validate.subject'
+                )
         formgroup
             formtextlabel
                 formname(name = 'Message')
@@ -59,12 +68,13 @@
                     :error = 'validate.message'
                 )
         formgroup
-            formbutton(name = 'Send Message', @click.native = 'onSubmit()')
+            formbutton(name = 'Send Message', @click.native = 'onSubmit()', color = 'theme')
         formgroup
             formvalidate(
-                v-if = 'validate.general_error',
-                :text = 'validate.text_general_error',
-                :error = 'validate.general_error'
+                v-if = 'validate.general',
+                :text = 'validate.text_general',
+                :error = 'validate.general',
+                success
             )
 </template>
 
@@ -104,9 +114,11 @@
                    text_phone : '',
                    message : false,
                    text_message : '',
+                   subject : false,
+                   text_subject : '',
 
-                   general_error: false,
-                   text_general_error: ''
+                   general: false,
+                   text_general: '',
                }
             }
         },
@@ -137,6 +149,18 @@
                     this.validate.text_email = '';
                 }
 
+                if(this.form.email !== '') {
+                    let regex = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
+                    if(!regex.test(this.form.email)){
+                        this.validate.email = true;
+                        this.validate.text_email = 'Please provide a valid email address'
+                        return false
+                    }
+                } else {
+                    this.validate.email = false;
+                    this.validate.text_email = '';
+                }
+
                 if(this.form.phone === '') {
                     this.validate.phone = true;
                     this.validate.text_phone = 'Field cannnot be blank';
@@ -144,6 +168,27 @@
                 } else {
                     this.validate.phone = false;
                     this.validate.text_phone = '';
+                }
+
+                if(this.form.phone !== '') {
+                    let regex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/gmi;
+                    if(!regex.test(this.form.phone)){
+                        this.validate.phone = true;
+                        this.validate.text_phone = 'Please provide a valid phone number. Ex: +60123456789 / 60123456789 / 0123456789'
+                        return false
+                    }
+                } else {
+                    this.validate.phone = false;
+                    this.validate.text_phone = '';
+                }
+
+                if(this.form.subject === '') {
+                    this.validate.subject = true;
+                    this.validate.text_subject = 'Please select an option';
+                    return false
+                } else {
+                    this.validate.subject = false;
+                    this.validate.text_subject = '';
                 }
 
                 if(this.form.message === '') {
@@ -158,6 +203,22 @@
                 return true
             },
 
+            clearform() {
+
+                let form = {
+                    name : '',
+                    email : '',
+                    phone : '',
+                    message : '',
+                    subject : '',
+                }
+
+                this.$store.dispatch('updateStateObject', {
+                    key : 'form',
+                    value : form
+                });
+            },
+
             onSubmit() {
                 if(!this.validation()) {
                     return
@@ -168,11 +229,19 @@
                         name: this.form.name,
                         email: this.form.email,
                         phone: this.form.phone,
-                        message: this.form.message,
                         subject: this.form.subject,
+                        message: this.form.message,
                     }
                 }).then(resp => {
-                    console.log(resp)
+                    let self = this
+                    self.validate.general = true;
+                    self.validate.text_general = 'Form submit successfully';
+                    self.clearform()
+
+                    setTimeout(function(){
+                        self.validate.general = false;
+                        self.validate.text_general = '';
+                    }, 4000);
                 }).catch(err => {
                     console.log(err)
                 })
