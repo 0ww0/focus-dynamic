@@ -258,7 +258,8 @@
         &:hover {
             @include background($black)
             @include color($white)
-            @include trans-prop(background-color, color)
+            @include border($black)
+            @include trans-prop(background-color, color, border)
         }
 
         &.outline {
