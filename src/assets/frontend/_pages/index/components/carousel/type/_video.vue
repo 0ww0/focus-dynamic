@@ -13,7 +13,7 @@
 
         computed : {
             isBanner() {
-                return this.url + this.banner.video.path
+                return this.url + '/backend/storage/uploads' + this.banner.video.path
             },
         },
 
