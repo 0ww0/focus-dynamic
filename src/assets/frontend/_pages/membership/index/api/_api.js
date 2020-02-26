@@ -43,3 +43,15 @@ query{
     }
 }
 `;
+
+export const Rewards = `
+query{
+    rewardsCollection(filter: { published: true }, sort: {_id: 1 }) {
+        title,
+        description,
+        image{
+            path
+        }
+    }
+}
+`;

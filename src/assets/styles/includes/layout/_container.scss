@@ -17,6 +17,10 @@
         padding-right: em(25);
     }
 
+    &.slim {
+        max-width: 780px;
+    }
+
     &-fluid{
         width: 100%;
         padding-left: em(15);
