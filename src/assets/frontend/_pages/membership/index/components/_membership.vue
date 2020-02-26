@@ -6,7 +6,7 @@
             cardWrapper(:card = 'isResponsive', v-for = '(data, index) in reward', :key = 'index')
                 rewardCard(:reward = 'data', :url = 'url')
         groupButton
-            linkButton(name = 'Terms & Conditions', :link = 'membership.linkTnc', color = 'theme')
+            linkButton(name = 'Terms & Conditions', :link = 'membership.linkTnC', color = 'theme')
             linkButton(name = 'Join Now', :link = 'membership.linkJN', color = 'theme')
             linkButton(name = 'Privacy Policy', :link = 'membership.linkPP', color = 'theme')
 </template>

@@ -150,6 +150,7 @@
             &.outline {
                 @include background($white)
                 @include color(#d4af37)
+                @include border(#d4af37)
                 &:hover {
                     @include background(#d4af37)
                     @include color($white)
