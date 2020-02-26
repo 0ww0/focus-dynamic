@@ -1,0 +1,13 @@
+extends ../include/_default
+
+block config
+    - rootBase = '../'
+    - frontPath = rootBase + 'assets/frontend/'
+    - title = 'Privacy Policy'
+    - imgPath = rootBase + 'assets/images/'
+    - cssPath = rootBase + 'assets/styles/'
+
+block stylesheet
+
+block javascript
+    script(src= frontPath + 'page/membership/policy.js' + '?v' + version)

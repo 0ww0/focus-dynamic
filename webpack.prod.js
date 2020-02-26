@@ -14,6 +14,8 @@ module.exports = {
         'frontend/page/contact' : './src/assets/frontend/_pages/contact/contact.js',
         'frontend/page/membership/index' : './src/assets/frontend/_pages/membership/index/index.js',
         'frontend/page/membership/join-now' : './src/assets/frontend/_pages/membership/join-now/join-now.js',
+        'frontend/page/membership/terms' : './src/assets/frontend/_pages/membership/terms/terms.js',
+        'frontend/page/membership/privacy' : './src/assets/frontend/_pages/membership/privacy/privacy.js',
     },
     output: {
         path: path.resolve(__dirname),
