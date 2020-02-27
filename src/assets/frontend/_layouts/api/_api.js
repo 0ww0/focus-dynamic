@@ -57,3 +57,11 @@ query{
     }
 }
 `;
+
+export const Memberships = `
+query{
+    membershipsSingleton(populate: 1){
+        linkJN,
+    }
+}
+`;

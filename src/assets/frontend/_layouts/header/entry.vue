@@ -1,26 +1,30 @@
 <template lang="pug">
     .wrapper-header
         loading(ref='loading')
-        .header
-            logo(:logo = 'logo', :url = 'url')
-            trigger
+        .container
+            .header
+                logo(:logo = 'logo', :url = 'url')
+                joinLink(:membership = 'membership')
+                trigger
         .navigation
             navigation
 </template>
 
 <script>
-    import { URL, API, EntryAPI, Logo } from './../api/_api.js'
+    import { URL, API, EntryAPI, Logo, Memberships } from './../api/_api.js'
     import logo from './components/_logo.vue'
     import trigger from './components/_trigger.vue'
     import navigation from './components/_navigation.vue'
     import loading from '../../_components/loader/_spin.vue'
+    import joinLink from './components/_link.vue'
 
     export default {
         components : {
             logo,
             trigger,
             navigation,
-            loading
+            loading,
+            joinLink
         },
 
         data() {
@@ -29,6 +33,7 @@
                 logo: {
                     image:{}
                 },
+                membership : {}
             }
         },
 
@@ -40,6 +45,17 @@
                     let list = resp.data.data;
                     this.logo = list.logoSingleton;
                     this.logo.image = list.logoSingleton.logo.path;
+                }).catch(err => {
+                    console.log(err)
+                })
+            },
+
+            fetchMembership(){
+                API.post(EntryAPI, {
+                    query: Memberships,
+                }).then(resp => {
+                    let list = resp.data.data;
+                    this.membership = list.membershipsSingleton;
                 }).catch(err => {
                     console.log(err)
                 })
@@ -58,6 +74,7 @@
 
         created () {
             this.fetchLogo()
+            this.fetchMembership()
             document.onreadystatechange = () => {
                 if (document.readyState == "complete") {
                     this.$refs['loading'].close()
@@ -87,6 +104,7 @@
     }
 
     .header {
+        position: relative;
         display: flex;
         flex-direction: row;
         flex-flow: row nowrap;
@@ -95,13 +113,16 @@
 
         padding-top: 40px;
         padding-bottom: 20px;
-        border-bottom: 1px solid;
-        @include border(#e3e3e3)
         @include trans-prop(padding-top, padding-bottom)
 
         &.slim {
             padding-top: 20px;
             @include trans-prop(padding-top)
         }
+    }
+
+    .navigation {
+        border-top: 1px solid;
+        @include border(#e3e3e3)
     }
 </style>

@@ -1,7 +1,7 @@
 <template lang="pug">
     ul.navi(:class="{ active : isHamburger }")
         li.navi-list(v-for = 'data in navi', :key = 'data.id')
-            a.navi-link(:href="data.link") {{ data.title }}
+            a.navi-link(:href="data.link", :class="{ active : setActive(data.title) }") {{ data.title }}
 </template>
 
 <script>
@@ -54,6 +54,10 @@
         },
 
         methods : {
+            setActive : function(payload){
+                return payload === document.title.slice(0, payload.length)
+            },
+
             removeHamburger () {
                 if(this.is641 === true){
                     this.$store.dispatch('updateState', {
