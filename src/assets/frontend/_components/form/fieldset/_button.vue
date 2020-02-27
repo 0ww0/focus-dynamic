@@ -53,7 +53,6 @@
         border: em(1) solid;
 
         text-align: center;
-        padding: em(12) em(50);
 
         display: flex;
         flex-direction: row;
@@ -82,15 +81,15 @@
     }
 
     button.button, input.button {
-        @include fs(14)
+        @include fs(12)
         -webkit-appearance: none;
         box-shadow: none;
-        padding: em(8) em(50);
+        padding: em(12) em(50);
         outline: none;
     }
 
     .button {
-        @include fs(14)
+        @include fs(12)
         line-height: 1.4;
         width: 100%;
 

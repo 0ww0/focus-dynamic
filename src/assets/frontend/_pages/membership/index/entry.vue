@@ -50,8 +50,8 @@
                     let reward = RewardsResp.data.data
                     this.reward = reward.rewardsCollection
                 }))
-                .catch(axios.spread(( BannersErr, MembershipsErr ) => {
-                    console.log(BannersErr, MembershipsErr)
+                .catch(axios.spread(( BannersErr, MembershipsErr, RewardsErr ) => {
+                    console.log(BannersErr, MembershipsErr, RewardsErr)
                 }))
             },
         },

@@ -62,7 +62,7 @@
 
     .select{
         width: 100%;
-        padding: 6px 12px;
+        padding: 5px 12px;
         border: 1px solid;
         border-radius: 5px;
         appearance: none;

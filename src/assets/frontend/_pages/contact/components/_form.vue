@@ -15,8 +15,8 @@
                 )
         formgroup
             formtextlabel
-                formname(name = 'Email')
-                formplaceholder(name = 'Email')
+                formname(name = 'Email Address')
+                formplaceholder(name = 'Email Address')
                 formtextinput(
                     v-model = 'form.email',
                     :error = 'validate.email'
