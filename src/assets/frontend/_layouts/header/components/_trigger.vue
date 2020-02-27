@@ -15,7 +15,7 @@
             },
 
             isResponsive () {
-                return this.is641 === false ? 'active' : ''
+                return this.is801 === false ? 'active' : ''
             }
         },
 

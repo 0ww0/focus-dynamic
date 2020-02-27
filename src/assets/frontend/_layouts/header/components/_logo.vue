@@ -25,7 +25,7 @@
             max-width: 300px;
         }
 
-        @include media(sm-up) {
+        @include media(md-up) {
             margin: 0 auto;
         }
 

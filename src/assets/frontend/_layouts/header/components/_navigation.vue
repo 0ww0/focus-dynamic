@@ -127,7 +127,7 @@
         }
 
 
-        @include media(sm-up) {
+        @include media(md-up) {
             position: relative;
             text-align: center;
             height: auto;
@@ -148,7 +148,7 @@
 
             @include fs(14)
 
-            @include media(sm-up){
+            @include media(md-up){
                 display: inline-block;
                 padding-top: 0;
                 padding-bottom: 0;

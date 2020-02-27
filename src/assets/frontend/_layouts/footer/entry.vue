@@ -94,7 +94,7 @@
             flex-direction: column;
             flex-flow: column nowrap;
 
-            @include media(sm-up) {
+            @include media(md-up) {
                 flex-direction: row;
                 flex-flow: row nowrap;
             }
@@ -118,12 +118,9 @@
                 flex-flow: row wrap;
             }
 
-            @include media(sm-up) {
-                width: 50%;
-            }
-
+            
             @include media(md-up) {
-                width: 40%;
+                width: 50%;
             }
 
             .sitemap-component {
@@ -139,7 +136,7 @@
                     }
                 }
 
-                @include media(sm-up) {
+                @include media(md-up) {
                     margin-right: 0;
                     margin-left: auto;
                 }
