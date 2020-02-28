@@ -53,6 +53,35 @@
                     :error = 'validate.email'
                 )
         formgroup
+            formtextlabel
+                formname(name = 'Date Of Birth')
+                formplaceholder(name = 'Date Of Birth')
+                formtextinput(
+                    v-model = 'form.dob',
+                    :error = 'validate.dob'
+                )
+                formvalidate(
+                    v-if = 'validate.dob',
+                    :text = 'validate.text_dob',
+                    :error = 'validate.dob'
+                )
+        formgroup
+            formtextlabel
+                formname(name = 'Gender')
+                formradiolabel
+                    input.input-radiobox(type = 'radio', name = 'gender', value = 'male', v-model = 'form.gender')
+                    formradioicon
+                    formname(name = 'Male')
+                formradiolabel
+                    input.input-radiobox(type = 'radio', name = 'gender', value = 'female', v-model = 'form.gender')
+                    formradioicon
+                    formname(name = 'Female')
+                formvalidate(
+                    v-if = 'validate.gender',
+                    :text = 'validate.text_gender',
+                    :error = 'validate.gender'
+                )
+        formgroup
             formbutton(name = 'Submit', @click.native = 'onSubmit()', color = 'theme')
         formgroup
             formvalidate(
@@ -92,7 +121,7 @@
             formradiolabel,
             formradioinput,
             formradioicon,
-            formvalidate
+            formvalidate,
         },
 
         data() {
@@ -203,6 +232,29 @@
                 if(!this.validation()) {
                     return
                 }
+
+                API.post(EntryAPI, {
+                    data : {
+                        name: this.form.name,
+                        nric: this.form.nric,
+                        phone: this.form.phone,
+                        email: this.form.email,
+                        dob: this.form.dob,
+                        gender: this.form.gender
+                    }
+                }).then(resp => {
+                    let self = this
+                    self.validate.general = true;
+                    self.validate.text_general = 'Form submit successfully';
+                    self.clearform()
+
+                    setTimeout(function(){
+                        self.validate.general = false;
+                        self.validate.text_general = '';
+                    }, 4000);
+                }).catch(err => {
+                    console.log(err)
+                })
             }
         }
     }
