@@ -1,8 +1,8 @@
 <template lang="pug">
     .contact-holder
         heading(:text = 'head', subheader)
-        card(stretch, :xmedia = 'false')
-            cardWrapper(:card = 'isResponsive', v-for = 'data in support', :key = 'data.title')
+        card( :xmedia = 'false')
+            cardWrapper(:card = 'isResponsive', v-for = '(data, index) in support', :key = 'data.title')
                 support(:support = 'data')
 </template>
 
@@ -55,12 +55,33 @@
 </script>
 
 <style lang="scss" scoped>
+    @import '../../../style/config.scss';
+
     .contact-holder {
         padding-top: 25px;
         padding-bottom: 25px;
     }
 
     /deep/ .card{
-        justify-content: flex-start;
+        justify-content: flex-end;
+        align-items: flex-start;
+
+        .card-wrapper {
+            &:nth-child(4) {
+                @include media(xs-up) {
+                    margin-top: -90px;
+                }
+
+
+            }
+
+            &:nth-child(5) {
+                @include media(xs-up) {
+                    margin-top: -90px;
+                }
+
+                
+            }
+        }
     }
 </style>
