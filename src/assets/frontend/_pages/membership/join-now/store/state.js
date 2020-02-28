@@ -4,7 +4,7 @@ export const state = {
         nric : '',
         phone : '',
         email : '',
-        dob: '',
+        dob: {},
         gender: '',
     },
 }

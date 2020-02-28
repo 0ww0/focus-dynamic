@@ -52,19 +52,23 @@
                     :text = 'validate.text_email',
                     :error = 'validate.email'
                 )
-        formgroup
-            formtextlabel
-                formname(name = 'Date Of Birth')
-                formplaceholder(name = 'Date Of Birth')
-                formtextinput(
-                    v-model = 'form.dob',
-                    :error = 'validate.dob'
-                )
-                formvalidate(
-                    v-if = 'validate.dob',
-                    :text = 'validate.text_dob',
-                    :error = 'validate.dob'
-                )
+        formgroup(direction = 'column')
+            formname(name = 'Date Of Birth')
+            FunctionalCalendar(
+                v-model = 'form.dob',
+                :is-modal='true',
+                :is-date-picker='true',
+                :change-month-function='true',
+                :change-year-function='true',
+                placeholder = 'Date Of Birth',
+                dateFormat = 'dd-mm-yyyy',
+                :isTypeable = 'true',
+            )
+            formvalidate(
+                v-if = 'validate.dob',
+                :text = 'validate.text_dob',
+                :error = 'validate.dob'
+            )
         formgroup
             formtextlabel
                 formname(name = 'Gender')
@@ -108,6 +112,7 @@
     import formradioicon from '../../../../_components/form/radiobox/_icon.vue'
 
     import formvalidate from '../../../../_components/form/validate/_validate.vue'
+    import { FunctionalCalendar } from 'vue-functional-calendar';
 
     export default {
         components : {
@@ -122,6 +127,7 @@
             formradioinput,
             formradioicon,
             formvalidate,
+            FunctionalCalendar
         },
 
         data() {
@@ -142,7 +148,7 @@
 
                    general: false,
                    text_general: '',
-               }
+               },
             }
         },
 
@@ -170,6 +176,18 @@
                 } else {
                     this.validate.nric = false;
                     this.validate.text_nric = '';
+                }
+
+                if(this.form.nric !== '') {
+                    let regex = /(([[0-9]{2})(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01]))-([0-9]{2})-([0-9]{4})$/g;
+                    if(!regex.test(this.form.nric)){
+                        this.validate.nric = true;
+                        this.validate.text_nric = 'Please provide a valid NRIC no. Ex: YYMMDD-XX-XXXX'
+                        return false
+                    }
+                } else {
+                    this.validate.phone = false;
+                    this.validate.text_phone = '';
                 }
 
                 if(this.form.phone === '') {
@@ -242,7 +260,7 @@
                     nric : '',
                     phone : '',
                     email : '',
-                    dob: '',
+                    dob : {},
                     gender: '',
                 }
 
@@ -263,7 +281,7 @@
                         nric: this.form.nric,
                         phone: this.form.phone,
                         email: this.form.email,
-                        dob: this.form.dob,
+                        dob: this.form.dob.selectedDate,
                         gender: this.form.gender
                     }
                 }).then(resp => {
@@ -285,4 +303,37 @@
 </script>
 
 <style lang="scss" scoped>
+    @import '../../../../style/config.scss';
+    /deep/ .vfc-styles-conditional-class .vfc-main-container.vfc-modal {
+        width: unset;
+    }
+    /deep/ .vfc-styles-conditional-class {
+        width: 100%;
+        @include fs(14)
+        input {
+            width: 100%;
+            padding: 5px 12px;
+            border: 1px solid;
+            border-radius: 5px;
+            outline: none;
+            text-align: left;
+            @include border($grey-50)
+            @include color($black)
+
+            &:focus, &:active{
+                @include border(#d4af37)
+                box-shadow: 0 0 5px #d4af37;
+
+                @include trans-prop(border-color, box-shadow)
+            }
+
+
+            &::placeholder {
+                color: #959595;
+                font-family: 'Gotham';
+                font-weight: 300;
+            }
+
+        }
+    }
 </style>
