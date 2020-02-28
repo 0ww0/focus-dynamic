@@ -181,6 +181,7 @@
             outline: 0;
             cursor: pointer;
             z-index: 1;
+            @include color($white)
             @include fs(20)
         }
 

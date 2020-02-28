@@ -174,7 +174,7 @@
                     let regex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/gmi;
                     if(!regex.test(this.form.phone)){
                         this.validate.phone = true;
-                        this.validate.text_phone = 'Please provide a valid phone number. Ex: +60123456789 / 60123456789 / 0123456789'
+                        this.validate.text_phone = 'Please provide a valid phone number. Ex: 60123456789 / 0123456789'
                         return false
                     }
                 } else {

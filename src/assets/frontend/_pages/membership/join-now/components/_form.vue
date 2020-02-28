@@ -69,11 +69,11 @@
             formtextlabel
                 formname(name = 'Gender')
                 formradiolabel
-                    input.input-radiobox(type = 'radio', name = 'gender', value = 'male', v-model = 'form.gender')
+                    input.input-radiobox(type = 'radio', name = 'gender', value = 'Male', v-model = 'form.gender')
                     formradioicon
                     formname(name = 'Male')
                 formradiolabel
-                    input.input-radiobox(type = 'radio', name = 'gender', value = 'female', v-model = 'form.gender')
+                    input.input-radiobox(type = 'radio', name = 'gender', value = 'Female', v-model = 'form.gender')
                     formradioicon
                     formname(name = 'Female')
                 formvalidate(
@@ -181,10 +181,34 @@
                     this.validate.text_phone = '';
                 }
 
+                if(this.form.phone !== '') {
+                    let regex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/gmi;
+                    if(!regex.test(this.form.phone)){
+                        this.validate.phone = true;
+                        this.validate.text_phone = 'Please provide a valid phone number. Ex: 60123456789 / 0123456789'
+                        return false
+                    }
+                } else {
+                    this.validate.phone = false;
+                    this.validate.text_phone = '';
+                }
+
                 if(this.form.email === '') {
                     this.validate.email = true;
                     this.validate.text_email = 'Field cannnot be blank';
                     return false
+                } else {
+                    this.validate.email = false;
+                    this.validate.text_email = '';
+                }
+
+                if(this.form.email !== '') {
+                    let regex = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
+                    if(!regex.test(this.form.email)){
+                        this.validate.email = true;
+                        this.validate.text_email = 'Please provide a valid email address'
+                        return false
+                    }
                 } else {
                     this.validate.email = false;
                     this.validate.text_email = '';
