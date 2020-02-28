@@ -1,7 +1,7 @@
 <template lang="pug">
     .link-holder(:class = 'isResponsive')
         a(:href = "membership.linkJN")
-            span Join Now
+            span Join Member Now
             i.fas.fa-chevron-right
 </template>
 
