@@ -36,14 +36,17 @@
     position: relative;
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: minmax(70px, 90px) minmax(0, 1fr) auto;
+    grid-template-rows: 83px minmax(0, 1fr) auto;
     grid-template-areas:
         'header'
         'main'
         'footer';
     min-height: 100%;
+    @include media(xs-up) {
+        grid-template-rows: 88px minmax(0, 1fr) auto;
+    }
     @include media(md-up) {
-        grid-template-rows: minmax(120px, 142px) minmax(0, 1fr) auto;
+        grid-template-rows: 132px minmax(0, 1fr) auto;
     }
     @include background($white);
     @include trans-prop(all)

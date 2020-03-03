@@ -7,11 +7,11 @@
                 joinLink(:membership = 'membership')
                 trigger
         .navigation
-            navigation
+            navigation(:investor = 'investor', :url = 'url')
 </template>
 
 <script>
-    import { URL, API, EntryAPI, Logo, Memberships } from './../api/_api.js'
+    import { URL, API, EntryAPI, Logo, Memberships, Investors } from './../api/_api.js'
     import logo from './components/_logo.vue'
     import trigger from './components/_trigger.vue'
     import navigation from './components/_navigation.vue'
@@ -33,7 +33,8 @@
                 logo: {
                     image:{}
                 },
-                membership : {}
+                membership : {},
+                investor : []
             }
         },
 
@@ -61,20 +62,22 @@
                 })
             },
 
-            handleScroll : function () {
-                let $header = $('.header'),
-                    $window = $(window)
-                if($window.scrollTop() > 250) {
-                    $header.addClass('slim')
-                } else {
-                    $header.removeClass('slim')
-                }
-            },
+            fetchInvestor(){
+                API.post(EntryAPI, {
+                    query: Investors,
+                }).then(resp => {
+                    let list = resp.data.data;
+                    this.investor = list.investorsCollection
+                }).catch(err => {
+                    console.log(err)
+                })
+            }
         },
 
         created () {
             this.fetchLogo()
             this.fetchMembership()
+            this.fetchInvestor()
             document.onreadystatechange = () => {
                 if (document.readyState == "complete") {
                     this.$refs['loading'].close()
@@ -82,12 +85,7 @@
                     this.$refs['loading'].open()
                 }
             }
-            window.addEventListener('scroll', this.handleScroll);
         },
-
-        destroyed () {
-            window.removeEventListener('scroll', this.handleScroll);
-        }
     }
 </script>
 
@@ -111,14 +109,8 @@
         align-items: center;
         justify-content: center;
 
-        padding-top: 40px;
-        padding-bottom: 20px;
-        @include trans-prop(padding-top, padding-bottom)
-
-        &.slim {
-            padding-top: 20px;
-            @include trans-prop(padding-top)
-        }
+        padding-top: 25px;
+        padding-bottom: 25px;
     }
 
     .navigation {

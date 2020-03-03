@@ -65,3 +65,15 @@ query{
     }
 }
 `;
+
+export const Investors = `
+query{
+    investorsCollection(filter: { published: true }, sort: {_id: 1}) {
+        title
+        link
+        asset{
+            path
+        }
+    }
+}
+`;

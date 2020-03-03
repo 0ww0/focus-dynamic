@@ -27,7 +27,7 @@
     .banner-component {
         position: relative;
         width: 100%;
-        height: 350px;
+        height: auto;
         .background {
             width: 100%;
             height: 100%;

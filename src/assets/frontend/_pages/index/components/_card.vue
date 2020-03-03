@@ -1,7 +1,8 @@
 <template lang="pug">
     .card-carousel
         heading(:text = 'head')
-        agile(:options = 'agile', v-if='brand')
+        //-agile(:options = 'agile', v-if='brand')
+        siema(refer = 'card', :page = 'page' carousel='card', loop, v-if = 'brand')
             siemaWrapper(v-for = "(data, index) in brand", :key = 'brand._id')
                 hoverCard(:image = 'data', :url = 'url', @open = "showModal('gallery', data)")
         modal(ref='gallery', overlayTheme = 'dark', blocking, @close = 'clearGallery')
@@ -42,6 +43,14 @@
                     title : 'Brands',
                     linkText: 'See all',
                     linkUrl: '/brand/',
+                },
+
+                page : {
+                    0: 1,
+                    481: 2,
+                    641: 3,
+                    801: 4,
+                    1025: 5,
                 },
 
                 agile: {

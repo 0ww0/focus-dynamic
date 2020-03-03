@@ -18,7 +18,7 @@
 
     .logo-holder{
         width: 100%;
-        max-width: 250px;
+        max-width: 280px;
         padding: 0 20px;
 
         @include media(xs-up) {
