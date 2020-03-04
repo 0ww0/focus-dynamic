@@ -6,7 +6,15 @@
                 .navi-sub.bg-white(:class="{ active : isAbout }")
                     ul.sublayer
                         li.navi-list
-                            a.navi-link Span
+                            a.navi-link(href='#') Company Profile
+                        li.navi-list
+                            a.navi-link(href='#') Corporate Information
+                        li.navi-list
+                            a.navi-link(href='#') Corporate Structure
+                        li.navi-list
+                            a.navi-link(href='#') Board of Directors
+                        li.navi-list
+                            a.navi-link(href='#') Corporate Governance
             div(v-else-if="navi.title === 'Investor Relations'")
                 a.navi-link(:href="navi.link", @click.prevent='toggleInvestor()', :class="{ active : setActive(navi.title) }") {{ navi.title }}
                 .navi-sub.bg-white(:class="{ active : isInvestor }")

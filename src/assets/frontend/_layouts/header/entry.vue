@@ -7,7 +7,7 @@
                 joinLink(:membership = 'membership')
                 trigger
         .navigation
-            navigation(:investor = 'investor', :navigation = 'navigation' :url = 'url')
+            navigation(:investor = 'investor', :navigation = 'navigation', :url = 'url')
 </template>
 
 <script>
