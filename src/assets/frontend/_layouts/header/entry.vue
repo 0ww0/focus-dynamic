@@ -7,11 +7,11 @@
                 joinLink(:membership = 'membership')
                 trigger
         .navigation
-            navigation(:investor = 'investor', :navigation = 'navigation', :url = 'url')
+            navigation(:investor = 'investor', :navigation = 'navigation', :aboutus = 'aboutus', :url = 'url')
 </template>
 
 <script>
-    import { URL, API, EntryAPI, Logo, Memberships, Investors, Navigations } from './../api/_api.js'
+    import { URL, API, EntryAPI, Logo, Memberships, Investors, Navigations, Aboutus } from './../api/_api.js'
     import logo from './components/_logo.vue'
     import trigger from './components/_trigger.vue'
     import navigation from './components/_navigation.vue'
@@ -35,7 +35,8 @@
                 },
                 membership : {},
                 investor : [],
-                navigation: []
+                navigation: [],
+                aboutus: []
             }
         },
 
@@ -74,6 +75,17 @@
                 })
             },
 
+            fetchAboutus(){
+                API.post(EntryAPI, {
+                    query: Aboutus,
+                }).then(resp => {
+                    let list = resp.data.data;
+                    this.aboutus = list.aboutsCollection
+                }).catch(err => {
+                    console.log(err)
+                })
+            },
+
             fetchNavigation() {
                 API.post(EntryAPI, {
                     query: Navigations,
@@ -91,6 +103,7 @@
             this.fetchMembership()
             this.fetchInvestor()
             this.fetchNavigation()
+            this.fetchAboutus()
             document.onreadystatechange = () => {
                 if (document.readyState == "complete") {
                     this.$refs['loading'].close()

@@ -5,16 +5,9 @@
                 a.navi-link(:href="navi.link", @click.prevent='toggleAbout()', :class="{ active : setActive(navi.title) }") {{ navi.title }}
                 .navi-sub.bg-white(:class="{ active : isAbout }")
                     ul.sublayer
-                        li.navi-list
-                            a.navi-link(href='#') Company Profile
-                        li.navi-list
-                            a.navi-link(href='#') Corporate Information
-                        li.navi-list
-                            a.navi-link(href='#') Corporate Structure
-                        li.navi-list
-                            a.navi-link(href='#') Board of Directors
-                        li.navi-list
-                            a.navi-link(href='#') Corporate Governance
+                        li.navi-list(v-for='data in aboutus')
+                            a.navi-link(:href='data.link', v-if='data.link !== ""') {{ data.title }}
+                            a.navi-link(:href="url + '/backend/storage/uploads' + data.asset.path", v-else) {{ data.title }}
             div(v-else-if="navi.title === 'Investor Relations'")
                 a.navi-link(:href="navi.link", @click.prevent='toggleInvestor()', :class="{ active : setActive(navi.title) }") {{ navi.title }}
                 .navi-sub.bg-white(:class="{ active : isInvestor }")
@@ -35,6 +28,7 @@
         props: {
             investor: Array,
             navigation : Array,
+            aboutus : Array,
             url: String,
         },
 

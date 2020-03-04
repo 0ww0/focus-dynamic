@@ -86,3 +86,15 @@ export const Navigations = `
         }
     }
 `;
+
+export const Aboutus = `
+query{
+    aboutsCollection(filter: { published: true }, sort: {_id: 1}) {
+        title
+        link
+        asset{
+            path
+        }
+    }
+}
+`;
