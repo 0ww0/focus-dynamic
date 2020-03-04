@@ -77,3 +77,12 @@ query{
     }
 }
 `;
+
+export const Navigations = `
+    query{
+        navigationsCollection(filter: { published: true }, sort: {_id: 1}) {
+            title
+            link
+        }
+    }
+`;

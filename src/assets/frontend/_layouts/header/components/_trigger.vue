@@ -72,7 +72,7 @@
         &.active {
             cursor: pointer;
             margin-left: auto;
-            margin-right: 20px;
+            margin-right: 10px;
             i {
                 @include fs(16)
             }

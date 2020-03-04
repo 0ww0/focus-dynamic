@@ -1,24 +1,21 @@
 <template lang="pug">
     ul.navi(:class="{ active : isHamburger }")
-        li.navi-list
-            a.navi-link(href="../brand/", :class="{ active : setActive('Brands') }") Brands
-        li.navi-list(@click='toggleAbout()')
-            a.navi-link(href="javascript:void(0)", :class="{ active : setActive('About Us') }") About Us
-            .navi-sub.bg-white(:class="{ active : isAbout }")
-                ul.sublayer
-                    li.navi-list
-                        a.navi-link Span
-        li.navi-list(@click='toggleInvestor()')
-            a.navi-link(href="javascript:void(0)", :class="{ active : setActive('Investor Relations') }") Investor Relations
-            .navi-sub.bg-white(:class="{ active : isInvestor }")
-                ul.sublayer
-                    li.navi-list(v-for='data in investor')
-                        a.navi-link(:href='data.link', v-if='data.link !== ""') {{ data.title }}
-                        a.navi-link(:href="url + '/backend/storage/uploads' + data.asset.path", v-else) {{ data.title }}
-        li.navi-list
-            a.navi-link(href="../membership/", :class="{ active : setActive('Membership') }") Membership
-        li.navi-list
-            a.navi-link(href="../contact-us/", :class="{ active : setActive('Contact Us') }") Contact Us
+        li.navi-list(v-for='navi in navigation', :key = 'navi.title')
+            div(v-if= "navi.title === 'About Us'")
+                a.navi-link(:href="navi.link", @click.prevent='toggleAbout()', :class="{ active : setActive(navi.title) }") {{ navi.title }}
+                .navi-sub.bg-white(:class="{ active : isAbout }")
+                    ul.sublayer
+                        li.navi-list
+                            a.navi-link Span
+            div(v-else-if="navi.title === 'Investor Relations'")
+                a.navi-link(:href="navi.link", @click.prevent='toggleInvestor()', :class="{ active : setActive(navi.title) }") {{ navi.title }}
+                .navi-sub.bg-white(:class="{ active : isInvestor }")
+                    ul.sublayer
+                        li.navi-list(v-for='data in investor')
+                            a.navi-link(:href='data.link', v-if='data.link !== ""') {{ data.title }}
+                            a.navi-link(:href="url + '/backend/storage/uploads' + data.asset.path", v-else) {{ data.title }}
+            div(v-else)
+                a.navi-link(:href="navi.link", :class="{ active : setActive(navi.title) }") {{ navi.title }}
 </template>
 
 <script>
@@ -29,6 +26,7 @@
 
         props: {
             investor: Array,
+            navigation : Array,
             url: String,
         },
 
@@ -105,7 +103,7 @@
         opacity: 0;
         visibility: hidden;
         width: 100%;
-        top: 84px;
+        top: 80px;
         right: -100%;
         list-style: none;
         user-select: none;
@@ -124,7 +122,7 @@
             overflow-y: auto;
             right: 0;
             border-top: 1px solid;
-            height: calc(100vh - 84px);
+            height: calc(100vh - 80px);
 
             @include media(xs-up){
                 height: calc(100vh - 86px);
