@@ -118,7 +118,7 @@ export const webpackStyle = () => gulp.src([ paths.styles.frontSrc ])
 export const images = () => gulp.src([ paths.images.src, paths.images.exSrc ])
     .pipe(newer( paths.images.dest ))
     .pipe(imagemin([
-        imagemin.jpegtran({
+        imagemin.mozjpeg({
             progressive: true
         }),
         imagemin.optipng({

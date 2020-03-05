@@ -153,9 +153,6 @@
             padding-bottom: 12px;
             padding-left: 20px;
             padding-right: 20px;
-
-            @include fs(14)
-
             @include media(md-up){
                 display: inline-block;
                 &:first-child{
@@ -168,6 +165,7 @@
         }
 
         &-link {
+            @include fs(14)
             &.active, &:hover{
                 @include color(#d4af37)
                 @include trans-prop(color)
@@ -178,7 +176,7 @@
     .navi-sub{
         position: relative;
         height: auto;
-
+        @include fs(13)
         @include media(md-up){
             position: absolute;
             z-index: 1;

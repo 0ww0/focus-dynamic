@@ -53,16 +53,15 @@
                     :error = 'validate.email'
                 )
         formgroup(direction = 'column')
-            formname(name = 'Date Of Birth')
-            FunctionalCalendar(
+            formtextlabel
+                formname(name = 'Date Of Birth')
+                formplaceholder(name = 'Date Of Birth')
+            datepicker(
+                input-class = "input-datepicker"
+                format="dd-MM-yyyy"
                 v-model = 'form.dob',
-                :is-modal='true',
-                :is-date-picker='true',
-                :change-month-function='true',
-                :change-year-function='true',
-                placeholder = 'Date Of Birth',
-                dateFormat = 'dd-mm-yyyy',
-                :isTypeable = 'true',
+                :bootstrap-styling = 'true'
+                :use-utc = 'true'
             )
             formvalidate(
                 v-if = 'validate.dob',
@@ -112,7 +111,7 @@
     import formradioicon from '../../../../_components/form/radiobox/_icon.vue'
 
     import formvalidate from '../../../../_components/form/validate/_validate.vue'
-    import { FunctionalCalendar } from 'vue-functional-calendar';
+    import datepicker from 'vuejs-datepicker';
 
     export default {
         components : {
@@ -127,7 +126,7 @@
             formradioinput,
             formradioicon,
             formvalidate,
-            FunctionalCalendar
+            datepicker,
         },
 
         data() {
@@ -155,6 +154,9 @@
         computed : {
             form () {
                 return this.$store.getters.form;
+            },
+
+            formatDate(date) {
             },
         },
 
@@ -281,7 +283,7 @@
                         nric: this.form.nric,
                         phone: this.form.phone,
                         email: this.form.email,
-                        dob: this.form.dob.selectedDate,
+                        dob: this.form.dob,
                         gender: this.form.gender
                     }
                 }).then(resp => {
@@ -304,36 +306,17 @@
 
 <style lang="scss" scoped>
     @import '../../../../style/config.scss';
-    /deep/ .vfc-styles-conditional-class .vfc-main-container.vfc-modal {
-        width: unset;
-    }
-    /deep/ .vfc-styles-conditional-class {
+    /deep/ .vdp-datepicker {
         width: 100%;
+    }
+
+    /deep/ input.input-datepicker {
         @include fs(14)
-        input {
-            width: 100%;
-            padding: 5px 12px;
-            border: 1px solid;
-            border-radius: 5px;
-            outline: none;
-            text-align: left;
-            @include border($grey-50)
-            @include color($black)
-
-            &:focus, &:active{
-                @include border(#d4af37)
-                box-shadow: 0 0 5px #d4af37;
-
-                @include trans-prop(border-color, box-shadow)
-            }
-
-
-            &::placeholder {
-                color: #959595;
-                font-family: 'Gotham';
-                font-weight: 300;
-            }
-
-        }
+        width: 100%;
+        padding: 5px 12px;
+        border: 1px solid;
+        border-radius: 5px;
+        outline: none;
+        border-color: #dadada;
     }
 </style>

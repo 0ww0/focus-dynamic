@@ -16,6 +16,9 @@ module.exports = {
         'frontend/page/membership/join-now' : './src/assets/frontend/_pages/membership/join-now/join-now.js',
         'frontend/page/membership/terms' : './src/assets/frontend/_pages/membership/terms/terms.js',
         'frontend/page/membership/privacy' : './src/assets/frontend/_pages/membership/privacy/privacy.js',
+        'frontend/page/corporate/profile' : './src/assets/frontend/_pages/corporate/profile/profile.js',
+        'frontend/page/corporate/information' : './src/assets/frontend/_pages/corporate/information/information.js',
+        'frontend/page/corporate/governance' : './src/assets/frontend/_pages/corporate/governance/governance.js',
     },
     output: {
         path: path.resolve(__dirname),
