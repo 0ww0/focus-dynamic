@@ -2,7 +2,7 @@
     .banner-component.text-banner
         .image.background
             img(:src="url + banner.image")
-        .text.foreground(:class="{ 'no-tagline' : !isTagline }")
+        .text.foreground(v-if='banner.title !== ""')
             p.title {{ banner.title }}
 </template>
 
@@ -12,12 +12,6 @@
             banner : Object,
             url : String
         },
-
-        computed : {
-            isTagline() {
-                return this.banner.tagline !== '' ? true : false
-            },
-        }
     }
 </script>
 

@@ -56,18 +56,15 @@
             formtextlabel
                 formname(name = 'Date Of Birth')
                 formplaceholder(name = 'Date Of Birth')
-            datepicker(
-                input-class = "input-datepicker"
-                format="dd-MM-yyyy"
-                v-model = 'form.dob',
-                :bootstrap-styling = 'true'
-                :use-utc = 'true'
-            )
-            formvalidate(
-                v-if = 'validate.dob',
-                :text = 'validate.text_dob',
-                :error = 'validate.dob'
-            )
+                formtextinput(
+                    v-model = 'form.dob',
+                    :error = 'validate.dob'
+                )
+                formvalidate(
+                    v-if = 'validate.dob',
+                    :text = 'validate.text_dob',
+                    :error = 'validate.dob'
+                )
         formgroup
             formtextlabel
                 formname(name = 'Gender')
@@ -111,7 +108,6 @@
     import formradioicon from '../../../../_components/form/radiobox/_icon.vue'
 
     import formvalidate from '../../../../_components/form/validate/_validate.vue'
-    import datepicker from 'vuejs-datepicker';
 
     export default {
         components : {
@@ -126,7 +122,6 @@
             formradioinput,
             formradioicon,
             formvalidate,
-            datepicker,
         },
 
         data() {
@@ -155,12 +150,10 @@
             form () {
                 return this.$store.getters.form;
             },
-
-            formatDate(date) {
-            },
         },
 
         methods : {
+
             validation() {
                 if(this.form.name === '') {
                     this.validate.name = true;

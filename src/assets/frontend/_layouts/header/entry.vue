@@ -12,6 +12,7 @@
 
 <script>
     import { URL, API, EntryAPI, Logo, Memberships, Investors, Navigations, Aboutus } from './../api/_api.js'
+    import axios from 'axios'
     import logo from './components/_logo.vue'
     import trigger from './components/_trigger.vue'
     import navigation from './components/_navigation.vue'
@@ -41,69 +42,39 @@
         },
 
         methods: {
-            fetchLogo() {
-                API.post(EntryAPI, {
-                    query: Logo,
-                }).then(resp => {
-                    let list = resp.data.data;
-                    this.logo = list.logoSingleton;
-                    this.logo.image = list.logoSingleton.logo.path;
-                }).catch(err => {
-                    console.log(err)
-                })
-            },
+            fetchAxios() {
+                axios.all([
+                    API.post(EntryAPI, { query : Logo }),
+                    API.post(EntryAPI, { query : Memberships }),
+                    API.post(EntryAPI, { query : Investors }),
+                    API.post(EntryAPI, { query : Aboutus }),
+                    API.post(EntryAPI, { query : Navigations })
+                ])
+                .then(axios.spread(( LogoResp, MembershipsResp, InvestorsResp, AboutusResp, NavigationsResp ) => {
+                    let logo = LogoResp.data.data;
+                    this.logo = logo.logoSingleton;
+                    this.logo.image = logo.logoSingleton.logo.path;
 
-            fetchMembership(){
-                API.post(EntryAPI, {
-                    query: Memberships,
-                }).then(resp => {
-                    let list = resp.data.data;
-                    this.membership = list.membershipsSingleton;
-                }).catch(err => {
-                    console.log(err)
-                })
-            },
+                    let member = MembershipsResp.data.data;
+                    this.membership = member.membershipsSingleton;
 
-            fetchInvestor(){
-                API.post(EntryAPI, {
-                    query: Investors,
-                }).then(resp => {
-                    let list = resp.data.data;
-                    this.investor = list.investorsCollection
-                }).catch(err => {
-                    console.log(err)
-                })
-            },
+                    let investor = InvestorsResp.data.data;
+                    this.investor = investor.investorsCollection;
 
-            fetchAboutus(){
-                API.post(EntryAPI, {
-                    query: Aboutus,
-                }).then(resp => {
-                    let list = resp.data.data;
-                    this.aboutus = list.aboutsCollection
-                }).catch(err => {
-                    console.log(err)
-                })
-            },
+                    let aboutus = AboutusResp.data.data;
+                    this.aboutus = aboutus.aboutsCollection;
 
-            fetchNavigation() {
-                API.post(EntryAPI, {
-                    query: Navigations,
-                }).then(resp => {
-                    let list = resp.data.data;
-                    this.navigation = list.navigationsCollection
-                }).catch(err => {
-                    console.log(err)
-                })
-            }
+                    let navigation = NavigationsResp.data.data;
+                    this.navigation = navigation.navigationsCollection
+                }))
+                .catch(axios.spread(( LogoErr, MembershipsErr, InvestorsErr, AboutusErr, NavigationsErr ) => {
+                    console.log(LogoErr, MembershipsErr, InvestorsErr, AboutusErr, NavigationsErr)
+                }))
+            },
         },
 
         created () {
-            this.fetchLogo()
-            this.fetchMembership()
-            this.fetchInvestor()
-            this.fetchNavigation()
-            this.fetchAboutus()
+            this.fetchAxios()
             document.onreadystatechange = () => {
                 if (document.readyState == "complete") {
                     this.$refs['loading'].close()
