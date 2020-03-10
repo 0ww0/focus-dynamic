@@ -81,6 +81,9 @@
 
         .link {
             text-decoration: underline;
+            &:hover {
+                @include color(#d4af37)
+            }
         }
     }
 </style>
