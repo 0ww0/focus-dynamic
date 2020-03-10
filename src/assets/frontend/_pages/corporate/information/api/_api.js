@@ -20,7 +20,7 @@ export const EntryAPI = "/api/graphql/query"
 
 export const Banners = `
 query{
-    bprofilesSingleton(populate: 1){
+    bInformationSingleton(populate: 1){
         title,
         image{
             path
@@ -29,14 +29,17 @@ query{
 }
 `;
 
-export const Profiles = `
+export const Informations = `
 query{
-    profilesSingleton(populate: 1){
+    informationsSingleton(populate: 1){
         name,
-        content,
-        asset{
-            path
-        }
+        stockName,
+        stockCode,
+        listing,
+        sector,
+        businessAddress,
+        shareRegistrar,
+        website
     }
 }
 `;
