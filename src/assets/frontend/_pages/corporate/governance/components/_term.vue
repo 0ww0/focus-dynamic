@@ -8,7 +8,8 @@
 <script>
     export default {
         props : {
-            
+            audit : Object,
+            nomination : Object,
         }
     }
 </script>

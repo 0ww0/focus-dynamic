@@ -26,14 +26,3 @@ query{
     }
 }
 `;
-
-export const Banners = `
-query{
-    contactsSingleton(populate: 1){
-        title,
-        image{
-            path
-        },
-    }
-}
-`;

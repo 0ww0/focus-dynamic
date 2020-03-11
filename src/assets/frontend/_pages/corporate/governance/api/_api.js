@@ -44,3 +44,30 @@ query{
     }
 }
 `;
+
+export const Whistles = `
+query{
+    whistlesSingleton(populate: 1){
+        title,
+        content,
+    }
+}
+`;
+
+export const Audits = `
+query{
+    auditsSingleton(populate: 1){
+        title,
+        content,
+    }
+}
+`;
+
+export const Nominations = `
+query{
+    nominationsSingleton(populate: 1){
+        title,
+        content,
+    }
+}
+`;
