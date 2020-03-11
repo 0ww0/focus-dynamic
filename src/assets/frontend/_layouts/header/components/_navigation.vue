@@ -161,6 +161,10 @@
                     padding-right: 0;
                 }
             }
+            &:before {
+                content: "";
+                display: none;
+            }
         }
 
         &-link {
