@@ -1,6 +1,6 @@
 <template lang="pug">
     .wrapper-content
-        .container
+        .container.extend
             imageCard(:image = 'structure', :url = 'url')
 </template>
 
@@ -44,3 +44,9 @@
         }
     }
 </script>
+
+<style lang='scss' scoped>
+    .extend {
+        max-width: 1205px;
+    }
+</style>

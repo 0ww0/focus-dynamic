@@ -18,13 +18,11 @@ export const API = axios.create({
 
 export const EntryAPI = "/api/graphql/query"
 
-export const Banners = `
+export const Governances = `
 query{
-    bgovernancesSingleton(populate: 1){
+    governancesSingleton(populate: 1){
         title,
-        image{
-            path
-        },
+        content,
     }
 }
 `;
