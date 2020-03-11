@@ -3,6 +3,7 @@
         .container.slim
             governance(:content = 'governance')
             charter(:content = 'charter')
+            term
             ethic(:content = 'ethic')
 </template>
 
@@ -12,19 +13,21 @@
     import governance from './components/_governance.vue'
     import charter from './components/_charter.vue'
     import ethic from './components/_ethic.vue'
+    import term from './components/_term.vue'
 
     export default {
         components : {
             governance,
             charter,
-            ethic
+            ethic,
+            term
         },
 
         data() {
             return {
                 governance : {},
                 charter : {},
-                ethic : {}
+                ethic : {},
             }
         },
 
