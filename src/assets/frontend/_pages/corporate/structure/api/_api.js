@@ -18,17 +18,13 @@ export const API = axios.create({
 
 export const EntryAPI = "/api/graphql/query"
 
-export const Informations = `
+export const Structures = `
 query{
-    informationsSingleton(populate: 1){
-        name,
-        stockName,
-        stockCode,
-        listing,
-        sector,
-        businessAddress,
-        shareRegistrar,
-        website
+    structuresSingleton(populate: 1){
+        title,
+        image{
+            path
+        },
     }
 }
 `;

@@ -92,9 +92,6 @@ query{
     aboutsCollection(filter: { published: true }, sort: {_id: 1}) {
         title
         link
-        asset{
-            path
-        }
     }
 }
 `;

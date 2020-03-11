@@ -6,8 +6,7 @@
                 .navi-sub.bg-white(:class="{ active : isAbout }")
                     ul.sublayer
                         li.navi-list(v-for='data in aboutus')
-                            a.navi-link(:href='data.link', v-if='data.link !== ""') {{ data.title }}
-                            a.navi-link(:href="url + '/backend/storage/uploads' + data.asset.path", v-else) {{ data.title }}
+                            a.navi-link(:href='data.link') {{ data.title }}
             div(v-else-if="navi.title === 'Investor Relations'")
                 a.navi-link(:href="navi.link", @click.prevent='toggleInvestor()', :class="{ active : setActive(navi.title) }") {{ navi.title }}
                 .navi-sub.bg-white(:class="{ active : isInvestor }")
