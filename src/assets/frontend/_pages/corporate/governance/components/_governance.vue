@@ -9,7 +9,6 @@
     export default {
         props : {
             content : Object,
-            url : String,
         }
     }
 </script>

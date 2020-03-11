@@ -26,3 +26,21 @@ query{
     }
 }
 `;
+
+export const Charters = `
+query{
+    chartersSingleton(populate: 1){
+        title,
+        content,
+    }
+}
+`;
+
+export const Ethics = `
+query{
+    ethicsSingleton(populate: 1){
+        title,
+        content,
+    }
+}
+`;
