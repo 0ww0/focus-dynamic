@@ -6,6 +6,8 @@
                 sitemap(:sitemap = 'explore')
                 sitemap(:sitemap = 'corporate')
                 sitemap(:sitemap = 'membership')
+        .copyright-holder
+            span &copy; 2020 Focus Dynamics Group Berhad. All Rights Reserved
 </template>
 
 <script>
@@ -84,7 +86,6 @@
         width: 100%;
         border-top: 1px solid;
         padding-top: 35px;
-        padding-bottom: 35px;
 
         @include border(#e3e3e3)
         @include background($white)
@@ -118,7 +119,7 @@
                 flex-flow: row wrap;
             }
 
-            
+
             @include media(md-up) {
                 width: 50%;
             }
@@ -141,8 +142,13 @@
                     margin-left: auto;
                 }
             }
+        }
 
-
+        .copyright-holder {
+            text-align: center;
+            @include fs(12)
+            padding-top: 35px;
+            padding-bottom: 15px;
         }
     }
 </style>

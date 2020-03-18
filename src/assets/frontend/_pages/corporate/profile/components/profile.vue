@@ -4,7 +4,7 @@
             p {{ content.name }}
         .content(v-html = 'content.content')
         groupButton
-            linkButton(name = 'Download Company Deck', :link = "url + '/backend/storage/uploads' + content.asset" color = 'theme', outline)
+            linkButton(name = 'Download Company Profile', :link = "url + '/backend/storage/uploads' + content.asset" color = 'theme', outline)
 </template>
 
 <script>
