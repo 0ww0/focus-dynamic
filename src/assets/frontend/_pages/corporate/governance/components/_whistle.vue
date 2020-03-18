@@ -2,13 +2,15 @@
     .term-holder
         .title
             span {{ content.title }}
-        .content(v-html = "content.content")
+        .content
+            img(:src="url + content.image")
 </template>
 
 <script>
     export default {
         props : {
             content : Object,
+            url : String,
         }
     }
 </script>
@@ -26,12 +28,16 @@
         text-align: left;
         font-weight: bold;
         margin-bottom: 20px;
+        padding-bottom: 20px;
+        text-align: center;
+        border-bottom: 1px solid;
+        @include border(#d4af37)
     }
 
     .content {
-        max-height: 540px;
+        max-height: 713px;
         height: 100%;
-        overflow: auto;
+        margin-bottom: 20px;
     }
 </style>
 

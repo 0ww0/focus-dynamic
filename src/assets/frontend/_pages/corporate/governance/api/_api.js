@@ -49,7 +49,9 @@ export const Whistles = `
 query{
     whistlesSingleton(populate: 1){
         title,
-        content,
+        image{
+            path
+        }
     }
 }
 `;

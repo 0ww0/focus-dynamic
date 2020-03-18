@@ -43,6 +43,10 @@
         text-align: left;
         font-weight: bold;
         margin-bottom: 20px;
+        padding-bottom: 20px;
+        text-align: center;
+        border-bottom: 1px solid;
+        @include border(#d4af37)
     }
 
     .content {

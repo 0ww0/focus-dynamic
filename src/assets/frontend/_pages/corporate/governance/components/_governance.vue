@@ -28,3 +28,20 @@
         margin-bottom: 20px;
     }
 </style>
+
+<style lang="scss">
+    @import './../../../../style/config.scss';
+
+    .content {
+        h4 {
+            margin-bottom: 10px;
+        }
+        p {
+            @include fs(14)
+            margin-right: 10px;
+            &:not(:last-child) {
+                margin-bottom: 10px;
+            }
+        }
+    }
+</style>

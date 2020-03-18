@@ -5,7 +5,7 @@
             charter(:content = 'charter')
             term(:audit = 'audit', :nomination = 'nomination')
             ethic(:content = 'ethic')
-            whistle(:content = 'whistle')
+            whistle(:content = 'whistle', :url = 'url')
 </template>
 
 <script>
@@ -28,10 +28,13 @@
 
         data() {
             return {
+                url : URL,
                 governance : {},
                 charter : {},
                 ethic : {},
-                whistle : {},
+                whistle : {
+                    image: {}
+                },
                 audit : {},
                 nomination : {}
             }
@@ -59,6 +62,7 @@
 
                     let whistle = WhistlesResp.data.data
                     this.whistle = whistle.whistlesSingleton
+                    this.whistle.image = this.whistle.image.path
 
                     let audit = AuditsResp.data.data
                     this.audit = audit.auditsSingleton
