@@ -60,6 +60,15 @@
                     key : 'isAbout',
                     value : false
                 })
+
+                $(document).click(function(e){
+                    if (!$(e.target).closest('.navi-list, .navi-link').length) {
+                        this.$store.dispatch('updateState', {
+                            key : 'isInvestor',
+                            value : false
+                        })
+                    }
+                }.bind(this));
             },
 
             toggleAbout () {
@@ -72,6 +81,15 @@
                     key : 'isInvestor',
                     value : false
                 })
+
+                $(document).click(function(e){
+                    if (!$(e.target).closest('.navi-list, .navi-link').length) {
+                        this.$store.dispatch('updateState', {
+                            key : 'isAbout',
+                            value : false
+                        })
+                    }
+                }.bind(this));
             },
 
             removeHamburger () {
