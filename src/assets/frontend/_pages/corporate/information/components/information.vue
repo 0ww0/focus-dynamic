@@ -64,8 +64,10 @@
         }
 
         tr {
+
              @include odd{
-                @include background($darkGrey, .4)
+                @include background(#d4af37)
+                @include color($white)
              }
         }
 
@@ -73,7 +75,7 @@
             padding: 5px 15px;
             vertical-align: top;
             border: 1px solid;
-
+            @include border($black)
             &:first-child {
                 font-weight: 500;
             }

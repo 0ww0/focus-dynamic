@@ -1,5 +1,7 @@
 <template lang="pug">
     formgroup(formHeader)
+        formgroup.title
+            p Feedback
         formgroup
             formtextlabel
                 formname(name = 'Name')
@@ -249,3 +251,13 @@
         }
     }
 </script>
+
+<style lang="scss" scoped>
+    @import './../../../style/config.scss';
+
+    .title {
+        @include fs(14)
+        @include weight(500)
+        margin-bottom: 10px;
+    }
+</style>

@@ -55,16 +55,17 @@
         formgroup(direction = 'column')
             formtextlabel
                 formname(name = 'Date Of Birth')
-                formplaceholder(name = 'Date Of Birth')
-                formtextinput(
-                    v-model = 'form.dob',
-                    :error = 'validate.dob'
-                )
-                formvalidate(
-                    v-if = 'validate.dob',
-                    :text = 'validate.text_dob',
-                    :error = 'validate.dob'
-                )
+            Datepicker(
+                v-model = 'form.dob',
+                :format="format",
+                placeholder="Select Date",
+                input-class = 'input-datepicker'
+            )
+            formvalidate(
+                v-if = 'validate.dob',
+                :text = 'validate.text_dob',
+                :error = 'validate.dob'
+            )
         formgroup
             formtextlabel
                 formname(name = 'Gender')
@@ -108,6 +109,8 @@
     import formradioicon from '../../../../_components/form/radiobox/_icon.vue'
 
     import formvalidate from '../../../../_components/form/validate/_validate.vue'
+    import Datepicker from 'vuejs-datepicker'
+    import moment from 'moment'
 
     export default {
         components : {
@@ -122,10 +125,12 @@
             formradioinput,
             formradioicon,
             formvalidate,
+            Datepicker,
         },
 
         data() {
             return {
+                format: 'dd-MM-yyyy',
                 validate: {
                    name : false,
                    text_name : '',
@@ -255,7 +260,7 @@
                     nric : '',
                     phone : '',
                     email : '',
-                    dob : {},
+                    dob : '',
                     gender: '',
                 }
 
@@ -276,7 +281,7 @@
                         nric: this.form.nric,
                         phone: this.form.phone,
                         email: this.form.email,
-                        dob: this.form.dob,
+                        dob: moment(this.form.dob).format('DD-MM-YYYY'),
                         gender: this.form.gender
                     }
                 }).then(resp => {
