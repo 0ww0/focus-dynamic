@@ -18,17 +18,6 @@ export const API = axios.create({
 
 export const EntryAPI = "/api/graphql/query"
 
-export const Banners = `
-query{
-    bprofilesSingleton(populate: 1){
-        title,
-        image{
-            path
-        },
-    }
-}
-`;
-
 export const Profiles = `
 query{
     profilesSingleton(populate: 1){

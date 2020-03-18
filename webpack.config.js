@@ -19,6 +19,8 @@ module.exports = {
         'frontend/page/corporate/profile' : './src/assets/frontend/_pages/corporate/profile/profile.js',
         'frontend/page/corporate/information' : './src/assets/frontend/_pages/corporate/information/information.js',
         'frontend/page/corporate/governance' : './src/assets/frontend/_pages/corporate/governance/governance.js',
+        'frontend/page/corporate/board' : './src/assets/frontend/_pages/corporate/board/board.js',
+        'frontend/page/corporate/structure' : './src/assets/frontend/_pages/corporate/structure/structure.js',
     },
     output: {
         path: path.resolve(__dirname),

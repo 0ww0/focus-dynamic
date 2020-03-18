@@ -1,6 +1,5 @@
 <template lang="pug">
     .wrapper-content
-        banner(:banner = 'banner', :url = 'url')
         .container
             .content-holder
                 card(stretch, :xmedia = 'false')
@@ -11,7 +10,7 @@
 </template>
 
 <script>
-    import { URL, API, EntryAPI, Brands, Banners } from './api/_api.js'
+    import { URL, API, EntryAPI, Brands } from './api/_api.js'
     import axios from 'axios'
     import Media from '../../_shares/media.js'
     import card from '../../_components/card/_card.vue'
@@ -19,7 +18,6 @@
     import hoverCard from './components/card/_hover.vue'
     import modal from './../../_components/modal/_modal.vue'
     import gallery from './components/carousel/_gallery.vue'
-    import banner from '../../_components/banner/_heading.vue'
 
     export default {
         extends : Media,
@@ -30,15 +28,11 @@
             hoverCard,
             modal,
             gallery,
-            banner
         },
 
         data() {
             return {
                 url: URL,
-                banner: {
-                    image: {},
-                },
                 brand : [],
                 gallery: {
                     name: '',
@@ -64,19 +58,14 @@
         methods : {
             fetchAxios() {
                 axios.all([
-                    API.post(EntryAPI, { query : Banners }),
                     API.post(EntryAPI, { query : Brands })
                 ])
-                .then(axios.spread(( BannersResp, BrandsResp ) => {
-                    let banner = BannersResp.data.data
-                    this.banner = banner.brandsSingleton
-                    this.banner.image = this.banner.image.path
-
+                .then(axios.spread(( BrandsResp ) => {
                     let brand = BrandsResp.data.data;
                     this.brand = brand.brandsCollection;
                 }))
-                .catch(axios.spread(( BannersErr, BrandsErr ) => {
-                    console.log(BannersErr, BrandsErr)
+                .catch(axios.spread(( BrandsErr ) => {
+                    console.log(BrandsErr)
                 }))
             },
 
