@@ -26,3 +26,14 @@ query{
     }
 }
 `;
+
+export const Banners = `
+query{
+    bcontactsSingleton(populate: 1){
+        title,
+        image{
+            path
+        }
+    }
+}
+`;

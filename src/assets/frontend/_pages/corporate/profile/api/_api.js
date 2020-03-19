@@ -29,3 +29,14 @@ query{
     }
 }
 `;
+
+export const Banners = `
+query{
+    bprofilesSingleton(populate: 1){
+        title,
+        image{
+            path
+        }
+    }
+}
+`;
