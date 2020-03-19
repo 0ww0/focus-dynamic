@@ -42,6 +42,9 @@ query{
         gallery{
             path
         }
+        promo{
+            path
+        }
     }
 }
 `;
