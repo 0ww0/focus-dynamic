@@ -21,9 +21,6 @@ export const EntryAPI = "/api/graphql/query"
 export const Boards = `
 query{
     boardsCollection(filter: { published: true }, sort: {_id: 1}) {
-        image{
-            path
-        },
         name,
         title,
         content

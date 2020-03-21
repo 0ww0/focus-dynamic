@@ -33,7 +33,7 @@ query{
 
 export const Explore = `
 query{
-    sitemapCollection(filter: { published: true, category: "explore" }, sort: {_id: 1 }) {
+    sitemapCollection(filter: { published: true, category: "explore" }, sort: {sort: 1 }) {
         title,
         link,
     }

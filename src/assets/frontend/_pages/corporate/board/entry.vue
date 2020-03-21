@@ -3,7 +3,7 @@
         .container
             .content-holder
                 card(stretch, :xmedia = 'false')
-                    cardWrapper(:card = 'isResponsive', v-for = 'data in board', :key = 'data.id')
+                    cardWrapper(card = 'full', v-for = 'data in board', :key = 'data.id')
                         boardCard(:board = 'data', :url = 'url')
 </template>
 
@@ -28,16 +28,6 @@
             return {
                 url: URL,
                 board : [],
-            }
-        },
-
-        computed : {
-            isResponsive () {
-                if (this.is801) {
-                    return 'half'
-                } else {
-                    return 'full'
-                }
             }
         },
 

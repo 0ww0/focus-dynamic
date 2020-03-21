@@ -1,7 +1,5 @@
 <template lang="pug">
     .board-holder
-        .image
-            img(:src = " url + board.image.path")
         .name
             span {{ board.name }}
         .title
@@ -37,12 +35,10 @@
         .name {
             @include fs(16)
             @include color(#d4af37)
-            text-align: center;
         }
 
         .title {
             @include fs(14)
-            text-align: center;
         }
     }
 </style>
