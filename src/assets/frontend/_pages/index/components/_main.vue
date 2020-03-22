@@ -31,7 +31,7 @@
                 agile: {
                     autoplaySpeed: 7500,
                     fade: true,
-                    speed: 2500,
+                    speed: 5000,
                     pauseOnHover: true,
                     pauseOnDotsHover: true,
                     autoplay: true,

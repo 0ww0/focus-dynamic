@@ -55,11 +55,10 @@
         formgroup(direction = 'column')
             formtextlabel
                 formname(name = 'Date Of Birth')
-            Datepicker(
+            v-date-picker.input-datepicker(
                 v-model = 'form.dob',
-                :format="format",
-                placeholder="Select Date",
-                input-class = 'input-datepicker'
+                :masks="{L: 'DD-MM-YYYY'}",
+                :input-props="{ placeholder : 'Date Of Birth' }"
             )
             formvalidate(
                 v-if = 'validate.dob',
@@ -109,7 +108,6 @@
     import formradioicon from '../../../../_components/form/radiobox/_icon.vue'
 
     import formvalidate from '../../../../_components/form/validate/_validate.vue'
-    import Datepicker from 'vuejs-datepicker'
     import moment from 'moment'
 
     export default {
@@ -125,7 +123,6 @@
             formradioinput,
             formradioicon,
             formvalidate,
-            Datepicker,
         },
 
         data() {
@@ -304,11 +301,11 @@
 
 <style lang="scss" scoped>
     @import '../../../../style/config.scss';
-    /deep/ .vdp-datepicker {
+    /deep/ .input-datepicker {
         width: 100%;
     }
 
-    /deep/ input.input-datepicker {
+    /deep/ .input-datepicker input{
         @include fs(14)
         width: 100%;
         padding: 5px 12px;
