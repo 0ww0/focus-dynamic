@@ -2,6 +2,8 @@
     .wrapper-content
         .container
             .content-holder
+                .title
+                    span Board Of Directors
                 card(stretch, :xmedia = 'false')
                     cardWrapper(card = 'full', v-for = 'data in board', :key = 'data.id')
                         boardCard(:board = 'data', :url = 'url')
@@ -54,8 +56,18 @@
 </script>
 
 <style lang="scss" scoped>
+    @import './../../../style/config.scss';
+
     .content-holder {
         padding-top: 25px;
         padding-bottom: 25px;
+        .title {
+            @include fs(18)
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
     }
+
+
 </style>
