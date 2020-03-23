@@ -1,7 +1,7 @@
 <template lang="pug">
     .governance-holder
-        .title
-            span {{ content.title }}
+        //- .title
+        //-     span {{ content.title }}
         .content(v-html = 'content.content')
 </template>
 

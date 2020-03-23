@@ -2,8 +2,10 @@
     .term-holder
         .title
             span {{ content.title }}
-        .content
+        .content(v-html ='content.content', v-if='content.position === "top"')
+        .image
             img(:src="url + content.image")
+        .content(v-html ='content.content', v-if='content.position === "bottom"')
 </template>
 
 <script>
@@ -32,6 +34,11 @@
         text-align: center;
         border-bottom: 1px solid;
         @include border(#d4af37)
+    }
+
+    .image {
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 
     .content {

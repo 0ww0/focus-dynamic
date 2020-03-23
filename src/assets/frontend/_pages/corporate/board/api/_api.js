@@ -27,3 +27,14 @@ query{
     }
 }
 `;
+
+export const Banners = `
+query{
+    bboardsSingleton(populate: 1){
+        title,
+        image{
+            path
+        }
+    }
+}
+`;

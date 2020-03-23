@@ -28,3 +28,14 @@ query{
     }
 }
 `;
+
+export const Banners = `
+query{
+    bstructuresSingleton(populate: 1){
+        title,
+        image{
+            path
+        }
+    }
+}
+`;

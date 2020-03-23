@@ -57,8 +57,8 @@
                 formname(name = 'Date Of Birth')
             v-date-picker.input-datepicker(
                 v-model = 'form.dob',
-                :masks="{L: 'DD-MM-YYYY'}",
-                :input-props="{ placeholder : 'Date Of Birth' }"
+                :masks="{L: 'YYYY/MM/DD'}",
+                :input-props="{ placeholder : 'yyyy/mm/dd' }"
             )
             formvalidate(
                 v-if = 'validate.dob',
@@ -278,7 +278,7 @@
                         nric: this.form.nric,
                         phone: this.form.phone,
                         email: this.form.email,
-                        dob: moment(this.form.dob).format('DD-MM-YYYY'),
+                        dob: moment(this.form.dob).format('YYYY/MM/DD'),
                         gender: this.form.gender
                     }
                 }).then(resp => {

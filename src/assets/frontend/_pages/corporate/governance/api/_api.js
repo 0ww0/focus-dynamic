@@ -51,7 +51,9 @@ query{
         title,
         image{
             path
-        }
+        },
+        content,
+        position
     }
 }
 `;
@@ -70,6 +72,17 @@ query{
     nominationsSingleton(populate: 1){
         title,
         content,
+    }
+}
+`;
+
+export const Banners = `
+query{
+    bgovernancesSingleton(populate: 1){
+        title,
+        image{
+            path
+        }
     }
 }
 `;
