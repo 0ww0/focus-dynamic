@@ -139,6 +139,7 @@
             opacity: 1;
             visibility: visible;
             overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
             right: 0;
             border-top: 1px solid;
             height: calc(100vh - 80px);
