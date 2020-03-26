@@ -16,4 +16,4 @@ export const API = axios.create({
     headers,
 });
 
-export const EntryAPI = "/api/collections/save/memberships"
+export const EntryAPI = "/api/collections/save/memberships?token=" + `${TOKEN}`

@@ -16,7 +16,7 @@ export const API = axios.create({
     headers,
 });
 
-export const EntryAPI = "/api/graphql/query"
+export const EntryAPI = "/api/graphql/query?token=" + `${TOKEN}`
 
 export const Terms = `
 query{

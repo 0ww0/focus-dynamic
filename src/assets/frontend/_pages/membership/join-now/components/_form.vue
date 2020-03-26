@@ -16,7 +16,7 @@
         formgroup
             formtextlabel
                 formname(name = 'NRIC no.')
-                formplaceholder(name = 'NRIC no.')
+                formplaceholder(name = 'NRIC no. Ex: YYMMDD-XX-XXXX')
                 formtextinput(
                     v-model = 'form.nric',
                     :error = 'validate.nric'
