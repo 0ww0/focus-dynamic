@@ -45,7 +45,6 @@
     .banner {
         position: relative;
         width: 100%;
-        height: 540px;
         margin-left: auto;
         margin-right: auto;
         overflow: hidden;

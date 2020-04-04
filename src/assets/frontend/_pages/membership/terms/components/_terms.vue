@@ -14,15 +14,10 @@
     @import './../../../../style/config.scss';
 
     .terms-holder{
-        height: calc(100vh - 85px);
+        height: 100%;
         margin-top: 20px;
         margin-bottom: 20px;
         margin-right: 14px;
-        overflow: auto;
-
-        @include media(dp-up){
-            height: calc(100vh - 66px - 41px - 182px - 85px - 40px);
-        }
 
         @include media(hd-up){
             margin-left: 22px;

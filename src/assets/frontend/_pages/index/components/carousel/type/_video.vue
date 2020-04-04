@@ -24,13 +24,21 @@
     @import './../../../../../style/config.scss';
 
     .video{
+        position: relative;
         overflow: hidden;
+        @include media(md-up){
+            padding-top: 28.125%;
+        }
+        padding-top: 84.375%;
         width: 100%;
-        height: 540px;
         video{
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
         }
     }
 </style>

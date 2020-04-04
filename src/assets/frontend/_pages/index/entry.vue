@@ -8,7 +8,7 @@
 </template>
 
 <script>
-    import { URL, API, EntryAPI, Banners, Brands, Membership, Support } from './api/_api.js'
+    import { URL, API, EntryAPI, BrandAPI, Banners, Brands, Membership, Support } from './api/_api.js'
     import axios from 'axios'
     import mainCarousel from './components/_main.vue'
     import cardCarousel from './components/_card.vue'
@@ -43,16 +43,12 @@
             fetchAxios() {
                 axios.all([
                     API.post(EntryAPI, { query : Banners }),
-                    API.post(EntryAPI, { query : Brands }),
                     API.post(EntryAPI, { query : Membership }),
                     API.post(EntryAPI, { query: Support })
                 ])
-                .then(axios.spread((BannersResp, BrandsResp, MembershipResp, SupportResp) => {
+                .then(axios.spread((BannersResp, MembershipResp, SupportResp) => {
                     let banner = BannersResp.data.data
                     this.banner = banner.bannersCollection
-
-                    let brand = BrandsResp.data.data
-                    this.brand = brand.brandsCollection
 
                     let member = MembershipResp.data.data;
                     this.membership = member.membershipsSingleton;
@@ -61,13 +57,28 @@
                     let support = SupportResp.data.data;
                     this.support = support.supportsCollection;
                 }))
-                .catch(axios.spread((BannersErr, BrandsErr, MembershipErr, SupportErr ) => {
-                    console.log(BannersErr, BrandsErr, MembershipErr, SupportErr)
+                .catch(axios.spread((BannersErr, MembershipErr, SupportErr ) => {
+                    console.log(BannersErr, MembershipErr, SupportErr)
                 }))
             },
+
+            fetchBrand () {
+                API.post(BrandAPI, JSON.stringify({
+                    filter: {published:true},
+                    sort: {index:1},
+                }))
+                .then(resp => {
+                    let brand = resp.data.entries
+                    this.brand = brand
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+            }
         },
 
         created() {
+            this.fetchBrand()
             this.fetchAxios()
         }
     }

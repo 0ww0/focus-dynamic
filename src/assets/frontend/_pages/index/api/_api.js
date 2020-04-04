@@ -18,6 +18,8 @@ export const API = axios.create({
 
 export const EntryAPI = "/api/graphql/query?token=" + `${TOKEN}`
 
+export const BrandAPI = "/api/collections/get/brands?token=" + `${TOKEN}`
+
 export const Banners = `
 query{
     bannersCollection(filter: { published: true }, sort: {_id:-1}, limit: 5 ) {

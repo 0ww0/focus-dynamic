@@ -42,9 +42,10 @@
     }
 
     .content {
-        max-height: 713px;
+        max-height: 540px;
         height: 100%;
         margin-bottom: 20px;
+        overflow: auto;
     }
 </style>
 
@@ -55,6 +56,15 @@
         h4 {
             margin-bottom: 10px;
         }
+
+        table{
+            td{
+                p {
+                    word-break: break-word;
+                }
+            }
+        }
+
         p {
             @include fs(14)
             margin-right: 10px;

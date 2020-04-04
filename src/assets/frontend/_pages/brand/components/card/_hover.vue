@@ -5,7 +5,7 @@
             .hover-action
                 groupButton
                     linkButton(name = 'Website', :link = 'image.link', color = 'theme')
-                    linkButton(name = 'Gallery', @click.native = 'open', color = 'theme', v-if='image.gallery !== null')
+                    linkButton(name = 'Gallery', @click.native = 'open', color = 'theme', v-if='image.gallery !== ""')
                     linkButton(name = 'Promotion', :link = "url + '/backend/storage/uploads' + image.promo.path", color = 'theme', v-if='image.promo !== null')
         .text
             p {{ image.name }}
