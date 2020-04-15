@@ -36,6 +36,8 @@
     .term-holder {
         padding-top: 25px;
         padding-bottom: 25px;
+        border-bottom: 1px solid;
+        @include border(grey)
     }
 
     .title {

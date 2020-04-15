@@ -21,14 +21,20 @@ export const EntryAPI = "/api/graphql/query?token=" + `${TOKEN}`
 export const Informations = `
 query{
     informationsSingleton(populate: 1){
-        name,
-        stockName,
-        stockCode,
-        listing,
-        sector,
-        businessAddress,
-        shareRegistrar,
-        website
+        image{
+            path
+        },
+    }
+}
+`;
+
+export const Banners = `
+query{
+    binformationsSingleton(populate: 1){
+        title,
+        image{
+            path
+        }
     }
 }
 `;
