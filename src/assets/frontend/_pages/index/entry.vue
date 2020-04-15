@@ -1,10 +1,9 @@
 <template lang="pug">
     .wrapper-content
         mainCarousel(:banner = 'banner', :url = 'url')
-        .container
-            cardCarousel(:brand = 'brand', :gallery = 'gallery', :url = 'url')
-            membership(:membership = 'membership', :url = 'url')
-            contact(:support = 'support')
+        cardCarousel(:brand = 'brand', :gallery = 'gallery', :url = 'url')
+        membership(:membership = 'membership', :url = 'url')
+        contact(:support = 'support')
 </template>
 
 <script>

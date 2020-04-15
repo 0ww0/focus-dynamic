@@ -1,12 +1,13 @@
 <template lang="pug">
     .term-holder
-        .title
-            span Terms of Reference of The Board
-        textTab(border)
-            contentTab(name = "Audit Committee", selected)
-                audit(:content = 'audit')
-            contentTab(name = "Nomination Committee")
-                nomination(:content = 'nomination')
+        .container.slim
+            .title
+                span Terms of Reference of The Board
+            textTab(border)
+                contentTab(name = "Audit Committee", selected)
+                    audit(:content = 'audit')
+                contentTab(name = "Nomination Committee")
+                    nomination(:content = 'nomination')
 </template>
 
 <script>
@@ -36,8 +37,6 @@
     .term-holder {
         padding-top: 25px;
         padding-bottom: 25px;
-        border-bottom: 1px solid;
-        @include border(grey)
     }
 
     .title {

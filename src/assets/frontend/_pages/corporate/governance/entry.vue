@@ -1,12 +1,11 @@
 <template lang="pug">
     .wrapper-content
         banner(:banner = 'banner', :url = 'url')
-        .container.slim
-            governance(:content = 'governance')
-            charter(:content = 'charter')
-            term(:audit = 'audit', :nomination = 'nomination')
-            ethic(:content = 'ethic')
-            whistle(:content = 'whistle', :url = 'url')
+        governance(:content = 'governance')
+        charter(:content = 'charter')
+        term(:audit = 'audit', :nomination = 'nomination')
+        ethic(:content = 'ethic')
+        whistle(:content = 'whistle', :url = 'url')
 </template>
 
 <script>

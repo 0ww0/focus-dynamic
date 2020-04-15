@@ -1,8 +1,9 @@
 <template lang="pug">
     .charter-holder
-        .title
-            span {{ content.title }}
-        .content(v-html = 'content.content')
+        .container.slim
+            .title
+                span {{ content.title }}
+            .content(v-html = 'content.content')
 </template>
 
 <script>
@@ -19,8 +20,7 @@
     .charter-holder {
         padding-top: 25px;
         padding-bottom: 25px;
-        border-bottom: 1px solid;
-        @include border(grey)
+        @include background(#f5f5f5)
     }
 
     .title {

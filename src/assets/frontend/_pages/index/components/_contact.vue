@@ -1,9 +1,10 @@
 <template lang="pug">
     .contact-holder
-        heading(:text = 'head', subheader)
-        card( :xmedia = 'false')
-            cardWrapper(:card = 'isResponsive', v-for = '(data, index) in support', :key = 'data.title')
-                support(:support = 'data')
+        .container
+            heading(:text = 'head', subheader)
+            card( :xmedia = 'false')
+                cardWrapper(:card = 'isResponsive', v-for = '(data, index) in support', :key = 'data.title')
+                    support(:support = 'data')
 </template>
 
 <script>
@@ -80,7 +81,7 @@
                     margin-top: -90px;
                 }
 
-                
+
             }
         }
     }

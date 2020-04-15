@@ -1,14 +1,15 @@
 <template lang="pug">
     .membership-holder
-        heading(:text = 'head', subheader)
-        card(stretch, :xmedia = 'false')
-            cardWrapper(:card = 'isResponsive', :order= 'isOrder')
-                imageCard(:image = 'membership', :url = 'url')
-            cardWrapper(:card = 'isResponsive')
-                paragraph(:content = 'membership.description')
-                    groupButton(position='left')
-                        linkButton(name = 'Learn More', outline, color = 'theme', :link = 'membership.linkLM')
-                        linkButton(name = 'Join Now', outline, color = 'theme', :link = 'membership.linkJN')
+        .container
+            heading(:text = 'head', subheader)
+            card(stretch, :xmedia = 'false')
+                cardWrapper(:card = 'isResponsive', :order= 'isOrder')
+                    imageCard(:image = 'membership', :url = 'url')
+                cardWrapper(:card = 'isResponsive')
+                    paragraph(:content = 'membership.description')
+                        groupButton(position='left')
+                            linkButton(name = 'Learn More', outline, color = 'theme', :link = 'membership.linkLM')
+                            linkButton(name = 'Join Now', outline, color = 'theme', :link = 'membership.linkJN')
 </template>
 
 <script>
@@ -70,8 +71,7 @@
     .membership-holder {
         padding-top: 25px;
         padding-bottom: 25px;
-        border-bottom: 1px solid;
-        @include border(grey)
+        @include background(#f5f5f5)
     }
 
     /deep/ .button {

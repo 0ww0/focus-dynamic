@@ -1,8 +1,7 @@
 <template lang="pug">
     .governance-holder
-        //- .title
-        //-     span {{ content.title }}
-        .content(v-html = 'content.content')
+        .container.slim
+            .content(v-html = 'content.content')
 </template>
 
 <script>
@@ -19,8 +18,6 @@
     .governance-holder {
         padding-top: 25px;
         padding-bottom: 25px;
-        border-bottom: 1px solid;
-        @include border(grey)
     }
 
     .title {

@@ -1,11 +1,12 @@
 <template lang="pug">
     .term-holder
-        .title
-            span {{ content.title }}
-        .content(v-html ='content.content', v-if='content.position === "top"')
-        .image
-            img(:src="url + content.image")
-        .content(v-html ='content.content', v-if='content.position === "bottom"')
+        .container.slim
+            .title
+                span {{ content.title }}
+            .content(v-html ='content.content', v-if='content.position === "top"')
+            .image
+                img(:src="url + content.image")
+            .content(v-html ='content.content', v-if='content.position === "bottom"')
 </template>
 
 <script>
