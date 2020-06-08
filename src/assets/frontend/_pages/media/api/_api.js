@@ -35,3 +35,13 @@ query{
     }
 }
 `;
+
+export const Banners = `
+query{
+    bmediasSingleton(populate: 1){
+        image{
+            path
+        }
+    }
+}
+`;
